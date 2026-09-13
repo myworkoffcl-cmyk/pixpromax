@@ -1,0 +1,305 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Resize Image - PixProMax</title>
+
+<link rel="stylesheet" href="../css/style.css">
+
+<style>
+
+.tool-container{
+max-width:900px;
+margin:auto;
+padding:40px 20px;
+}
+
+.controls{
+margin-top:20px;
+display:flex;
+align-items:center;
+gap:10px;
+flex-wrap:wrap;
+}
+
+.controls input,
+.controls select{
+padding:8px;
+width:120px;
+}
+
+.preview{
+display:flex;
+gap:40px;
+margin-top:30px;
+flex-wrap:wrap;
+}
+
+.preview img{
+max-width:350px;
+max-height:350px;
+border-radius:8px;
+border:1px solid #ddd;
+object-fit:contain;
+}
+
+.info{
+margin-top:15px;
+font-size:14px;
+color:#555;
+}
+
+button{
+padding:10px 16px;
+background:#0ea5d9;
+color:white;
+border:none;
+border-radius:6px;
+cursor:pointer;
+}
+
+button:hover{
+background:#0284c7;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="tool-container">
+
+<h2>Resize Image</h2>
+
+<div id="uploadBox" class="upload-box">
+
+<p>Drag & Drop Image Here</p>
+<p>or Click to Upload</p>
+
+<input type="file" id="fileInput">
+
+</div>
+
+<div class="controls">
+
+<select id="presetSelect">
+<option value="custom">Custom</option>
+<option value="instagram">Instagram Post (1080×1080)</option>
+<option value="youtube">YouTube Thumbnail (1280×720)</option>
+<option value="passport">Passport Photo (413×531)</option>
+<option value="exam">Exam Photo (200×230)</option>
+</select>
+
+<input id="width" placeholder="Width">
+
+<input id="height" placeholder="Height">
+
+<label>
+<input type="checkbox" id="lockRatio" checked>
+Maintain Aspect Ratio
+</label>
+
+<button onclick="resizeImage()">Resize</button>
+
+<button onclick="downloadImage()">Download</button>
+
+</div>
+
+<div class="preview">
+
+<div>
+<p>Original</p>
+<img id="originalPreview">
+</div>
+
+<div>
+<p>Result</p>
+<img id="resultPreview">
+</div>
+
+</div>
+
+<div class="info" id="imageInfo"></div>
+
+</div>
+
+
+<script src="../js/core/canvas-engine.js"></script>
+
+<script>
+
+const engine = new ImageEngine()
+
+const uploadInput = document.getElementById("fileInput")
+const widthInput = document.getElementById("width")
+const heightInput = document.getElementById("height")
+const lockRatio = document.getElementById("lockRatio")
+const presetSelect = document.getElementById("presetSelect")
+
+let aspectRatio = 1
+let originalSize = 0
+
+
+/* IMAGE UPLOAD */
+
+uploadInput.addEventListener("change",(event)=>{
+
+const file = event.target.files[0]
+
+if(!file) return
+
+originalSize = file.size
+
+engine.load(file,()=>{
+
+document.getElementById("originalPreview").src =
+engine.canvas.toDataURL()
+
+aspectRatio = engine.image.width / engine.image.height
+
+widthInput.value = engine.image.width
+heightInput.value = engine.image.height
+
+updateInfo(engine.image.width,engine.image.height,originalSize)
+
+})
+
+})
+
+
+/* PRESETS */
+
+presetSelect.addEventListener("change",()=>{
+
+const preset = presetSelect.value
+
+if(preset==="custom"){
+return
+}
+
+if(preset==="instagram"){
+widthInput.value=1080
+heightInput.value=1080
+}
+
+if(preset==="youtube"){
+widthInput.value=1280
+heightInput.value=720
+}
+
+if(preset==="passport"){
+widthInput.value=413
+heightInput.value=531
+}
+
+if(preset==="exam"){
+widthInput.value=200
+heightInput.value=230
+}
+
+})
+
+
+/* ASPECT RATIO LOCK */
+
+widthInput.addEventListener("input",()=>{
+
+if(lockRatio.checked){
+
+heightInput.value = Math.round(widthInput.value / aspectRatio)
+
+}
+
+})
+
+
+/* RESIZE */
+
+async function resizeImage(){
+
+const width = parseInt(widthInput.value)
+const height = parseInt(heightInput.value)
+
+if(!width || !height){
+alert("Enter valid dimensions")
+return
+}
+
+engine.resize(width,height)
+
+document.getElementById("resultPreview").src =
+engine.canvas.toDataURL("image/png")
+
+/* calculate file size */
+
+const response = await fetch(engine.canvas.toDataURL("image/png"))
+const blob = await response.blob()
+
+const sizeKB = Math.round(blob.size / 1024)
+
+updateInfo(width,height,blob.size)
+
+}
+
+
+/* DOWNLOAD */
+
+function downloadImage(){
+
+const link = document.createElement("a")
+
+link.href = engine.canvas.toDataURL("image/png")
+
+link.download = "pixpromax-resized.png"
+
+document.body.appendChild(link)
+
+link.click()
+
+document.body.removeChild(link)
+
+}
+
+
+/* IMAGE INFO */
+
+function updateInfo(w,h,size){
+
+const kb = Math.round(size/1024)
+
+imageInfo.innerText =
+`Resolution: ${w} × ${h} | Size: ${kb} KB`
+
+}
+
+const uploadBox = document.getElementById("uploadBox")
+
+uploadBox.addEventListener("click",()=>{
+fileInput.click()
+})
+
+uploadBox.addEventListener("dragover",(e)=>{
+e.preventDefault()
+})
+
+uploadBox.addEventListener("drop",(e)=>{
+e.preventDefault()
+
+const file = e.dataTransfer.files[0]
+
+fileInput.files = e.dataTransfer.files
+
+fileInput.dispatchEvent(new Event("change"))
+
+})
+
+</script>
+
+</body>
+</html>
+```

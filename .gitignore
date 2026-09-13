@@ -1,0 +1,14 @@
+node_modules/
+.next/
+.vinext/
+out/
+dist/
+.wrangler/
+.site-git/
+coverage/
+.env*
+!.env.example
+.npm-cache/
+*.log
+*.tsbuildinfo
+.DS_Store

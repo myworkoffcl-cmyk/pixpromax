@@ -1,0 +1,44 @@
+[
+{
+"id":"resize",
+"name":"Image Resize",
+"category":"image",
+"icon":"📐",
+"description":"Resize images instantly",
+"url":"tools/resize.html",
+"popular":true,
+"created":"2026-03-01"
+},
+
+{
+"id":"compress",
+"name":"Image Compress",
+"category":"image",
+"icon":"📉",
+"description":"Reduce image size",
+"url":"tools/compress.html",
+"popular":true,
+"created":"2026-03-01"
+},
+
+{
+"id":"jpg-to-png",
+"name":"JPG to PNG",
+"category":"image",
+"icon":"🖼",
+"description":"Convert JPG to PNG",
+"url":"tools/jpg-to-png.html",
+"created":"2026-03-02"
+},
+
+{
+"id":"pdf-merge",
+"name":"PDF Merge",
+"category":"pdf",
+"icon":"📄",
+"description":"Merge multiple PDFs",
+"url":"tools/pdf-merge.html",
+"popular":true,
+"created":"2026-03-02"
+}
+]

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+<h2>PixProMax Engine Test</h2>
+
+<input type="file" id="fileInput" multiple>
+<button id="batchBtn">Batch Convert</button>
+
+<div id="progress"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+
+<script type="module">
+
+import { processBatch } from "./js/batch.js"
+import { createZip } from "./js/zipper.js"
+import { downloadFile } from "./js/utils.js"
+
+// import { processBatch } from "./js/batch.js"
+// import { downloadFile } from "./js/utils.js"
+
+document.getElementById("batchBtn").onclick = async () => {
+
+    const files = document.getElementById("fileInput").files
+
+    const results = await processBatch(
+        files,
+        {
+            mode: "convert",
+            format: "image/webp"
+        },
+        (done, total) => {
+            document.getElementById("progress").innerText =
+                `Processing ${done} / ${total}`
+        }
+    )
+
+    const zipBlob = await createZip(results)
+
+downloadFile(zipBlob, "pixpromax-images.zip")
+}
+
+// Image-converter
+// import { processImage } from "./js/converter.js"
+// import { downloadFile } from "./js/utils.js"
+
+// document.getElementById("convertBtn").onclick = async () => {
+
+//     const file = document.getElementById("fileInput").files[0]
+
+//     const blob = await processImage(file, {
+//         mode: "convert",
+//         format: "image/webp"
+//     })
+
+//     downloadFile(blob, "converted.webp")
+// }
+
+</script>
+
+</body>
+</html>

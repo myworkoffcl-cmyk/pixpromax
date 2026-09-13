@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>Image Converter Online Free | PixProMax</title>
+
+<meta name="description" content="Convert images between JPG, PNG and WebP online for free using PixProMax image converter.">
+
+<link rel="stylesheet" href="../css/styles.css">
+
+</head>
+
+<body>
+
+<h1>Image Converter</h1>
+
+<p>Upload an image and choose the format to convert.</p>
+
+<input type="file" id="fileInput">
+
+<br><br>
+
+<label>Convert To:</label>
+
+<select id="formatSelect">
+
+<option value="image/png">PNG</option>
+<option value="image/jpeg">JPG</option>
+<option value="image/webp">WebP</option>
+
+</select>
+
+<br><br>
+
+<button id="convertBtn">Convert Image</button>
+
+<script type="module">
+
+import { processImage } from "../js/converter.js"
+import { downloadFile } from "../js/utils.js"
+
+document.getElementById("convertBtn").onclick = async () => {
+
+const file = document.getElementById("fileInput").files[0]
+
+if(!file){
+alert("Please upload an image")
+return
+}
+
+const format = document.getElementById("formatSelect").value
+
+const blob = await processImage(file,{
+mode:"convert",
+format:format
+})
+
+let extension = "png"
+
+if(format === "image/jpeg") extension = "jpg"
+if(format === "image/webp") extension = "webp"
+
+downloadFile(blob,"converted-image."+extension)
+
+}
+
+</script>
+
+</body>
+
+</html>

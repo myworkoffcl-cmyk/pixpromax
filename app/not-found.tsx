@@ -1,0 +1,3 @@
+import Link from "@/components/site-link";
+import { ArrowLeft, ImageDown, Maximize2 } from "lucide-react";
+export default function NotFound() { return <section className="not-found shell"><span>404</span><h1>This pixel wandered off canvas.</h1><p>The page you’re looking for does not exist, but the tools are right where you left them.</p><div><Link className="button primary" href="/"><ArrowLeft /> Back home</Link><Link className="button secondary" href="/compress-image"><ImageDown /> Compress</Link><Link className="button secondary" href="/resize-image"><Maximize2 /> Resize</Link></div></section>; }

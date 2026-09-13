@@ -1,0 +1,198 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Compress Image - PixProMax</title>
+
+<link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+
+<div class="tool-container">
+
+<h2>Compress Image</h2>
+
+<div id="uploadBox" class="upload-box">
+
+<p>Drag & Drop Image Here</p>
+<p>or Click to Upload</p>
+
+<input type="file" id="fileInput">
+
+</div>
+
+
+<div class="controls">
+
+<label>Compression Level</label>
+
+<select id="qualitySelect">
+
+<option value="0.9">Low Compression</option>
+<option value="0.7" selected>Balanced</option>
+<option value="0.5">High Compression</option>
+<option value="0.3">Extreme Compression</option>
+
+</select>
+
+<button onclick="compressImage()">Compress</button>
+
+<button onclick="downloadImage()">Download</button>
+
+</div>
+
+
+<div class="preview">
+
+<div>
+<p>Original</p>
+<img id="originalPreview">
+</div>
+
+<div>
+<p>Compressed</p>
+<img id="resultPreview">
+</div>
+
+</div>
+
+
+<div class="info" id="imageInfo"></div>
+
+</div>
+
+
+
+<script src="../js/core/canvas-engine.js"></script>
+
+<script>
+
+const engine = new ImageEngine()
+
+const fileInput = document.getElementById("fileInput")
+
+const uploadBox = document.getElementById("uploadBox")
+
+let compressedData = null
+let originalSize = 0
+
+
+/* upload */
+
+uploadBox.addEventListener("click",()=>{
+
+fileInput.click()
+
+})
+
+
+fileInput.addEventListener("change",(e)=>{
+
+const file = e.target.files[0]
+
+if(!file) return
+
+originalSize = file.size
+
+engine.load(file,()=>{
+
+document.getElementById("originalPreview").src =
+engine.canvas.toDataURL()
+
+updateInfo(engine.image.width, engine.image.height, originalSize)
+
+})
+
+})
+
+
+
+/* drag drop */
+
+uploadBox.addEventListener("dragover",(e)=>{
+
+e.preventDefault()
+
+})
+
+
+uploadBox.addEventListener("drop",(e)=>{
+
+e.preventDefault()
+
+const file = e.dataTransfer.files[0]
+
+fileInput.files = e.dataTransfer.files
+
+fileInput.dispatchEvent(new Event("change"))
+
+})
+
+
+
+/* compress */
+
+async function compressImage(){
+
+const quality = parseFloat(document.getElementById("qualitySelect").value)
+
+compressedData = engine.compress(quality)
+
+document.getElementById("resultPreview").src = compressedData
+
+const response = await fetch(compressedData)
+
+const blob = await response.blob()
+
+updateInfo(engine.image.width, engine.image.height, blob.size)
+
+}
+
+
+
+/* download */
+
+function downloadImage(){
+
+if(!compressedData) return
+
+const link = document.createElement("a")
+
+link.href = compressedData
+
+link.download = "pixpromax-compressed.jpg"
+
+document.body.appendChild(link)
+
+link.click()
+
+document.body.removeChild(link)
+
+}
+
+
+
+/* info */
+
+function updateInfo(w,h,size){
+
+const kb = Math.round(size/1024)
+
+document.getElementById("imageInfo").innerText =
+`Resolution: ${w} × ${h} | Size: ${kb} KB`
+
+}
+
+</script>
+
+</body>
+
+</html>
+```

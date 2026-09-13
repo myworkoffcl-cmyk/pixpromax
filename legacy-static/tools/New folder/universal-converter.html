@@ -1,0 +1,294 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Universal Converter - PixProMax</title>
+
+<link rel="stylesheet" href="../css/style.css">
+
+<style>
+
+.converter-options{
+display:flex;
+flex-wrap:wrap;
+gap:10px;
+margin-top:20px;
+}
+
+.convert-card{
+padding:10px 16px;
+border:1px solid #ddd;
+border-radius:6px;
+cursor:pointer;
+background:white;
+}
+
+.convert-card:hover{
+background:#f5f5f5;
+}
+
+.selected{
+background:#0ea5d9;
+color:white;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="tool-container">
+
+<h2>Universal File Converter</h2>
+
+<div id="uploadBox" class="upload-box">
+
+<p>Drag & Drop Files Here</p>
+<p>or Click to Upload</p>
+
+<input type="file" id="fileInput" multiple>
+
+</div>
+
+<div id="analysis"></div>
+
+<div class="converter-options" id="converterOptions"></div>
+
+<div class="preview">
+
+<div>
+<p>Original</p>
+<img id="originalPreview">
+</div>
+
+<div>
+<p>Converted</p>
+<img id="resultPreview">
+</div>
+
+</div>
+
+<div class="controls">
+
+<button onclick="convertFile()">Convert</button>
+<button onclick="downloadFile()">Download</button>
+
+</div>
+
+<div class="info" id="imageInfo"></div>
+
+</div>
+
+<script src="../js/core/canvas-engine.js"></script>
+
+<script>
+
+const engine = new ImageEngine()
+
+const uploadBox = document.getElementById("uploadBox")
+const fileInput = document.getElementById("fileInput")
+
+const optionsContainer = document.getElementById("converterOptions")
+const analysis = document.getElementById("analysis")
+
+let selectedFormat = null
+let convertedData = null
+let uploadedFiles = []
+
+const imageFormats = ["png","jpeg","webp","bmp"]
+
+
+/* CLICK UPLOAD */
+
+uploadBox.addEventListener("click",()=>{
+fileInput.click()
+})
+
+
+/* FILE INPUT */
+
+fileInput.addEventListener("change",(e)=>{
+
+const files = e.target.files
+
+if(!files.length) return
+
+handleFiles(files)
+
+})
+
+
+/* DRAG OVER */
+
+uploadBox.addEventListener("dragover",(e)=>{
+e.preventDefault()
+})
+
+
+/* DROP FILES */
+
+uploadBox.addEventListener("drop",(e)=>{
+
+e.preventDefault()
+
+const files = e.dataTransfer.files
+
+fileInput.files = files
+
+handleFiles(files)
+
+})
+
+
+/* HANDLE MULTIPLE FILES */
+
+function handleFiles(files){
+
+uploadedFiles = Array.from(files)
+
+analysis.innerHTML =
+`Detected ${uploadedFiles.length} file(s)`
+
+const firstFile = uploadedFiles[0]
+
+engine.load(firstFile,()=>{
+
+document.getElementById("originalPreview").src =
+engine.canvas.toDataURL()
+
+const ext = firstFile.name.split(".").pop().toLowerCase()
+
+showConversions(ext)
+
+})
+
+}
+
+
+/* SHOW CONVERSION OPTIONS */
+
+function showConversions(ext){
+
+optionsContainer.innerHTML = ""
+
+imageFormats.forEach(format=>{
+
+if(format===ext) return
+
+const card = document.createElement("div")
+
+card.className="convert-card"
+
+card.innerText = format.toUpperCase()
+
+card.onclick = ()=>{
+
+document.querySelectorAll(".convert-card")
+.forEach(c=>c.classList.remove("selected"))
+
+card.classList.add("selected")
+
+selectedFormat = format
+
+}
+
+optionsContainer.appendChild(card)
+
+})
+
+}
+
+
+/* CONVERT ALL FILES */
+
+async function convertFile(){
+
+if(!selectedFormat) return
+
+const zip = new JSZip()
+
+for(const file of uploadedFiles){
+
+await new Promise(resolve=>{
+
+engine.load(file,()=>{
+
+const converted = engine.convert(selectedFormat)
+
+fetch(converted)
+.then(res=>res.blob())
+.then(blob=>{
+
+zip.file(
+file.name.split(".")[0]+"."+selectedFormat,
+blob
+)
+
+resolve()
+
+})
+
+})
+
+})
+
+}
+
+zip.generateAsync({type:"blob"}).then(content=>{
+
+convertedData = content
+
+document.getElementById("resultPreview").src =
+engine.canvas.toDataURL()
+
+})
+
+}
+
+
+/* DOWNLOAD ZIP */
+
+function downloadFile(){
+
+if(!convertedData) return
+
+const link = document.createElement("a")
+
+link.href = URL.createObjectURL(convertedData)
+
+link.download = "pixpromax-converted.zip"
+
+document.body.appendChild(link)
+
+link.click()
+
+document.body.removeChild(link)
+
+}
+
+
+/* INFO PANEL */
+
+function updateInfo(w,h,size){
+
+const kb = Math.round(size/1024)
+
+document.getElementById("imageInfo").innerText =
+`Resolution: ${w} × ${h} | Size: ${kb} KB`
+
+}
+
+</script>
+
+</body>
+
+</html>
+```

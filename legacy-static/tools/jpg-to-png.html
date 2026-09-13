@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>JPG to PNG Converter | PixProMax</title>
+
+<meta name="description" content="Convert JPG images to PNG online for free using PixProMax.">
+
+<link rel="stylesheet" href="../css/styles.css">
+
+</head>
+
+<body>
+
+<h1>JPG to PNG Converter</h1>
+
+<p>Upload a JPG image to convert it into PNG format.</p>
+
+<input type="file" id="fileInput">
+
+<br><br>
+
+<button id="convertBtn">Convert to PNG</button>
+
+<script type="module">
+
+import { processImage } from "../js/converter.js"
+import { downloadFile } from "../js/utils.js"
+
+document.getElementById("convertBtn").onclick = async () => {
+
+const file = document.getElementById("fileInput").files[0]
+
+if(!file){
+alert("Please upload a JPG image")
+return
+}
+
+const blob = await processImage(file,{
+mode:"convert",
+format:"image/png"
+})
+
+downloadFile(blob,"converted-image.png")
+
+}
+
+</script>
+
+</body>
+
+</html>
