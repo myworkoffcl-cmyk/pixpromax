@@ -48,10 +48,12 @@ export default function HomePage() {
   return (
     <>
       <JsonLd data={structuredData} />
-      <PixelStudio />
+      <div className="home-live-background">
+        <PixelStudio />
 
-      <AdSlot placement="home-bottom" />
-      <section className="faq-section shell" id="faq"><div className="section-heading"><div><span className="kicker">GOOD TO KNOW</span><h2>Questions, answered plainly.</h2></div></div><div className="faq-list">{faqs.map(([question, answer]) => <details key={question}><summary>{question}<span>+</span></summary><p>{answer}</p></details>)}</div></section>
+        <AdSlot placement="home-bottom" />
+        <section className="faq-section shell" id="faq"><div className="section-heading"><div><span className="kicker">GOOD TO KNOW</span><h2>Questions, answered plainly.</h2></div></div><div className="faq-list">{faqs.map(([question, answer]) => <details key={question}><summary>{question}<span>+</span></summary><p>{answer}</p></details>)}</div></section>
+      </div>
     </>
   );
 }

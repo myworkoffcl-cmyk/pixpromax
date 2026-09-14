@@ -2,26 +2,47 @@
 
 import Link from "@/components/site-link";
 import { Search, X } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { tools } from "@/config/tools";
 
 export function HeaderToolSearch() {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
+  const searchRef = useRef<HTMLDivElement>(null);
   const normalized = query.trim().toLowerCase();
   const matches = tools
     .filter((tool) => tool.status === "active")
     .filter((tool) => !normalized || `${tool.name} ${tool.description} ${tool.category}`.toLowerCase().includes(normalized))
     .slice(0, 6);
 
+  useEffect(() => {
+    const handlePointerDown = (event: PointerEvent) => {
+      if (!searchRef.current?.contains(event.target as Node)) setOpen(false);
+    };
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false);
+      if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "k") {
+        event.preventDefault();
+        setOpen(true);
+      }
+    };
+    document.addEventListener("pointerdown", handlePointerDown);
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("pointerdown", handlePointerDown);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
+
   return (
-    <div className="header-search-wrap">
-      <button className={`header-search-trigger ${open ? "active" : ""}`} type="button" onClick={() => setOpen((value) => !value)} aria-expanded={open} aria-controls="header-tool-search">
+    <div className="header-search-wrap" ref={searchRef}>
+      <button className={`header-search-trigger ${open ? "active" : ""}`} type="button" onClick={() => setOpen((value) => !value)} aria-expanded={open} aria-haspopup="dialog" aria-controls="header-tool-search">
         {open ? <X aria-hidden="true" /> : <Search aria-hidden="true" />}
         <span>Search tools</span>
+        <kbd>Ctrl K</kbd>
       </button>
       {open ? (
-        <div className="header-search-panel" id="header-tool-search">
+        <div className="header-search-panel" id="header-tool-search" role="dialog" aria-label="Search PixProMax tools">
           <label>
             <Search aria-hidden="true" />
             <span className="sr-only">Search image tools</span>

@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from "next";
-import { DM_Sans, Sora } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import "../styles/pixel-studio.css";
@@ -7,9 +6,6 @@ import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/config/site";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { ServiceWorkerRegister } from "@/components/service-worker-register";
-
-const display = Sora({ subsets: ["latin"], variable: "--font-display" });
-const body = DM_Sans({ subsets: ["latin"], variable: "--font-body" });
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -30,23 +26,30 @@ export const metadata: Metadata = {
     : undefined,
 };
 
-export const viewport: Viewport = { themeColor: [{ media: "(prefers-color-scheme: light)", color: "#f5f7f2" }, { media: "(prefers-color-scheme: dark)", color: "#111714" }] };
-
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export default function RootLayout({
+  children,
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${display.variable} ${body.variable}`}>
-        {process.env.NEXT_PUBLIC_ADSENSE_CLIENT ? (
-          <Script
-            id="pixpromax-adsense-review"
-            async
-            crossOrigin="anonymous"
-            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.NEXT_PUBLIC_ADSENSE_CLIENT}`}
-            strategy="beforeInteractive"
-          />
-        ) : null}
-        <script dangerouslySetInnerHTML={{ __html: `(function(){try{var t=localStorage.getItem('pixpromax-theme')||'system';var d=t==='dark'||(t==='system'&&matchMedia('(prefers-color-scheme: dark)').matches);document.documentElement.dataset.theme=d?'dark':'light'}catch(e){}})()` }} />
-        <SiteHeader /><main>{children}</main><SiteFooter /><ServiceWorkerRegister />
+      <head>
+        <script
+          async
+          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.NEXT_PUBLIC_ADSENSE_CLIENT}`}
+          crossOrigin="anonymous"
+        />
+      </head>
+
+      <body>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('pixpromax-theme')||'system';var d=t==='dark'||(t==='system'&&matchMedia('(prefers-color-scheme: dark)').matches);document.documentElement.dataset.theme=d?'dark':'light'}catch(e){}})()`,
+          }}
+        />
+
+        <SiteHeader />
+        <main>{children}</main>
+        <SiteFooter />
+        <ServiceWorkerRegister />
       </body>
     </html>
   );

@@ -4,7 +4,7 @@ import { tools } from "@/config/tools";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
-    { url: SITE_URL },
+    { url: SITE_URL, lastModified: new Date() },
     ...tools.filter((tool) => tool.status === "active").map((tool) => ({ url: `${SITE_URL}/${tool.slug}` })),
     { url: `${SITE_URL}/privacy` },
     { url: `${SITE_URL}/terms` },

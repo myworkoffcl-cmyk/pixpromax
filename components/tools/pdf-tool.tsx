@@ -1,0 +1,92 @@
+"use client";
+
+import JSZip from "jszip";
+import { FilePlus2, FileText, GripVertical, Info, Trash2 } from "lucide-react";
+import { useState } from "react";
+import { MAX_PDF_FILES } from "@/config/limits";
+import { DownloadLink } from "@/components/tools/download-link";
+import { ProcessingButton } from "@/components/tools/processing-button";
+import { UploadDropzone } from "@/components/tools/upload-dropzone";
+import { parsePageList, validatePdfFile } from "@/lib/pdf/validate";
+
+type PdfMode = "merge" | "split" | "organize" | "to-jpg";
+interface PdfToolProps { mode: PdfMode }
+
+const labels: Record<PdfMode, { action: string; multiple: boolean; hint: string }> = {
+  merge: { action: "Merge PDFs", multiple: true, hint: "Choose PDFs in the order you want them combined." },
+  split: { action: "Extract pages", multiple: false, hint: "Choose one PDF, then enter the pages to extract." },
+  organize: { action: "Organize PDF", multiple: false, hint: "Choose one PDF, then enter the page order you want to keep." },
+  "to-jpg": { action: "Convert to JPG", multiple: false, hint: "Choose one PDF and export every page as a JPG image." },
+};
+
+function fileStem(name: string) { return name.replace(/\.pdf$/i, ""); }
+function bytesBlob(bytes: Uint8Array, type = "application/pdf") { return new Blob([new Uint8Array(bytes)], { type }); }
+
+export function PdfTool({ mode }: PdfToolProps) {
+  const config = labels[mode];
+  const [files, setFiles] = useState<File[]>([]);
+  const [pageCount, setPageCount] = useState(0);
+  const [pages, setPages] = useState("");
+  const [quality, setQuality] = useState(84);
+  const [result, setResult] = useState<Blob | null>(null);
+  const [filename, setFilename] = useState("");
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const inspectPages = async (file: File) => {
+    const { PDFDocument } = await import("pdf-lib");
+    const document = await PDFDocument.load(await file.arrayBuffer(), { ignoreEncryption: true });
+    return document.getPageCount();
+  };
+  const addFiles = async (added: File[]) => {
+    if (!added.length) return;
+    if ((mode !== "merge" && added.length > 1) || files.length + added.length > MAX_PDF_FILES) { setError(mode === "merge" ? `Choose up to ${MAX_PDF_FILES} PDFs.` : "Choose one PDF at a time."); return; }
+    const invalid = added.map(validatePdfFile).find(Boolean);
+    if (invalid) { setError(invalid); return; }
+    try {
+      const next = mode === "merge" ? [...files, ...added] : [added[0]];
+      setFiles(next); setResult(null); setError(null);
+      if (mode !== "merge") { const count = await inspectPages(added[0]); setPageCount(count); setPages(mode === "organize" ? Array.from({ length: count }, (_, i) => i + 1).join(", ") : `1-${count}`); }
+    } catch { setError("This PDF could not be read. It may be password protected or damaged."); }
+  };
+  const move = (index: number, direction: -1 | 1) => setFiles(current => { const target = index + direction; if (target < 0 || target >= current.length) return current; const next = [...current]; [next[index], next[target]] = [next[target], next[index]]; return next; });
+  const reset = () => { setFiles([]); setResult(null); setError(null); setPageCount(0); setPages(""); };
+  const process = async () => {
+    if (!files.length) return;
+    setBusy(true); setError(null);
+    try {
+      if (mode === "merge") {
+        const { PDFDocument } = await import("pdf-lib");
+        const output = await PDFDocument.create();
+        for (const file of files) { const source = await PDFDocument.load(await file.arrayBuffer(), { ignoreEncryption: true }); const copied = await output.copyPages(source, source.getPageIndices()); copied.forEach(page => output.addPage(page)); }
+        setResult(bytesBlob(await output.save())); setFilename("pixpromax-merged.pdf");
+      } else if (mode === "split" || mode === "organize") {
+        const wanted = parsePageList(pages, pageCount);
+        if (!wanted) throw new Error(`Enter page numbers from 1 to ${pageCount}, such as 1-3, 5.`);
+        const { PDFDocument } = await import("pdf-lib");
+        const source = await PDFDocument.load(await files[0].arrayBuffer(), { ignoreEncryption: true });
+        const output = await PDFDocument.create();
+        const copied = await output.copyPages(source, wanted.map(page => page - 1)); copied.forEach(page => output.addPage(page));
+        setResult(bytesBlob(await output.save())); setFilename(`${fileStem(files[0].name)}-${mode === "split" ? "pages" : "organized"}.pdf`);
+      } else {
+        const pdfjs = await import("pdfjs-dist/legacy/build/pdf.mjs");
+        const pdfDocument = await pdfjs.getDocument({ data: new Uint8Array(await files[0].arrayBuffer()) }).promise;
+        const zip = new JSZip();
+        for (let index = 1; index <= pdfDocument.numPages; index += 1) {
+          const page = await pdfDocument.getPage(index); const viewport = page.getViewport({ scale: 1.5 });
+          const canvas = window.document.createElement("canvas");
+          canvas.width = Math.ceil(viewport.width); canvas.height = Math.ceil(viewport.height);
+          const context = canvas.getContext("2d"); if (!context) throw new Error("Your browser cannot render this PDF.");
+          await page.render({ canvas, canvasContext: context, viewport }).promise;
+          const image = await new Promise<Blob>((resolve, reject) => canvas.toBlob(blob => blob ? resolve(blob) : reject(new Error("A PDF page could not be converted.")), "image/jpeg", quality / 100));
+          zip.file(`${fileStem(files[0].name)}-page-${index}.jpg`, image);
+        }
+        setResult(await zip.generateAsync({ type: "blob" })); setFilename(`${fileStem(files[0].name)}-jpg.zip`);
+      }
+    } catch (reason) { setError(reason instanceof Error ? reason.message : "The PDF could not be processed."); }
+    finally { setBusy(false); }
+  };
+
+  if (!files.length) return <UploadDropzone accept="application/pdf,.pdf" multiple={config.multiple} fileKind="PDF" note={`PDF · ${config.multiple ? `up to ${MAX_PDF_FILES} files` : "up to 100 MB"}`} onFiles={addFiles} error={error} />;
+  return <div className="tool-panel"><div className="control-card"><div className="control-heading"><div><span className="kicker">YOUR PDF{config.multiple ? "S" : ""}</span><h2>{config.hint}</h2></div><strong>{mode === "merge" ? `${files.length} files` : `${pageCount} pages`}</strong></div><div className="pdf-file-list">{files.map((file, index) => <article key={`${file.name}-${index}`}><FileText aria-hidden="true" /><div><strong>{file.name}</strong><small>{Math.ceil(file.size / 1024)} KB</small></div>{mode === "merge" && <nav aria-label={`Reorder ${file.name}`}><button type="button" disabled={index === 0} onClick={() => move(index, -1)}>←</button><button type="button" disabled={index === files.length - 1} onClick={() => move(index, 1)}>→</button><GripVertical aria-hidden="true" /></nav>}<button type="button" className="remove-file" aria-label={`Remove ${file.name}`} onClick={() => { setFiles(current => current.filter((_, itemIndex) => itemIndex !== index)); setResult(null); }}><Trash2 /></button></article>)}</div>{mode === "merge" && <UploadDropzone accept="application/pdf,.pdf" multiple compact onFiles={addFiles} error={error} />}</div>{mode !== "merge" && <div className="control-card"><div className="control-heading"><div><span className="kicker">PAGE SETTINGS</span><h2>{mode === "to-jpg" ? "Choose output quality." : "Choose the pages."}</h2></div></div>{mode === "to-jpg" ? <label className="range-field"><span>JPG quality · {quality}%</span><input type="range" min="55" max="95" value={quality} onChange={event => { setQuality(Number(event.target.value)); setResult(null); }} /><div><small>Smaller files</small><small>Sharper images</small></div></label> : <label className="single-field"><span>{mode === "organize" ? "Page order to keep" : "Pages to extract"}</span><input value={pages} onChange={event => { setPages(event.target.value); setResult(null); }} aria-describedby="page-help" /><small id="page-help">Use commas or ranges: 1-3, 5. Repeating a page is allowed when organizing.</small></label>}<div className="notice"><Info /> Processing stays on this device. Password-protected or damaged PDFs may not open.</div></div>}{error && <p className="form-error" role="alert">{error}</p>}<div className="action-row">{result ? <DownloadLink blob={result} filename={filename}>Download {mode === "to-jpg" ? "JPG ZIP" : "PDF"}</DownloadLink> : <ProcessingButton busy={busy} onClick={process}>{config.action}</ProcessingButton>}<button className="button secondary" type="button" onClick={reset}><FilePlus2 /> Start over</button></div></div>;
+}

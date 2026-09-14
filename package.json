@@ -18,6 +18,8 @@
     "jszip": "3.10.1",
     "lucide-react": "1.39.0",
     "next": "16.3.4",
+    "pdf-lib": "^1.17.1",
+    "pdfjs-dist": "^5.4.624",
     "pica": "10.0.3",
     "react": "19.2.8",
     "react-dom": "19.2.8",
