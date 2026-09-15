@@ -7,14 +7,12 @@ const adSlots = {
 
 export function AdSlot({ placement }: { placement: keyof typeof adSlots }) {
   const slot = adSlots[placement];
-  const adsEnabled = Boolean(process.env.NEXT_PUBLIC_ADSENSE_CLIENT && slot);
+  const adsEnabled = process.env.NEXT_PUBLIC_ADSENSE_ENABLED === "true" && Boolean(process.env.NEXT_PUBLIC_ADSENSE_CLIENT && slot);
 
   return (
     <aside className="ad-wrap shell" aria-label="Advertisement">
       <span>Advertisement</span>
-      <div className="ad-slot" data-ad-placement={placement}>
-        {adsEnabled && slot ? <GoogleAd slot={slot} /> : <p>Reserved for a responsive Google ad</p>}
-      </div>
+      {adsEnabled && slot ? <div className="ad-slot" data-ad-placement={placement}><GoogleAd slot={slot} /></div> : null}
     </aside>
   );
 }

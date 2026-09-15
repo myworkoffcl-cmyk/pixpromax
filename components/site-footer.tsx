@@ -11,9 +11,9 @@ export function SiteFooter() {
           <p>Thoughtful image tools that keep everyday editing fast, free, and on your device.</p>
         </div>
         <div><h2>Popular tools</h2>{tools.slice(0, 4).map((tool) => <Link key={tool.slug} href={`/${tool.slug}`}>{tool.name}</Link>)}</div>
-        <div><h2>PixProMax</h2><Link href="/privacy">Privacy</Link><Link href="/terms">Terms</Link><Link href="/#faq">FAQ</Link></div>
+        <div><h2>Company</h2><Link href="/about">About</Link><Link href="/contact">Contact</Link><Link href="/faq">FAQ</Link><Link href="/privacy-policy">Privacy Policy</Link><Link href="/terms">Terms &amp; Conditions</Link><Link href="/disclaimer">Disclaimer</Link></div>
       </div>
-      <div className="shell footer-bottom"><span>© {new Date().getFullYear()} PixProMax</span><span>Made for images, respectful of privacy.</span></div>
+      <div className="shell footer-bottom"><span>© {new Date().getFullYear()} PixProMax. All rights reserved.</span><span>Made for images, respectful of privacy.</span></div>
     </footer>
   );
 }

@@ -1,4 +1,4 @@
-const CACHE = "pixpromax-shell-v3";
+const CACHE = "pixpromax-shell-v4";
 const SHELL = [
   "/",
   "/compress-image",
@@ -10,8 +10,12 @@ const SHELL = [
   "/resize-image-to-kb",
   "/signature-resizer",
   "/passport-photo-maker",
-  "/privacy",
+  "/about",
+  "/privacy-policy",
   "/terms",
+  "/contact",
+  "/disclaimer",
+  "/faq",
   "/icon.png",
   "/og.png"
 ];

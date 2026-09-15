@@ -1,4 +1,4 @@
-import type { Metadata, Viewport } from "next";
+import type { Metadata } from "next";
 import Script from "next/script";
 import "./globals.css";
 import "../styles/pixel-studio.css";
@@ -6,6 +6,8 @@ import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/config/site";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { ServiceWorkerRegister } from "@/components/service-worker-register";
+import { Analytics } from "@/components/analytics";
+import { CookieConsent } from "@/components/cookie-consent";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -29,16 +31,9 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
+  const optionalServicesEnabled = process.env.NEXT_PUBLIC_ADSENSE_ENABLED === "true" || Boolean(process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID);
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        <script
-          async
-          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.NEXT_PUBLIC_ADSENSE_CLIENT}`}
-          crossOrigin="anonymous"
-        />
-      </head>
-
       <body>
         <script
           dangerouslySetInnerHTML={{
@@ -46,10 +41,14 @@ export default function RootLayout({
           }}
         />
 
+        <a className="skip-link" href="#main-content">Skip to main content</a>
         <SiteHeader />
-        <main>{children}</main>
+        <main id="main-content">{children}</main>
         <SiteFooter />
         <ServiceWorkerRegister />
+        {process.env.NEXT_PUBLIC_ADSENSE_CLIENT ? <Script src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${encodeURIComponent(process.env.NEXT_PUBLIC_ADSENSE_CLIENT)}`} strategy="afterInteractive" crossOrigin="anonymous" /> : null}
+        <Analytics />
+        <CookieConsent enabled={optionalServicesEnabled} />
       </body>
     </html>
   );
