@@ -30,7 +30,7 @@ export function SiteHeader() {
       <div className="shell header-inner">
         <Link className="brand" href="/" aria-label="PixProMax home">
           <span className="brand-mark" aria-hidden="true"><ScanLine /></span>
-          <span className="brand-word">PixPro<b>Max</b></span>
+          <span className="brand-word"><span className="brand-pix">Pix</span><span className="brand-pro">Pro</span><b>Max</b></span>
         </Link>
         <HeaderToolSearch />
         <div className="header-actions">

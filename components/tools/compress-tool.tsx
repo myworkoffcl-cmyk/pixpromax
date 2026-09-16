@@ -1,9 +1,11 @@
 "use client";
 
 import { useState } from "react";
+import { RotateCcw } from "lucide-react";
 import { ImagePreview } from "@/components/tools/image-preview";
 import { ProcessingButton } from "@/components/tools/processing-button";
-import { ResultActions } from "@/components/tools/result-actions";
+import { DownloadLink } from "@/components/tools/download-link";
+import { Button } from "@/components/ui/button";
 import { UploadDropzone } from "@/components/tools/upload-dropzone";
 import { compressImage } from "@/lib/image/compress";
 import { imageDimensions } from "@/lib/image/process";
@@ -45,14 +47,21 @@ export function CompressTool() {
   if (!file) return <UploadDropzone onFiles={select} error={error} />;
   return (
     <div className="tool-panel">
-      <div className="preview-grid"><ImagePreview blob={file} label="Original" filename={file.name} dimensions={dimensions} />{result ? <ImagePreview blob={result.blob} label="Compressed" filename={result.filename} dimensions={result} /> : <div className="preview-card result-placeholder"><span>{busy ? "Compressing locally…" : "Your compressed preview will appear here."}</span></div>}</div>
+      <div className="preview-col">
+        <div className="preview-grid">
+          {result ? <ImagePreview blob={result.blob} label="Compressed" filename={result.filename} dimensions={result} /> : <div className="preview-card result-placeholder"><span>{busy ? "Compressing locally…" : "Your compressed preview will appear here."}</span></div>}
+        </div>
+        {result && <div className="preview-download"><DownloadLink blob={result.blob} filename={result.filename}>Download image</DownloadLink></div>}
+      </div>
       <div className="control-card">
         <div className="control-heading"><div><span className="kicker">COMPRESSION</span><h2>{result ? "Your image is ready." : "Choose the balance."}</h2></div><strong>{quality}%</strong></div>
         <div className="preset-row compression-presets"><button type="button" className={quality === 58 ? "active" : ""} onClick={() => chooseQuality(58)}>Smaller file</button><button type="button" className={quality === 78 ? "active" : ""} onClick={() => chooseQuality(78)}>Balanced</button><button type="button" className={quality === 90 ? "active" : ""} onClick={() => chooseQuality(90)}>High quality</button></div>
         <label className="range-field"><span>Output quality · {quality}%</span><input type="range" min="20" max="95" value={quality} onChange={(event) => chooseQuality(Number(event.target.value))} /><div><small>Smaller file</small><small>Sharper image</small></div></label>
         {result && <div className="stat-row"><span><small>Original</small><strong>{formatFileSize(file.size)}</strong></span><span><small>Compressed</small><strong>{formatFileSize(result.blob.size)}</strong></span><span className="positive"><small>Saved</small><strong>{formatPercentSaved(file.size, result.blob.size)}</strong></span></div>}
         {error && <p className="form-error" role="alert">{error}</p>}
-        {result ? <ResultActions result={result} onReset={reset} /> : <div className="action-row"><ProcessingButton busy={busy} onClick={process}>Compress image</ProcessingButton><button className="text-button" type="button" onClick={reset}>Choose another image</button></div>}
+        {result
+          ? <div className="action-row"><Button variant="secondary" onClick={reset}><RotateCcw /> Start over</Button></div>
+          : <div className="action-row"><ProcessingButton busy={busy} onClick={process}>Compress image</ProcessingButton><button className="text-button" type="button" onClick={reset}>Choose another image</button></div>}
       </div>
     </div>
   );

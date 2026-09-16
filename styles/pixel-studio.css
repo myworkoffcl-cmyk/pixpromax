@@ -51,7 +51,7 @@
 .directory-title h2 { margin: 0; font: 650 21px/1.3 var(--font-display), sans-serif; letter-spacing: -.04em; }
 .directory-title > span { font-size: 13px; color: var(--muted); }
 .directory-group + .directory-group { margin-top: 38px; padding-top: 6px; border-top: 1px solid var(--line); }
-.studio-tool-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.studio-tool-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 28px; }
 .studio-tool { position: relative; display: grid; grid-template-columns: 58px minmax(0, 1fr); align-items: start; gap: 16px; min-height: 148px; padding: 22px 20px; overflow: hidden; isolation: isolate; border: 1px solid color-mix(in srgb, var(--tile, var(--brand)), var(--line) 78%); background: linear-gradient(140deg, color-mix(in srgb, var(--tile, var(--brand)), var(--surface) 96%), var(--surface) 58%); border-radius: 18px; box-shadow: 0 5px 16px rgba(30, 40, 85, .045); transition: border-color .24s ease, transform .24s cubic-bezier(.2,.8,.2,1), box-shadow .24s ease, background .24s ease; }
 .studio-tool::before { content: ""; position: absolute; z-index: -1; width: 150px; height: 150px; right: -95px; bottom: -105px; border-radius: 50%; background: var(--tile, var(--brand)); opacity: .06; transform: scale(.75); transition: opacity .3s ease, transform .35s cubic-bezier(.2,.8,.2,1); }
 .studio-tool[hidden] { display: none; }

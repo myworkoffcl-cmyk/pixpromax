@@ -14,7 +14,7 @@ export async function decodeImage(file: Blob): Promise<DecodedImage> {
   image.decoding = "async";
   await new Promise<void>((resolve, reject) => {
     image.onload = () => resolve();
-    image.onerror = () => reject(new Error("This image could not be decoded. It may be corrupt or unsupported."));
+    image.onerror = () => { URL.revokeObjectURL(url); reject(new Error("This image could not be decoded. It may be corrupt or unsupported.")); };
     image.src = url;
   });
   return { source: image, width: image.naturalWidth, height: image.naturalHeight, dispose: () => URL.revokeObjectURL(url) };

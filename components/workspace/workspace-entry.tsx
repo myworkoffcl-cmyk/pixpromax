@@ -1,0 +1,119 @@
+"use client";
+
+import { useRef } from "react";
+import { useRouter } from "next/navigation";
+import {
+  ArrowUpRight,
+  Minimize2,
+  Maximize2,
+  SlidersHorizontal,
+  RefreshCw,
+  Upload,
+} from "lucide-react";
+import Link from "@/components/site-link";
+
+const engines = [
+  {
+    href: "/image-tools/compress",
+    label: "Compress Image",
+    icon: Minimize2,
+    detail: "Shrink JPG, PNG, and WebP files without a watermark.",
+    accent: "mint",
+  },
+  {
+    href: "/image-tools/resize",
+    label: "Resize Image",
+    icon: Maximize2,
+    detail: "Set exact dimensions or scale by percentage.",
+    accent: "violet",
+  },
+  {
+    href: "/image-tools/edit",
+    label: "Edit",
+    icon: SlidersHorizontal,
+    detail: "Crop, rotate, and flip an image with precise aspect ratios.",
+    accent: "cyan",
+  },
+  {
+    href: "/image-tools/convert",
+    label: "Convert Image",
+    icon: RefreshCw,
+    detail: "Convert HEIC, AVIF, PNG, JPG, and WebP locally.",
+    accent: "sky",
+  },
+];
+
+export function WorkspaceEntry() {
+  const inputRef = useRef<HTMLInputElement>(null);
+  const router = useRouter();
+
+  function handleFile(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    // Store file in sessionStorage as data URL for workspace pickup
+    const reader = new FileReader();
+    reader.onload = () => {
+      try {
+        sessionStorage.setItem("ws_pending_name", file.name);
+        sessionStorage.setItem("ws_pending_type", file.type);
+        sessionStorage.setItem("ws_pending_data", reader.result as string);
+      } catch (_) {
+        // sessionStorage full – navigate anyway, workspace shows upload UI
+      }
+      router.push("/workspace");
+    };
+    reader.readAsDataURL(file);
+  }
+
+  return (
+    <section className="workspace-entry shell" aria-label="Image workspace">
+      <div className="workspace-entry-inner">
+        <div className="workspace-entry-hero">
+          <h2 className="workspace-entry-title">
+            One workspace.<br />
+            <em>All your image tools.</em>
+          </h2>
+          <p className="workspace-entry-sub">
+            Compress, resize, edit and convert in a single pass — no repeated uploads.
+          </p>
+          <button
+            className="workspace-entry-upload"
+            onClick={() => inputRef.current?.click()}
+            type="button"
+          >
+            <Upload aria-hidden="true" />
+            Upload an image
+          </button>
+          <input
+            ref={inputRef}
+            type="file"
+            accept="image/jpeg,image/png,image/webp"
+            className="sr-only"
+            onChange={handleFile}
+            aria-label="Upload image to workspace"
+          />
+        </div>
+
+        <div className="workspace-entry-engines" role="list">
+          {engines.map(({ href, label, icon: Icon, detail, accent }) => (
+            <Link
+              href={href}
+              key={href}
+              className={`workspace-engine-tile accent-${accent}`}
+              role="listitem"
+            >
+              <span className="engine-tile-icon">
+                <Icon aria-hidden="true" />
+              </span>
+              <span className="engine-tile-text">
+                <span className="engine-tile-label">{label}</span>
+                <span className="engine-tile-detail">{detail}</span>
+              </span>
+              <ArrowUpRight className="engine-tile-arrow" aria-hidden="true" />
+            </Link>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}

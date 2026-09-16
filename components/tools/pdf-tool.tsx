@@ -70,6 +70,7 @@ export function PdfTool({ mode }: PdfToolProps) {
         setResult(bytesBlob(await output.save())); setFilename(`${fileStem(files[0].name)}-${mode === "split" ? "pages" : "organized"}.pdf`);
       } else {
         const pdfjs = await import("pdfjs-dist/legacy/build/pdf.mjs");
+        pdfjs.GlobalWorkerOptions.workerSrc = new URL("pdfjs-dist/legacy/build/pdf.worker.mjs", import.meta.url).href;
         const pdfDocument = await pdfjs.getDocument({ data: new Uint8Array(await files[0].arrayBuffer()) }).promise;
         const zip = new JSZip();
         for (let index = 1; index <= pdfDocument.numPages; index += 1) {
@@ -79,6 +80,7 @@ export function PdfTool({ mode }: PdfToolProps) {
           const context = canvas.getContext("2d"); if (!context) throw new Error("Your browser cannot render this PDF.");
           await page.render({ canvas, canvasContext: context, viewport }).promise;
           const image = await new Promise<Blob>((resolve, reject) => canvas.toBlob(blob => blob ? resolve(blob) : reject(new Error("A PDF page could not be converted.")), "image/jpeg", quality / 100));
+          canvas.width = 1; canvas.height = 1;
           zip.file(`${fileStem(files[0].name)}-page-${index}.jpg`, image);
         }
         setResult(await zip.generateAsync({ type: "blob" })); setFilename(`${fileStem(files[0].name)}-jpg.zip`);
