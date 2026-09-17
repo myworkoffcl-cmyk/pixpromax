@@ -6,10 +6,12 @@ import { useEffect, useRef, useState } from "react";
 import { HeaderToolSearch } from "@/components/header-tool-search";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { LanguageSelector } from "@/components/language-selector";
+import { useTranslation } from "@/lib/use-translation";
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
+  const { t } = useTranslation("common");
 
   useEffect(() => {
     const closeOnOutsideClick = (event: PointerEvent) => {
@@ -35,20 +37,20 @@ export function SiteHeader() {
         </Link>
         <HeaderToolSearch />
         <div className="header-actions">
-          <Link href="/#directory-image-tools" className="header-shortcut">Image tools</Link>
-          <Link href="/#directory-document-tools" className="header-shortcut">Document tools</Link>
+          <Link href="/#directory-image-tools" className="header-shortcut">{t("header.imageTools", "Image tools")}</Link>
+          <Link href="/#directory-document-tools" className="header-shortcut">{t("header.documentTools", "Document tools")}</Link>
+          <LanguageSelector />
           <div className="header-options-wrap" ref={menuRef}>
             <button className={`icon-button menu-button ${open ? "active" : ""}`} type="button" onClick={() => setOpen((value) => !value)} aria-expanded={open} aria-haspopup="menu" aria-controls="header-options-menu" aria-label={open ? "Close options menu" : "Open options menu"}>
               {open ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
             </button>
             {open ? (
               <nav id="header-options-menu" className="header-options-menu" aria-label="Site options">
-                <Link href="/" onClick={() => setOpen(false)}><House aria-hidden="true" /><span><strong>Home</strong><small>Return to PixProMax</small></span></Link>
-                <Link href="/#directory-image-tools" onClick={() => setOpen(false)}><Images aria-hidden="true" /><span><strong>Image tools</strong><small>Edit, resize, and convert</small></span></Link>
-                <Link href="/#directory-document-tools" onClick={() => setOpen(false)}><FileStack aria-hidden="true" /><span><strong>Document tools</strong><small>Work with images and PDFs</small></span></Link>
-                <Link href="/privacy-policy" onClick={() => setOpen(false)}><ShieldCheck aria-hidden="true" /><span><strong>Privacy</strong><small>How local processing works</small></span></Link>
+                <Link href="/" onClick={() => setOpen(false)}><House aria-hidden="true" /><span><strong>{t("header.home", "Home")}</strong><small>{t("nav.returnToHome", "Return to PixProMax")}</small></span></Link>
+                <Link href="/#directory-image-tools" onClick={() => setOpen(false)}><Images aria-hidden="true" /><span><strong>{t("header.imageTools", "Image tools")}</strong><small>{t("nav.editResizeConvert", "Edit, resize, and convert")}</small></span></Link>
+                <Link href="/#directory-document-tools" onClick={() => setOpen(false)}><FileStack aria-hidden="true" /><span><strong>{t("header.documentTools", "Document tools")}</strong><small>{t("nav.workWithImages", "Work with images and PDFs")}</small></span></Link>
+                <Link href="/privacy-policy" onClick={() => setOpen(false)}><ShieldCheck aria-hidden="true" /><span><strong>{t("header.privacy", "Privacy")}</strong><small>{t("nav.howLocalProcessingWorks", "How local processing works")}</small></span></Link>
                 <div style={{ display: "flex", alignItems: "center", padding: "0 16px", height: "48px", gap: "8px" }}>
-                  <LanguageSelector />
                   <ThemeToggle />
                 </div>
               </nav>

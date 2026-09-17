@@ -1,5 +1,7 @@
 .container {
   position: relative;
+  display: flex;
+  align-items: center;
 }
 
 .trigger {
@@ -14,6 +16,7 @@
   font-weight: 500;
   cursor: pointer;
   transition: all 0.2s ease;
+  white-space: nowrap;
 }
 
 .trigger:hover {
@@ -23,10 +26,14 @@
 
 .flag {
   font-size: 1rem;
+  flex-shrink: 0;
 }
 
 .label {
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 120px;
 }
 
 .menu {
