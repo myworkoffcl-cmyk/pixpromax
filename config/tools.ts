@@ -29,7 +29,7 @@ export const tools: ToolConfig[] = [
     status: "active",
     icon: ImageDown,
     accent: "mint",
-    related: ["resize-image", "convert-image", "resize-image-to-kb"],
+    related: ["resize-image", "convert-image", "bulk-image-compressor"],
   },
   {
     name: "Resize Image",
@@ -119,7 +119,7 @@ export const tools: ToolConfig[] = [
     status: "active",
     icon: Images,
     accent: "mint",
-    related: ["batch-converter", "bulk-image-resizer", "compress-image"],
+    related: ["bulk-image-resizer", "compress-image", "jpg-to-png"],
   },
   {
     name: "Signature Resizer",
@@ -130,7 +130,7 @@ export const tools: ToolConfig[] = [
     status: "active",
     icon: PenLine,
     accent: "rose",
-    related: ["resize-image-to-kb", "resize-image", "passport-photo-resizer"],
+    related: ["compress-image", "resize-image", "passport-photo-resizer"],
   },
 
   // Extended Tools (shown in expand section)
