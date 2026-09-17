@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "@/components/site-link";
-import { FileStack, House, Menu, ScanLine, ShieldCheck, X } from "lucide-react";
+import { FileStack, House, Images, Menu, ScanLine, ShieldCheck, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { HeaderToolSearch } from "@/components/header-tool-search";
 import { ThemeToggle } from "@/components/theme-toggle";
