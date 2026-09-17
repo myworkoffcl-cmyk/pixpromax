@@ -7,7 +7,8 @@ export type TranslationNamespaceKey =
   | "workspace"
   | "messages"
   | "faq"
-  | "metadata";
+  | "metadata"
+  | "policy";
 
 type TranslationCache = Record<string, Partial<Record<TranslationNamespaceKey, TranslationNS>>>;
 

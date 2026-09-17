@@ -5,7 +5,12 @@
     "documentTools": "文档工具",
     "privacy": "隐私",
     "language": "语言",
-    "theme": "主题"
+    "theme": "主题",
+    "search": "搜索工具",
+    "searchLabel": "搜索图像工具",
+    "searchPlaceholder": "尝试\"50 KB\"、\"护照\"或\"PDF\"",
+    "searchKeyboard": "Ctrl K",
+    "searchNoResults": "没有匹配的工具。尝试格式、大小或任务。"
   },
   "nav": {
     "returnToHome": "返回PixProMax",

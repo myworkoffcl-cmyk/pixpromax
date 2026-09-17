@@ -5,7 +5,12 @@
     "documentTools": "Document tools",
     "privacy": "Privacy",
     "language": "Language",
-    "theme": "Theme"
+    "theme": "Theme",
+    "search": "সরঞ্জাম অনুসন্ধান করুন",
+    "searchLabel": "ইমেজ টুলস অনুসন্ধান করুন",
+    "searchPlaceholder": "\"50 KB\", \"পাসপোর্ট\" বা \"PDF\" চেষ্টা করুন",
+    "searchKeyboard": "Ctrl K",
+    "searchNoResults": "কোনো মেল খাওয়া সরঞ্জাম নেই। কোনো ফরম্যাট, আকার বা কাজ চেষ্টা করুন।"
   },
   "nav": {
     "returnToHome": "Return to PixProMax",

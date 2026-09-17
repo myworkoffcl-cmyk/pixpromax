@@ -5,7 +5,12 @@
     "documentTools": "Herramientas de documento",
     "privacy": "Privacidad",
     "language": "Idioma",
-    "theme": "Tema"
+    "theme": "Tema",
+    "search": "Buscar herramientas",
+    "searchLabel": "Buscar herramientas de imagen",
+    "searchPlaceholder": "Intenta \"50 KB\", \"pasaporte\" o \"PDF\"",
+    "searchKeyboard": "Ctrl K",
+    "searchNoResults": "Sin herramientas coincidentes. Intenta un formato, tamaño o tarea."
   },
   "nav": {
     "returnToHome": "Volver a PixProMax",

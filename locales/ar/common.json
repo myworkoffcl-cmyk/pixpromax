@@ -5,7 +5,12 @@
     "documentTools": "أدوات المستندات",
     "privacy": "الخصوصية",
     "language": "اللغة",
-    "theme": "المظهر"
+    "theme": "المظهر",
+    "search": "البحث عن الأدوات",
+    "searchLabel": "البحث عن أدوات الصور",
+    "searchPlaceholder": "جرب \"50 KB\" أو \"جواز السفر\" أو \"PDF\"",
+    "searchKeyboard": "Ctrl K",
+    "searchNoResults": "لا توجد أداة متطابقة. جرب صيغة أو حجم أو مهمة."
   },
   "nav": {
     "returnToHome": "العودة إلى PixProMax",

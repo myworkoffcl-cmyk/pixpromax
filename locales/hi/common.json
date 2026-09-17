@@ -5,7 +5,12 @@
     "documentTools": "Document tools",
     "privacy": "Privacy",
     "language": "Language",
-    "theme": "Theme"
+    "theme": "Theme",
+    "search": "उपकरण खोजें",
+    "searchLabel": "छवि उपकरण खोजें",
+    "searchPlaceholder": "\"50 KB\", \"पासपोर्ट\" या \"PDF\" आजमाएं",
+    "searchKeyboard": "Ctrl K",
+    "searchNoResults": "कोई मेल खाने वाला उपकरण नहीं। कोई प्रारूप, आकार या कार्य आजमाएं।"
   },
   "nav": {
     "returnToHome": "Return to PixProMax",

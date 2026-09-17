@@ -5,7 +5,12 @@
     "documentTools": "Document tools",
     "privacy": "Privacy",
     "language": "Language",
-    "theme": "Theme"
+    "theme": "Theme",
+    "search": "도구 검색",
+    "searchLabel": "이미지 도구 검색",
+    "searchPlaceholder": "\"50 KB\", \"여권\" 또는 \"PDF\"를 시도하세요",
+    "searchKeyboard": "Ctrl K",
+    "searchNoResults": "일치하는 도구가 없습니다. 형식, 크기 또는 작업을 시도하세요."
   },
   "nav": {
     "returnToHome": "Return to PixProMax",

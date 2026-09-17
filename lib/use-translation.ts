@@ -19,7 +19,7 @@ export function useTranslation(namespace: TranslationNamespaceKey) {
     });
   }, [locale, namespace]);
 
-  const t = (key: string, fallback: string = key): string => {
+  const t = <T,>(key: string, fallback: T): T | string => {
     const keys = key.split(".");
     let value: any = translations;
 
@@ -31,7 +31,7 @@ export function useTranslation(namespace: TranslationNamespaceKey) {
       }
     }
 
-    return typeof value === "string" ? value : fallback;
+    return value !== undefined && value !== null ? value : fallback;
   };
 
   return { t, loading };
