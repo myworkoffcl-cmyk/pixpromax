@@ -3,6 +3,45 @@
     "title": "免费在线图像工具",
     "subtitle": "在线编辑、调整大小、转换和压缩图像"
   },
+  "studio": {
+    "badge": "快速、免费、在您的设备上",
+    "heading": "文件已准备好。",
+    "subheading": "瞬间完成。",
+    "description": "调整图像大小、准备应用程序和管理PDF文件，无需上传文件。",
+    "stamp": "无需账户。",
+    "stamp2": "无水印。",
+    "privacy": "100%私密",
+    "privacyText": "文件保留在您的设备上",
+    "tool": "工具",
+    "tools": "工具",
+    "promise1": "在您的设备上处理",
+    "promise2": "无水印",
+    "promise3": "无需人工智能",
+    "photoTools": "照片和应用程序工具",
+    "photoTitle": "正确的尺寸。少一份担忧。",
+    "photoDesc": "使用尺寸预设裁剪和定位照片。始终检查您的应用程序的官方要求。",
+    "photoLink": "准备照片",
+    "showFewer": "显示较少",
+    "showMore": "显示更多"
+  },
+  "sections": {
+    "imageTools": "图像工具",
+    "documentTools": "文档工具"
+  },
+  "shortcuts": {
+    "compress": {
+      "title": "减小尺寸。节省空间。",
+      "text": "压缩图像"
+    },
+    "fit": {
+      "title": "调整大小。",
+      "text": "设置文件大小限制"
+    },
+    "merge": {
+      "title": "合并页面。",
+      "text": "合并PDF文件"
+    }
+  },
   "features": {
     "noInstallation": "无需安装",
     "noRegistration": "无需注册",

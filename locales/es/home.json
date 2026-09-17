@@ -3,6 +3,45 @@
     "title": "Herramientas de imagen en línea gratis",
     "subtitle": "Edita, redimensiona, convierte y comprime imágenes en línea"
   },
+  "studio": {
+    "badge": "RÁPIDO, GRATIS, EN TU DISPOSITIVO",
+    "heading": "Los archivos están listos.",
+    "subheading": "En momentos.",
+    "description": "Redimensiona imágenes, prepara aplicaciones y gestiona archivos PDF sin cargar ningún archivo.",
+    "stamp": "Sin cuenta.",
+    "stamp2": "Sin marca de agua.",
+    "privacy": "100% Privado",
+    "privacyText": "Los archivos permanecen en tu dispositivo",
+    "tool": "herramienta",
+    "tools": "herramientas",
+    "promise1": "Procesado en tu dispositivo",
+    "promise2": "Sin marca de agua",
+    "promise3": "Sin IA necesaria",
+    "photoTools": "HERRAMIENTAS DE FOTO Y APLICACIÓN",
+    "photoTitle": "Las dimensiones correctas. Una preocupación menos.",
+    "photoDesc": "Recorta y posiciona tu foto con ajustes preestablecidos de tamaño. Siempre verifica los requisitos oficiales de tu aplicación.",
+    "photoLink": "Preparar una foto",
+    "showFewer": "Mostrar menos",
+    "showMore": "Mostrar más"
+  },
+  "sections": {
+    "imageTools": "Herramientas de imagen",
+    "documentTools": "Herramientas de documento"
+  },
+  "shortcuts": {
+    "compress": {
+      "title": "Menos tamaño. Más espacio.",
+      "text": "Comprimir una imagen"
+    },
+    "fit": {
+      "title": "Ajustarlo.",
+      "text": "Establecer un límite de tamaño de archivo"
+    },
+    "merge": {
+      "title": "Páginas juntas.",
+      "text": "Fusionar archivos PDF"
+    }
+  },
   "features": {
     "noInstallation": "Sin instalación",
     "noRegistration": "Sin registro",
