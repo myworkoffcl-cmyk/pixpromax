@@ -24,9 +24,12 @@ export async function loadTranslations(
 
   try {
     // Dynamically import translation file
-    const translations = await import(
+    const module = await import(
       `@/locales/${locale}/${namespace}.json`
-    ).then((m) => m.default);
+    );
+
+    // Handle both .default and direct export
+    const translations = module.default || module;
 
     // Cache the translations
     if (!translationCache[locale]) {
@@ -37,7 +40,8 @@ export async function loadTranslations(
     return translations;
   } catch (error) {
     console.error(
-      `Failed to load translations for locale=${locale}, namespace=${namespace}`
+      `Failed to load translations for locale=${locale}, namespace=${namespace}`,
+      error
     );
     // Fall back to English
     if (locale !== "en") {
