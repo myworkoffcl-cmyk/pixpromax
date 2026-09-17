@@ -757,3 +757,200 @@ input[type="range"] { accent-color: var(--brand); width: 100%; }
   .workspace-entry-title { font-size: 24px; }
   .ws-layout { padding: 16px 0 0; }
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   WORKSPACE  —  Sub-sections, new controls (Edit engine expansion)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Collapsible sub-sections ──────────────────────────────────────────────*/
+.ws-controls--sections { display: flex; flex-direction: column; gap: 4px; }
+
+details.ws-subsection { border: 1px solid var(--line); border-radius: 10px; overflow: hidden; transition: border-color .18s ease; }
+details.ws-subsection[open] { border-color: color-mix(in srgb, var(--brand), var(--line) 55%); }
+
+summary.ws-subsection-header {
+  display: flex; align-items: center; gap: 8px;
+  padding: 10px 12px;
+  cursor: pointer;
+  font-size: 12px; font-weight: 700; color: var(--ink);
+  list-style: none; user-select: none;
+  background: color-mix(in srgb, var(--brand), var(--surface) 96%);
+  transition: background .15s ease;
+}
+summary.ws-subsection-header::-webkit-details-marker { display: none; }
+summary.ws-subsection-header::after {
+  content: "›"; margin-left: auto; font-size: 14px; font-weight: 400;
+  color: var(--ink-soft); rotate: 90deg;
+  transition: rotate .18s ease;
+}
+details.ws-subsection[open] > summary.ws-subsection-header::after { rotate: 270deg; }
+summary.ws-subsection-header:hover { background: color-mix(in srgb, var(--brand), var(--surface) 91%); }
+
+.ws-subsection-icon { width: 13px; height: 13px; flex-shrink: 0; color: var(--brand); }
+.ws-subsection-body { padding: 12px; display: flex; flex-direction: column; gap: 10px; background: var(--surface); }
+
+/* ── Select dropdown ───────────────────────────────────────────────────────*/
+.ws-select {
+  width: 100%;
+  padding: 7px 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 13px;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  padding-right: 30px;
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+.ws-select:focus { outline: none; border-color: var(--brand); box-shadow: 0 0 0 3px color-mix(in srgb, var(--brand), transparent 82%); }
+.ws-select option:disabled { color: var(--ink-soft); }
+
+/* ── Color picker ──────────────────────────────────────────────────────────*/
+.ws-color {
+  width: 32px; height: 32px;
+  padding: 2px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: var(--surface);
+  cursor: pointer;
+  appearance: none;
+  flex-shrink: 0;
+}
+.ws-color::-webkit-color-swatch-wrapper { padding: 0; border-radius: 4px; overflow: hidden; }
+.ws-color::-webkit-color-swatch { border: none; border-radius: 4px; }
+
+/* ── Field layout helpers ──────────────────────────────────────────────────*/
+.ws-field--align { display: flex; align-items: center; gap: 8px; }
+.ws-label--nowrap { white-space: nowrap; }
+
+/* ── Crop aspect-ratio pills ───────────────────────────────────────────────*/
+.ws-crop-aspects { display: flex; flex-wrap: wrap; gap: 5px; }
+.ws-pill--aspect {
+  padding: 4px 9px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: transparent;
+  color: var(--ink-soft);
+  font-size: 11px; font-weight: 600;
+  cursor: pointer;
+  transition: border-color .15s ease, color .15s ease, background .15s ease;
+}
+.ws-pill--aspect:hover { border-color: var(--brand); color: var(--brand); }
+.ws-pill--aspect.active,
+.ws-pill--aspect[data-active="true"] {
+  border-color: var(--brand);
+  background: color-mix(in srgb, var(--brand), transparent 87%);
+  color: var(--brand);
+}
+
+/* ── Ghost pill (e.g. "Upload logo") ──────────────────────────────────────*/
+.ws-pill--ghost {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 5px 12px;
+  border: 1.5px dashed var(--line);
+  border-radius: 20px;
+  background: transparent;
+  color: var(--ink-soft);
+  font-size: 12px; font-weight: 600;
+  cursor: pointer;
+  transition: border-color .15s ease, color .15s ease;
+}
+.ws-pill--ghost:hover { border-color: var(--brand); color: var(--brand); }
+.ws-pill--ghost svg { width: 13px; height: 13px; }
+
+/* File-input pill (upload wrapper) */
+.ws-pill--upload {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 5px 12px;
+  border: 1.5px dashed var(--line);
+  border-radius: 20px;
+  background: transparent;
+  color: var(--ink-soft);
+  font-size: 12px; font-weight: 600;
+  cursor: pointer;
+  transition: border-color .15s ease, color .15s ease;
+}
+.ws-pill--upload:hover { border-color: var(--brand); color: var(--brand); }
+.ws-pill--upload input[type="file"] { display: none; }
+
+/* ── Position grid (3×3 with center) ──────────────────────────────────────*/
+.ws-position-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 28px);
+  grid-template-rows: repeat(3, 28px);
+  gap: 3px;
+}
+/* 7 buttons arranged: tl tc tr / (gap) / bl bc br, center = row2 col2 */
+.ws-position-grid .ws-pos-btn:nth-child(4) { grid-column: 2; grid-row: 2; } /* center */
+
+.ws-pos-btn {
+  width: 28px; height: 28px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--ink-soft);
+  font-size: 13px; line-height: 1;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: border-color .13s ease, background .13s ease, color .13s ease;
+}
+.ws-pos-btn:hover { border-color: var(--brand); color: var(--brand); }
+.ws-pos-btn.active,
+.ws-pos-btn[data-active="true"] {
+  border-color: var(--brand);
+  background: color-mix(in srgb, var(--brand), transparent 84%);
+  color: var(--brand);
+}
+
+/* ── Overlay blocks ────────────────────────────────────────────────────────*/
+.ws-overlay-block { display: flex; flex-direction: column; gap: 10px; }
+.ws-overlay-divider { height: 1px; background: var(--line); margin: 4px 0; }
+.ws-overlay-fields { display: flex; flex-direction: column; gap: 8px; padding-left: 4px; }
+
+/* ── Checkbox variants ─────────────────────────────────────────────────────*/
+/* Header-style checkbox (acts as a sub-section toggle) */
+.ws-checkbox--header {
+  display: flex; align-items: center; gap: 8px;
+  cursor: pointer;
+  font-size: 12px; font-weight: 700; color: var(--ink);
+  padding: 8px 0 4px;
+}
+.ws-checkbox--header input[type="checkbox"] {
+  width: 15px; height: 15px; accent-color: var(--brand); cursor: pointer;
+}
+.ws-checkbox--header .ws-subsection-icon { color: var(--brand); }
+
+/* Inline checkbox (beside label) */
+.ws-checkbox--inline {
+  display: flex; align-items: center; gap: 7px;
+  cursor: pointer;
+  font-size: 12px; color: var(--ink);
+}
+.ws-checkbox--inline input[type="checkbox"] {
+  width: 14px; height: 14px; accent-color: var(--brand); cursor: pointer; flex-shrink: 0;
+}
+
+/* ── Inline / warning hint text ────────────────────────────────────────────*/
+.ws-hint-inline {
+  font-size: 11px; color: var(--ink-soft); line-height: 1.4; margin-top: 2px;
+}
+.ws-hint--warn {
+  font-size: 11px; color: #d97706; line-height: 1.4; margin-top: 2px;
+  display: flex; align-items: flex-start; gap: 4px;
+}
+.ws-hint--warn::before { content: "⚠"; flex-shrink: 0; }
+
+/* ── Convert engine — format hint row ─────────────────────────────────────*/
+.ws-format-hint { margin-top: 6px; }
+
+/* ── Responsive tweaks for new sections ───────────────────────────────────*/
+@media (max-width: 540px) {
+  .ws-position-grid { grid-template-columns: repeat(3, 26px); grid-template-rows: repeat(3, 26px); }
+  .ws-pos-btn { width: 26px; height: 26px; font-size: 12px; }
+  .ws-crop-aspects { gap: 4px; }
+  .ws-pill--aspect { padding: 3px 8px; font-size: 10px; }
+}

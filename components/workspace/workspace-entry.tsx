@@ -47,22 +47,17 @@ export function WorkspaceEntry() {
   const inputRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
 
-  function handleFile(e: React.ChangeEvent<HTMLInputElement>) {
+  async function handleFile(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
     if (!file) return;
-    // Store file in sessionStorage as data URL for workspace pickup
-    const reader = new FileReader();
-    reader.onload = () => {
-      try {
-        sessionStorage.setItem("ws_pending_name", file.name);
-        sessionStorage.setItem("ws_pending_type", file.type);
-        sessionStorage.setItem("ws_pending_data", reader.result as string);
-      } catch (_) {
-        // sessionStorage full – navigate anyway, workspace shows upload UI
-      }
-      router.push("/workspace");
-    };
-    reader.readAsDataURL(file);
+    // Store File object in IndexedDB for workspace pickup (privacy-first)
+    const { savePendingImage } = await import("@/lib/workspace/store");
+    try {
+      await savePendingImage(file);
+    } catch (_) {
+      // IndexedDB unavailable – navigate anyway, workspace shows upload UI
+    }
+    router.push("/workspace");
   }
 
   return (

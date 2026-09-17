@@ -1,5 +1,5 @@
-export type ImageMime = "image/jpeg" | "image/png" | "image/webp";
-export type ImageExtension = "jpg" | "png" | "webp";
+export type ImageMime = "image/jpeg" | "image/png" | "image/webp" | "image/avif";
+export type ImageExtension = "jpg" | "png" | "webp" | "avif";
 export type ProcessingState = "idle" | "loading" | "processing" | "success" | "error";
 
 export interface Dimensions {
