@@ -117,6 +117,17 @@
     "continue": "Continue",
     "dismiss": "Dismiss"
   },
+  "uploadDropzone": {
+    "dropSingle": "আপনার ছবি এখানে ড্র্যাগ করুন",
+    "dropMultiple": "আপনার ছবিগুলি এখানে ড্র্যাগ করুন",
+    "browseSingle": "একটি ফাইল ব্রাউজ করুন",
+    "browseMultiple": "ফাইলগুলি ব্রাউজ করুন",
+    "fromDevice": "আপনার ডিভাইস থেকে",
+    "fileTypesImage": "JPG, PNG বা WebP",
+    "fileTypesPDF": "PDF",
+    "sizeLimit": "৩০ MB পর্যন্ত",
+    "filesLimit": "{{maxFiles}} ফাইল পর্যন্ত"
+  },
   "errors": {
     "notFound": "Not found",
     "pageNotFound": "Page not found",

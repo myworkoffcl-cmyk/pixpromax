@@ -117,6 +117,17 @@
     "continue": "متابعة",
     "dismiss": "رفض"
   },
+  "uploadDropzone": {
+    "dropSingle": "أسقط صورتك هنا",
+    "dropMultiple": "أسقط صورك هنا",
+    "browseSingle": "استعرض ملف",
+    "browseMultiple": "استعرض الملفات",
+    "fromDevice": "من جهازك",
+    "fileTypesImage": "JPG أو PNG أو WebP",
+    "fileTypesPDF": "PDF",
+    "sizeLimit": "حتى 30 ميجابايت",
+    "filesLimit": "حتى {{maxFiles}} ملف"
+  },
   "errors": {
     "notFound": "لم يتم العثور عليه",
     "pageNotFound": "الصفحة غير موجودة",

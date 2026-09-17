@@ -117,6 +117,17 @@
     "continue": "Continue",
     "dismiss": "Dismiss"
   },
+  "uploadDropzone": {
+    "dropSingle": "Déposez votre image ici",
+    "dropMultiple": "Déposez vos images ici",
+    "browseSingle": "parcourir un fichier",
+    "browseMultiple": "parcourir des fichiers",
+    "fromDevice": "de votre appareil",
+    "fileTypesImage": "JPG, PNG ou WebP",
+    "fileTypesPDF": "PDF",
+    "sizeLimit": "jusqu'à 30 Mo",
+    "filesLimit": "jusqu'à {{maxFiles}} fichiers"
+  },
   "errors": {
     "notFound": "Not found",
     "pageNotFound": "Page not found",

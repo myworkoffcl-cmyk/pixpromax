@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { UniversalWorkspace } from "@/components/workspace/workspace";
 import { JsonLd } from "@/components/seo/json-ld";
+import { ToolPageHeader } from "@/components/tool-page-header";
 import { SITE_URL } from "@/config/site";
 
 export const metadata: Metadata = {
@@ -54,10 +55,7 @@ export default function CompressToTargetSizePage() {
       {schemas.map((schema, i) => (
         <JsonLd key={i} data={schema} />
       ))}
-      <div className="workspace-category-header shell">
-        <h1>{toolName}</h1>
-        <p>{toolDesc}</p>
-      </div>
+      <ToolPageHeader toolSlug={toolSlug} toolName={toolName} toolLongDescription={toolDesc} />
       <UniversalWorkspace
         init={{
           initialEngine: "compress",

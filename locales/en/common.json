@@ -109,6 +109,17 @@
     "id-photo-resizer": "Resize photos to ID specifications.",
     "signature-resizer": "Resize signature images for documents."
   },
+  "uploadDropzone": {
+    "dropSingle": "Drop your image here",
+    "dropMultiple": "Drop your images here",
+    "browseSingle": "browse a file",
+    "browseMultiple": "browse files",
+    "fromDevice": "from your device",
+    "fileTypesImage": "JPG, PNG or WebP",
+    "fileTypesPDF": "PDF",
+    "sizeLimit": "up to 30 MB",
+    "filesLimit": "up to {{maxFiles}} files"
+  },
   "errors": {
     "notFound": "Not found",
     "pageNotFound": "Page not found",

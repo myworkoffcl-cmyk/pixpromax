@@ -117,6 +117,17 @@
     "continue": "继续",
     "dismiss": "关闭"
   },
+  "uploadDropzone": {
+    "dropSingle": "将您的图像放在这里",
+    "dropMultiple": "将您的图像放在这里",
+    "browseSingle": "浏览文件",
+    "browseMultiple": "浏览文件",
+    "fromDevice": "来自您的设备",
+    "fileTypesImage": "JPG、PNG或WebP",
+    "fileTypesPDF": "PDF",
+    "sizeLimit": "最多30 MB",
+    "filesLimit": "最多{{maxFiles}}个文件"
+  },
   "errors": {
     "notFound": "未找到",
     "pageNotFound": "页面未找到",

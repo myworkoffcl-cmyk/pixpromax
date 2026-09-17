@@ -117,6 +117,17 @@
     "continue": "Continue",
     "dismiss": "Dismiss"
   },
+  "uploadDropzone": {
+    "dropSingle": "이미지를 여기에 놓으세요",
+    "dropMultiple": "이미지를 여기에 놓으세요",
+    "browseSingle": "파일 찾기",
+    "browseMultiple": "파일 찾기",
+    "fromDevice": "기기에서",
+    "fileTypesImage": "JPG, PNG 또는 WebP",
+    "fileTypesPDF": "PDF",
+    "sizeLimit": "최대 30 MB",
+    "filesLimit": "최대 {{maxFiles}}개 파일"
+  },
   "errors": {
     "notFound": "Not found",
     "pageNotFound": "Page not found",

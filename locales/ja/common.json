@@ -117,6 +117,17 @@
     "continue": "Continue",
     "dismiss": "Dismiss"
   },
+  "uploadDropzone": {
+    "dropSingle": "画像をここにドラッグしてください",
+    "dropMultiple": "画像をここにドラッグしてください",
+    "browseSingle": "ファイルを参照",
+    "browseMultiple": "ファイルを参照",
+    "fromDevice": "デバイスから",
+    "fileTypesImage": "JPG、PNG、WebP",
+    "fileTypesPDF": "PDF",
+    "sizeLimit": "30 MBまで",
+    "filesLimit": "{{maxFiles}}個のファイルまで"
+  },
   "errors": {
     "notFound": "Not found",
     "pageNotFound": "Page not found",
