@@ -1,0 +1,53 @@
+{
+  "home": {
+    "title": "Herramientas de imagen en línea gratis",
+    "description": "Edita, redimensiona, convierte y comprime imágenes en línea de forma gratuita."
+  },
+  "tools": {
+    "compressImage": {
+      "title": "Comprimir imagen en línea gratis",
+      "description": "Reduce el tamaño del archivo de imagen sin perder calidad."
+    },
+    "resizeImage": {
+      "title": "Redimensionar imagen en línea gratis",
+      "description": "Redimensiona imágenes en píxeles o porcentajes."
+    },
+    "convertImage": {
+      "title": "Convertir PNG, JPG y WebP en línea",
+      "description": "Convierte imágenes entre PNG, JPG, WebP y otros formatos."
+    },
+    "batchConverter": {
+      "title": "Convertidor de imágenes por lotes en línea",
+      "description": "Convierte varias imágenes a la vez."
+    },
+    "resizeImageToKb": {
+      "title": "Redimensionar imagen a 20KB, 50KB o 100KB",
+      "description": "Reduce el tamaño de la imagen a requisitos de tamaño exacto."
+    },
+    "passportPhotoMaker": {
+      "title": "Fabricante de fotos de pasaporte en línea",
+      "description": "Crea fotos de tamaño de pasaporte que cumplan con requisitos oficiales."
+    },
+    "cropImage": {
+      "title": "Recortar y girar imagen en línea",
+      "description": "Recorta, gira y endereza imágenes con precisión."
+    },
+    "imageToPdf": {
+      "title": "Convertir imágenes a PDF en línea",
+      "description": "Combina varias imágenes en un único archivo PDF."
+    },
+    "signatureResizer": {
+      "title": "Redimensionador de firma para formularios en línea",
+      "description": "Redimensiona y optimiza firmas para la firma digital de documentos."
+    }
+  },
+  "pages": {
+    "about": "Acerca de PixProMax",
+    "contact": "Contáctenos",
+    "privacy": "Política de privacidad",
+    "terms": "Términos de servicio",
+    "disclaimer": "Aviso legal",
+    "faq": "Preguntas frecuentes",
+    "notFound": "Página no encontrada"
+  }
+}

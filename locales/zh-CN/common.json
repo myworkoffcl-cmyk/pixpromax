@@ -1,0 +1,46 @@
+{
+  "header": {
+    "home": "首页",
+    "imageTools": "图像工具",
+    "documentTools": "文档工具",
+    "privacy": "隐私",
+    "language": "语言",
+    "theme": "主题"
+  },
+  "nav": {
+    "returnToHome": "返回PixProMax",
+    "editResizeConvert": "编辑、调整大小和转换",
+    "workWithImages": "处理图像和PDF",
+    "howLocalProcessingWorks": "本地处理如何工作"
+  },
+  "footer": {
+    "brand": "PixProMax",
+    "tagline": "图像输入。更好的图像输出。",
+    "popularTools": "热门工具",
+    "company": "公司",
+    "legal": "法律",
+    "allRightsReserved": "版权所有",
+    "about": "关于",
+    "contact": "联系",
+    "privacyPolicy": "隐私政策",
+    "terms": "条款",
+    "disclaimer": "免责声明",
+    "faq": "常见问题"
+  },
+  "buttons": {
+    "upload": "上传",
+    "select": "选择",
+    "process": "处理",
+    "download": "下载",
+    "close": "关闭",
+    "cancel": "取消",
+    "continue": "继续",
+    "dismiss": "关闭"
+  },
+  "errors": {
+    "notFound": "未找到",
+    "pageNotFound": "页面未找到",
+    "errorOccurred": "发生错误",
+    "tryAgain": "重试"
+  }
+}

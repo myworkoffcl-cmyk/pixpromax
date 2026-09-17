@@ -1,0 +1,21 @@
+{
+  "hero": {
+    "title": "Free Online Image Tools",
+    "subtitle": "Edit, resize, convert, and compress images online"
+  },
+  "features": {
+    "noInstallation": "No Installation",
+    "noRegistration": "No Registration",
+    "noFileSize": "No File Size Limit",
+    "secure": "100% Secure",
+    "offline": "Works Offline"
+  },
+  "faq": {
+    "question1": "Are my files secure?",
+    "answer1": "Yes, all files are processed locally in your browser. Nothing is uploaded to our servers.",
+    "question2": "Do I need to install anything?",
+    "answer2": "No, PixProMax is a web-based tool. Just open it in your browser and start using it.",
+    "question3": "Can I use it offline?",
+    "answer3": "Yes, after the first load, PixProMax can work offline with service workers."
+  }
+}

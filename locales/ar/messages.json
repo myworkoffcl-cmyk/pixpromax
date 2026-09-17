@@ -1,0 +1,21 @@
+{
+  "status": {
+    "processing": "جاري المعالجة...",
+    "completed": "اكتمل",
+    "uploading": "جاري التحميل...",
+    "dragDropHint": "اسحب وأفلت ملفاتك هنا أو انقر للتحديد"
+  },
+  "errors": {
+    "fileNotSupported": "نوع الملف غير مدعوم",
+    "fileTooLarge": "الملف كبير جدا",
+    "uploadFailed": "فشل التحميل. حاول مرة أخرى.",
+    "processingFailed": "فشلت المعالجة. حاول مرة أخرى.",
+    "invalidInput": "إدخال غير صحيح",
+    "networkError": "خطأ في الشبكة. تحقق من اتصالك."
+  },
+  "success": {
+    "processingComplete": "اكتملت المعالجة!",
+    "downloadReady": "ملفك جاهز للتحميل",
+    "copyToClipboard": "تم النسخ إلى الحافظة"
+  }
+}

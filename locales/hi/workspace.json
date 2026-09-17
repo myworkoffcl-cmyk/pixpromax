@@ -1,0 +1,18 @@
+{
+  "labels": {
+    "crop": "Crop",
+    "resize": "Resize",
+    "rotate": "Rotate",
+    "convert": "Convert",
+    "compress": "Compress",
+    "filter": "Filter",
+    "brightness": "Brightness",
+    "contrast": "Contrast",
+    "saturation": "Saturation"
+  },
+  "buttons": {
+    "apply": "Apply",
+    "reset": "Reset",
+    "download": "Download"
+  }
+}

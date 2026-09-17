@@ -1,0 +1,28 @@
+{
+  "faqs": [
+    {
+      "question": "¿Mis archivos son seguros?",
+      "answer": "Sí, todo el procesamiento ocurre en tu navegador. Tus archivos nunca abandonan tu dispositivo."
+    },
+    {
+      "question": "¿Qué formatos de archivo admiten?",
+      "answer": "Admitimos PNG, JPG, WebP, TIFF, BMP y muchos otros formatos de imagen."
+    },
+    {
+      "question": "¿Hay un límite de tamaño de archivo?",
+      "answer": "No, puedes procesar imágenes de cualquier tamaño, limitado solo por la memoria de tu navegador."
+    },
+    {
+      "question": "¿Almacenan mis imágenes?",
+      "answer": "No, las imágenes se procesan localmente y nunca se almacenan en nuestros servidores."
+    },
+    {
+      "question": "¿Puedo usarlo en dispositivos móviles?",
+      "answer": "Sí, PixProMax funciona en smartphones y tablets."
+    },
+    {
+      "question": "¿Es gratis?",
+      "answer": "Sí, todas las herramientas en PixProMax son completamente gratuitas y siempre lo serán."
+    }
+  ]
+}

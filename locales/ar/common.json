@@ -1,0 +1,46 @@
+{
+  "header": {
+    "home": "الرئيسية",
+    "imageTools": "أدوات الصور",
+    "documentTools": "أدوات المستندات",
+    "privacy": "الخصوصية",
+    "language": "اللغة",
+    "theme": "المظهر"
+  },
+  "nav": {
+    "returnToHome": "العودة إلى PixProMax",
+    "editResizeConvert": "تحرير وتغيير الحجم والتحويل",
+    "workWithImages": "العمل مع الصور وملفات PDF",
+    "howLocalProcessingWorks": "كيفية عمل المعالجة المحلية"
+  },
+  "footer": {
+    "brand": "PixProMax",
+    "tagline": "الصور في. صور أفضل خارجا.",
+    "popularTools": "الأدوات الشهيرة",
+    "company": "الشركة",
+    "legal": "قانوني",
+    "allRightsReserved": "جميع الحقوق محفوظة",
+    "about": "حول",
+    "contact": "اتصل",
+    "privacyPolicy": "سياسة الخصوصية",
+    "terms": "الشروط",
+    "disclaimer": "تنصل",
+    "faq": "الأسئلة الشائعة"
+  },
+  "buttons": {
+    "upload": "تحميل",
+    "select": "تحديد",
+    "process": "معالجة",
+    "download": "تحميل",
+    "close": "إغلاق",
+    "cancel": "إلغاء",
+    "continue": "متابعة",
+    "dismiss": "رفض"
+  },
+  "errors": {
+    "notFound": "لم يتم العثور عليه",
+    "pageNotFound": "الصفحة غير موجودة",
+    "errorOccurred": "حدث خطأ",
+    "tryAgain": "حاول مرة أخرى"
+  }
+}

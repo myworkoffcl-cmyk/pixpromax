@@ -1,0 +1,53 @@
+{
+  "home": {
+    "title": "免费在线图像工具",
+    "description": "在线免费编辑、调整大小、转换和压缩图像。"
+  },
+  "tools": {
+    "compressImage": {
+      "title": "免费在线压缩图像",
+      "description": "在不损失质量的情况下减少图像文件大小。"
+    },
+    "resizeImage": {
+      "title": "免费在线调整图像大小",
+      "description": "以像素或百分比调整图像大小。"
+    },
+    "convertImage": {
+      "title": "在线转换PNG、JPG和WebP",
+      "description": "在PNG、JPG、WebP和其他格式之间即时转换图像。"
+    },
+    "batchConverter": {
+      "title": "在线批量图像转换器",
+      "description": "一次转换多个图像。"
+    },
+    "resizeImageToKb": {
+      "title": "将图像调整为20KB、50KB或100KB",
+      "description": "将图像大小减少到确切的文件大小要求。"
+    },
+    "passportPhotoMaker": {
+      "title": "在线护照照片制作器",
+      "description": "创建符合官方要求的护照尺寸照片。"
+    },
+    "cropImage": {
+      "title": "在线裁剪和旋转图像",
+      "description": "精确裁剪、旋转和拉直图像。"
+    },
+    "imageToPdf": {
+      "title": "在线将图像转换为PDF",
+      "description": "将多个图像合并为单个PDF文件。"
+    },
+    "signatureResizer": {
+      "title": "在线表单签名调整器",
+      "description": "为在线文档签名调整和优化签名。"
+    }
+  },
+  "pages": {
+    "about": "关于PixProMax",
+    "contact": "联系我们",
+    "privacy": "隐私政策",
+    "terms": "服务条款",
+    "disclaimer": "免责声明",
+    "faq": "常见问题",
+    "notFound": "页面未找到"
+  }
+}

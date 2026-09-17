@@ -1,0 +1,18 @@
+{
+  "labels": {
+    "crop": "قص",
+    "resize": "تغيير الحجم",
+    "rotate": "دوران",
+    "convert": "تحويل",
+    "compress": "ضغط",
+    "filter": "مرشح",
+    "brightness": "السطوع",
+    "contrast": "التباين",
+    "saturation": "التشبع"
+  },
+  "buttons": {
+    "apply": "تطبيق",
+    "reset": "إعادة تعيين",
+    "download": "تحميل"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "status": {
+    "processing": "Processing...",
+    "completed": "Completed",
+    "uploading": "Uploading...",
+    "dragDropHint": "Drag and drop your files here or click to select"
+  },
+  "errors": {
+    "fileNotSupported": "File type not supported",
+    "fileTooLarge": "File is too large",
+    "uploadFailed": "Upload failed. Please try again.",
+    "processingFailed": "Processing failed. Please try again.",
+    "invalidInput": "Invalid input",
+    "networkError": "Network error. Please check your connection."
+  },
+  "success": {
+    "processingComplete": "Processing complete!",
+    "downloadReady": "Your file is ready to download",
+    "copyToClipboard": "Copied to clipboard"
+  }
+}

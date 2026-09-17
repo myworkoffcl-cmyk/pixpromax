@@ -1,0 +1,21 @@
+{
+  "status": {
+    "processing": "Procesando...",
+    "completed": "Completado",
+    "uploading": "Subiendo...",
+    "dragDropHint": "Arrastra y suelta tus archivos aquí o haz clic para seleccionar"
+  },
+  "errors": {
+    "fileNotSupported": "Tipo de archivo no compatible",
+    "fileTooLarge": "El archivo es demasiado grande",
+    "uploadFailed": "La carga falló. Intenta de nuevo.",
+    "processingFailed": "El procesamiento falló. Intenta de nuevo.",
+    "invalidInput": "Entrada inválida",
+    "networkError": "Error de red. Verifica tu conexión."
+  },
+  "success": {
+    "processingComplete": "¡Procesamiento completado!",
+    "downloadReady": "Tu archivo está listo para descargar",
+    "copyToClipboard": "Copiado al portapapeles"
+  }
+}

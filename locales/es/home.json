@@ -1,0 +1,21 @@
+{
+  "hero": {
+    "title": "Herramientas de imagen en línea gratis",
+    "subtitle": "Edita, redimensiona, convierte y comprime imágenes en línea"
+  },
+  "features": {
+    "noInstallation": "Sin instalación",
+    "noRegistration": "Sin registro",
+    "noFileSize": "Sin límite de tamaño de archivo",
+    "secure": "100% seguro",
+    "offline": "Funciona sin conexión"
+  },
+  "faq": {
+    "question1": "¿Mis archivos son seguros?",
+    "answer1": "Sí, todos los archivos se procesan localmente en tu navegador.",
+    "question2": "¿Necesito instalar algo?",
+    "answer2": "No, PixProMax es una herramienta basada en web.",
+    "question3": "¿Puedo usarlo sin conexión?",
+    "answer3": "Sí, después de la primera carga, PixProMax puede funcionar sin conexión."
+  }
+}

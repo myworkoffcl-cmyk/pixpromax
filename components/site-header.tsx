@@ -5,6 +5,7 @@ import { FileStack, House, Images, Menu, ScanLine, ShieldCheck, X } from "lucide
 import { useEffect, useRef, useState } from "react";
 import { HeaderToolSearch } from "@/components/header-tool-search";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { LanguageSelector } from "@/components/language-selector";
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
@@ -46,7 +47,10 @@ export function SiteHeader() {
                 <Link href="/#directory-image-tools" onClick={() => setOpen(false)}><Images aria-hidden="true" /><span><strong>Image tools</strong><small>Edit, resize, and convert</small></span></Link>
                 <Link href="/#directory-document-tools" onClick={() => setOpen(false)}><FileStack aria-hidden="true" /><span><strong>Document tools</strong><small>Work with images and PDFs</small></span></Link>
                 <Link href="/privacy-policy" onClick={() => setOpen(false)}><ShieldCheck aria-hidden="true" /><span><strong>Privacy</strong><small>How local processing works</small></span></Link>
-                <div style={{ display: "flex", alignItems: "center", padding: "0 16px", height: "48px", gap: "8px" }}><ThemeToggle /></div>
+                <div style={{ display: "flex", alignItems: "center", padding: "0 16px", height: "48px", gap: "8px" }}>
+                  <LanguageSelector />
+                  <ThemeToggle />
+                </div>
               </nav>
             ) : null}
           </div>

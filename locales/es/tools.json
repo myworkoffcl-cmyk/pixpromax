@@ -1,0 +1,11 @@
+{
+  "labels": {
+    "quality": "Calidad",
+    "format": "Formato",
+    "width": "Ancho",
+    "height": "Alto",
+    "size": "Tamaño",
+    "preview": "Vista previa",
+    "settings": "Configuración"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "hero": {
+    "title": "免费在线图像工具",
+    "subtitle": "在线编辑、调整大小、转换和压缩图像"
+  },
+  "features": {
+    "noInstallation": "无需安装",
+    "noRegistration": "无需注册",
+    "noFileSize": "无文件大小限制",
+    "secure": "100%安全",
+    "offline": "离线工作"
+  },
+  "faq": {
+    "question1": "我的文件安全吗？",
+    "answer1": "是的，所有文件都在您的浏览器中本地处理。",
+    "question2": "我需要安装什么吗？",
+    "answer2": "不需要，PixProMax是基于网络的工具。",
+    "question3": "我可以离线使用它吗？",
+    "answer3": "是的，首次加载后，PixProMax可以离线工作。"
+  }
+}

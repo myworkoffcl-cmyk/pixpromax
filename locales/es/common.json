@@ -1,0 +1,46 @@
+{
+  "header": {
+    "home": "Inicio",
+    "imageTools": "Herramientas de imagen",
+    "documentTools": "Herramientas de documento",
+    "privacy": "Privacidad",
+    "language": "Idioma",
+    "theme": "Tema"
+  },
+  "nav": {
+    "returnToHome": "Volver a PixProMax",
+    "editResizeConvert": "Editar, redimensionar y convertir",
+    "workWithImages": "Trabajar con imágenes y PDF",
+    "howLocalProcessingWorks": "Cómo funciona el procesamiento local"
+  },
+  "footer": {
+    "brand": "PixProMax",
+    "tagline": "Imágenes adentro. Mejores imágenes afuera.",
+    "popularTools": "Herramientas populares",
+    "company": "Empresa",
+    "legal": "Legal",
+    "allRightsReserved": "Todos los derechos reservados",
+    "about": "Acerca de",
+    "contact": "Contacto",
+    "privacyPolicy": "Política de privacidad",
+    "terms": "Términos",
+    "disclaimer": "Aviso legal",
+    "faq": "Preguntas frecuentes"
+  },
+  "buttons": {
+    "upload": "Subir",
+    "select": "Seleccionar",
+    "process": "Procesar",
+    "download": "Descargar",
+    "close": "Cerrar",
+    "cancel": "Cancelar",
+    "continue": "Continuar",
+    "dismiss": "Descartar"
+  },
+  "errors": {
+    "notFound": "No encontrado",
+    "pageNotFound": "Página no encontrada",
+    "errorOccurred": "Ocurrió un error",
+    "tryAgain": "Intentar de nuevo"
+  }
+}

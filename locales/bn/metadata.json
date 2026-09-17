@@ -1,0 +1,53 @@
+{
+  "home": {
+    "title": "Free Online Image Tools",
+    "description": "Edit, resize, convert, and compress images online for free. No installation, no registration required."
+  },
+  "tools": {
+    "compressImage": {
+      "title": "Compress Image Online Free",
+      "description": "Reduce image file size without losing quality. Compress JPG, PNG, WebP online."
+    },
+    "resizeImage": {
+      "title": "Resize Image Online Free",
+      "description": "Resize images in pixels or percentages. Maintain aspect ratio or resize to exact dimensions."
+    },
+    "convertImage": {
+      "title": "Convert PNG, JPG & WebP Online",
+      "description": "Convert images between PNG, JPG, WebP, and other formats instantly."
+    },
+    "batchConverter": {
+      "title": "Batch Image Converter Online",
+      "description": "Convert multiple images at once. Save time with batch processing."
+    },
+    "resizeImageToKb": {
+      "title": "Resize Image to 20KB, 50KB or 100KB",
+      "description": "Reduce image size to exact file size requirements."
+    },
+    "passportPhotoMaker": {
+      "title": "Passport Photo Maker Online",
+      "description": "Create passport-sized photos that meet official requirements."
+    },
+    "cropImage": {
+      "title": "Crop and Rotate Image Online",
+      "description": "Crop, rotate, and straighten images with precision."
+    },
+    "imageToPdf": {
+      "title": "Convert Images to PDF Online",
+      "description": "Combine multiple images into a single PDF file."
+    },
+    "signatureResizer": {
+      "title": "Signature Resizer for Online Forms",
+      "description": "Resize and optimize signatures for online document signing."
+    }
+  },
+  "pages": {
+    "about": "About PixProMax",
+    "contact": "Contact Us",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "disclaimer": "Disclaimer",
+    "faq": "Frequently Asked Questions",
+    "notFound": "Page Not Found"
+  }
+}

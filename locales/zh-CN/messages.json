@@ -1,0 +1,21 @@
+{
+  "status": {
+    "processing": "正在处理...",
+    "completed": "已完成",
+    "uploading": "上传中...",
+    "dragDropHint": "将文件拖放到此处或单击选择"
+  },
+  "errors": {
+    "fileNotSupported": "不支持的文件类型",
+    "fileTooLarge": "文件太大",
+    "uploadFailed": "上传失败。请重试。",
+    "processingFailed": "处理失败。请重试。",
+    "invalidInput": "输入无效",
+    "networkError": "网络错误。请检查您的连接。"
+  },
+  "success": {
+    "processingComplete": "处理完成！",
+    "downloadReady": "您的文件已准备好下载",
+    "copyToClipboard": "已复制到剪贴板"
+  }
+}

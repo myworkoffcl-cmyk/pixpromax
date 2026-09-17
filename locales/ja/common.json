@@ -1,0 +1,46 @@
+{
+  "header": {
+    "home": "Home",
+    "imageTools": "Image tools",
+    "documentTools": "Document tools",
+    "privacy": "Privacy",
+    "language": "Language",
+    "theme": "Theme"
+  },
+  "nav": {
+    "returnToHome": "Return to PixProMax",
+    "editResizeConvert": "Edit, resize, and convert",
+    "workWithImages": "Work with images and PDFs",
+    "howLocalProcessingWorks": "How local processing works"
+  },
+  "footer": {
+    "brand": "PixProMax",
+    "tagline": "Images in. Better images out.",
+    "popularTools": "Popular Tools",
+    "company": "Company",
+    "legal": "Legal",
+    "allRightsReserved": "All rights reserved",
+    "about": "About",
+    "contact": "Contact",
+    "privacyPolicy": "Privacy Policy",
+    "terms": "Terms",
+    "disclaimer": "Disclaimer",
+    "faq": "FAQ"
+  },
+  "buttons": {
+    "upload": "Upload",
+    "select": "Select",
+    "process": "Process",
+    "download": "Download",
+    "close": "Close",
+    "cancel": "Cancel",
+    "continue": "Continue",
+    "dismiss": "Dismiss"
+  },
+  "errors": {
+    "notFound": "Not found",
+    "pageNotFound": "Page not found",
+    "errorOccurred": "An error occurred",
+    "tryAgain": "Try again"
+  }
+}

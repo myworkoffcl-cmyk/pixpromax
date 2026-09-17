@@ -1,0 +1,18 @@
+{
+  "labels": {
+    "crop": "裁剪",
+    "resize": "调整大小",
+    "rotate": "旋转",
+    "convert": "转换",
+    "compress": "压缩",
+    "filter": "过滤器",
+    "brightness": "亮度",
+    "contrast": "对比度",
+    "saturation": "饱和度"
+  },
+  "buttons": {
+    "apply": "应用",
+    "reset": "重置",
+    "download": "下载"
+  }
+}

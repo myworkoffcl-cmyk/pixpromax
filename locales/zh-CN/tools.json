@@ -1,0 +1,11 @@
+{
+  "labels": {
+    "quality": "质量",
+    "format": "格式",
+    "width": "宽度",
+    "height": "高度",
+    "size": "大小",
+    "preview": "预览",
+    "settings": "设置"
+  }
+}
