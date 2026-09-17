@@ -21,8 +21,20 @@ export function toolMetadata(tool: ToolConfig): Metadata {
     title,
     description: tool.longDescription,
     alternates: { canonical: url },
-    openGraph: { title: `${title} | ${SITE_NAME}`, description: tool.longDescription, url },
-    twitter: { card: "summary_large_image", title: `${title} | ${SITE_NAME}`, description: tool.longDescription },
+    openGraph: {
+      type: "website",
+      title: `${title} | ${SITE_NAME}`,
+      description: tool.longDescription,
+      url,
+      siteName: SITE_NAME,
+      images: [{ url: "/og.png", width: 1731, height: 909, alt: "PixProMax — Images in. Better images out." }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${title} | ${SITE_NAME}`,
+      description: tool.longDescription,
+      images: ["/og.png"],
+    },
   };
 }
 
