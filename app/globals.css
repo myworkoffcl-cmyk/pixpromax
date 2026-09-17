@@ -389,9 +389,9 @@ input[type="range"] { width: 100%; accent-color: var(--brand); }
 .edit-button-row button { min-height: 42px; padding: 0 12px; display: inline-flex; align-items: center; gap: 7px; border: 1px solid var(--line); border-radius: 9px; color: var(--muted); background: var(--surface); cursor: pointer; }
 .edit-button-row button:hover, .edit-button-row button.active { color: var(--brand-dark); border-color: var(--brand); background: color-mix(in srgb, var(--brand), transparent 91%); }
 .edit-button-row svg { width: 16px; }
-.pdf-image-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.pdf-image-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
 .pdf-image-grid article { min-width: 0; padding: 9px; border: 1px solid var(--line); border-radius: 12px; background: var(--bg); }
-.pdf-image-grid article > div { height: 145px; position: relative; overflow: hidden; border-radius: 8px; background: var(--surface-soft); }
+.pdf-image-grid article > div { height: 180px; position: relative; overflow: hidden; border-radius: 8px; background: var(--surface-soft); }
 .pdf-image-grid article img { object-fit: cover; }
 .pdf-image-grid article > span { min-width: 0; margin: 9px 0 7px; display: grid; grid-template-columns: 15px 18px minmax(0, 1fr); align-items: center; gap: 4px; }
 .pdf-image-grid article > span svg { width: 14px; color: var(--muted); }

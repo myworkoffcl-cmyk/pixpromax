@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { PdfTool } from "@/components/tools/pdf-tool";
-import { ToolPageShell } from "@/components/tools/tool-page-shell";
 import { getTool } from "@/config/tools";
 import { toolMetadata } from "@/lib/seo";
 
@@ -10,9 +9,11 @@ export const metadata: Metadata = toolMetadata(tool);
 export default function MergePdfPage() {
   return (
     <main className="workspace-page">
-      <ToolPageShell tool={tool}>
-        <PdfTool mode="merge" />
-      </ToolPageShell>
+      <div className="workspace-category-header shell">
+        <h1>{tool.name}</h1>
+        <p>{tool.longDescription}</p>
+      </div>
+      <PdfTool mode="merge" />
     </main>
   );
 }

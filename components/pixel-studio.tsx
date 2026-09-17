@@ -8,7 +8,7 @@ import { useState } from "react";
 
 const shortcuts = [
   { href: "/compress-image", title: "Less size. More room.", text: "Compress an image", icon: ImageDown, style: "shrink", detail: "JPG · PNG · WebP" },
-  { href: "/resize-image-to-kb", title: "Make it fit.", text: "Set a file-size limit", icon: Aperture, style: "fit", detail: "20 KB · 50 KB · Custom" },
+  { href: "/compress-to-target-size", title: "Make it fit.", text: "Set a file-size limit", icon: Aperture, style: "fit", detail: "20 KB · 50 KB · Custom" },
   { href: "/merge-pdf", title: "Pages together.", text: "Merge PDF files", icon: FileStack, style: "apply", detail: "Local · private" },
 ];
 
@@ -70,7 +70,7 @@ export function PixelStudio() {
         })}
       </div>
       <div className="studio-promise"><span><ShieldCheck aria-hidden="true" /> Processed on your device</span><span><Check aria-hidden="true" /> No watermark</span><span><Zap aria-hidden="true" /> No AI needed</span></div>
-      <Link className="studio-application" href="/passport-photo-maker"><span className="application-icon"><ScanFace aria-hidden="true" /></span><div><span>PHOTO & APPLICATION TOOLS</span><h2>Right dimensions. One less worry.</h2><p>Crop and position your photo with size presets. Always check your application’s official requirements.</p></div><span className="application-link">Prepare a photo <ArrowRight aria-hidden="true" /></span></Link>
+      <Link className="studio-application" href="/passport-photo-resizer"><span className="application-icon"><ScanFace aria-hidden="true" /></span><div><span>PHOTO & APPLICATION TOOLS</span><h2>Right dimensions. One less worry.</h2><p>Crop and position your photo with size presets. Always check your application’s official requirements.</p></div><span className="application-link">Prepare a photo <ArrowRight aria-hidden="true" /></span></Link>
     </div>
   </div>;
 }

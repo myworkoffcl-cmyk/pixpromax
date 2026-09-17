@@ -80,7 +80,7 @@ export function PdfCompressTool() {
         </div>
       </div>
       <div style={{ padding: "12px", color: "var(--muted)", fontSize: "14px" }}>
-        Removes metadata and optimizes the PDF structure to reduce file size.
+        Removes metadata and optimizes PDF structure. Size reduction depends on the file's content.
       </div>
     </div>
     {compressedSize > 0 && (

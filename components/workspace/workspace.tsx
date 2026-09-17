@@ -103,18 +103,6 @@ function usePreviewUrl(blob: Blob | File | null): string | null {
   return url;
 }
 
-// ─── AVIF detection hook ───────────────────────────────────────────────────
-
-function useAvifSupport(): boolean | null {
-  const [supported, setSupported] = useState<boolean | null>(null);
-  useEffect(() => {
-    const canvas = document.createElement("canvas");
-    canvas.width = canvas.height = 1;
-    canvas.toBlob((b) => setSupported(!!b && b.size > 0), "image/avif");
-  }, []);
-  return supported;
-}
-
 // ─── Crop helpers ──────────────────────────────────────────────────────────
 
 function computeCropRect(
@@ -974,8 +962,6 @@ function ConvertControls({
   cfg: WorkspaceOps["convert"];
   onChange: (p: Partial<WorkspaceOps["convert"]>) => void;
 }) {
-  const avifSupported = useAvifSupport();
-
   const formats: Array<{
     value: OutputFormat;
     label: string;
@@ -999,12 +985,6 @@ function ConvertControls({
       label: "WebP",
       hint: "Modern format. Great quality-to-size balance. Broad support.",
       available: true,
-    },
-    {
-      value: "image/avif",
-      label: avifSupported === null ? "AVIF (detecting…)" : avifSupported ? "AVIF" : "AVIF (unavailable)",
-      hint: "Best compression of modern formats. Chrome 94+ / Firefox 113+.",
-      available: avifSupported !== false,
     },
   ];
 
@@ -1036,11 +1016,6 @@ function ConvertControls({
       </div>
       {selected && (
         <p className="ws-hint">{selected.hint}</p>
-      )}
-      {avifSupported === false && cfg.format !== "image/avif" && (
-        <p className="ws-hint ws-hint--warn">
-          AVIF is not supported in this browser — WebP gives the next-best compression.
-        </p>
       )}
     </div>
   );

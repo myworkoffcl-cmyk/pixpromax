@@ -363,7 +363,7 @@ export async function runPipeline(
 
     if (ops.compress.enabled) {
       if (ops.compress.mode === "target") {
-        const intermediateBlob = await canvasToBlob(finalCanvas, outputMime, 0.92);
+        const intermediateBlob = await canvasToBlob(finalCanvas, outputMime as import("@/types/image").ImageMime, 0.92);
         releaseCanvas(finalCanvas);
         const intermediateFile = new File([intermediateBlob], `${base}.${ext}`, { type: outputMime });
         const targetResult = await optimizeToTarget(
@@ -375,13 +375,13 @@ export async function runPipeline(
         blob = targetResult.blob;
         resultFilename = `${base}-${ops.compress.targetKb}kb.${ext}`;
       } else {
-        blob = await canvasToBlob(finalCanvas, outputMime, ops.compress.quality);
+        blob = await canvasToBlob(finalCanvas, outputMime as import("@/types/image").ImageMime, ops.compress.quality);
         releaseCanvas(finalCanvas);
         resultFilename = `${base}-compressed.${ext}`;
       }
     } else {
       const quality = outputMime === "image/png" ? 1 : 0.90;
-      blob = await canvasToBlob(finalCanvas, outputMime, quality);
+      blob = await canvasToBlob(finalCanvas, outputMime as import("@/types/image").ImageMime, quality);
       releaseCanvas(finalCanvas);
 
       const suffix = [

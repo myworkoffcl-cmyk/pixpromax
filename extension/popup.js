@@ -1,11 +1,11 @@
 const baseUrl = "https://pixpromax.com";
 const tools = [
   ["Compress image", "/compress-image", "JPG · PNG · WebP", "image"],
-  ["Resize to KB", "/resize-image-to-kb", "20 KB · 50 KB · more", "image"],
+  ["Compress to Size", "/compress-to-target-size", "20 KB · 50 KB · more", "image"],
   ["Merge PDF", "/merge-pdf", "Put pages together", "pdf"],
   ["PDF to JPG", "/pdf-to-jpg", "Export every page", "pdf"],
   ["JPG to PDF", "/jpg-to-pdf", "Create one PDF", "pdf"],
-  ["Passport photo", "/passport-photo-maker", "Prepare a photo", "image"]
+  ["Passport photo", "/passport-photo-resizer", "Prepare a photo", "image"]
 ];
 
 const open = (path) => chrome.tabs.create({ url: `${baseUrl}${path}` });
