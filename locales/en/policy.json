@@ -1,0 +1,184 @@
+{
+  "about": {
+    "kicker": "About PixProMax",
+    "heading": "Free Image and PDF Tools for Everyone",
+    "lede": "PixProMax is a thoughtful collection of browser-based tools designed to make everyday image and PDF editing fast, free, and respectful of your privacy.",
+    "sections": [
+      {
+        "title": "Our Mission",
+        "content": "We believe powerful image and PDF tools shouldn't require expensive software or compromise your privacy. Every tool at PixProMax runs entirely in your browser, so your files never leave your device."
+      },
+      {
+        "title": "What We Offer",
+        "content": "From compression and resizing to format conversion and PDF management, PixProMax provides a complete suite of image and PDF utilities. All tools are completely free with no hidden fees, watermarks, or limitations."
+      },
+      {
+        "title": "Privacy First",
+        "content": "Your files are your files. We process everything locally in your browser and never store, track, or analyze your uploads. No servers collect your data, and we don't use cookies for tracking."
+      },
+      {
+        "title": "Accessible Design",
+        "content": "PixProMax works seamlessly on desktop browsers and mobile devices. Whether you're on a phone, tablet, or computer, you get the same powerful tools and the same privacy guarantees."
+      },
+      {
+        "title": "No Installation Required",
+        "content": "Just visit PixProMax, upload your image or PDF, and get to work. No downloads, no installation, no account creation—just instant access to the tools you need."
+      },
+      {
+        "title": "Continuous Improvement",
+        "content": "We listen to user feedback and regularly add new tools and features. Our commitment to quality and privacy remains unchanged as we grow."
+      },
+      {
+        "title": "Community Driven",
+        "content": "PixProMax exists because people need better tools. We're grateful for every user and invite you to share feedback, suggestions, or ideas for new tools."
+      }
+    ]
+  },
+  "contact": {
+    "kicker": "Get in Touch",
+    "heading": "Contact Us",
+    "lede": "Have a question, feedback, or need support? We'd love to hear from you.",
+    "sections": [
+      {
+        "title": "Email Support",
+        "content": "For general inquiries, feedback, or technical support, email us at support@pixpromax.com. We aim to respond to all messages within 24 hours."
+      },
+      {
+        "title": "Privacy Questions",
+        "content": "If you have specific questions about how we handle your data or privacy concerns, please contact our privacy team at privacy@pixpromax.com."
+      },
+      {
+        "title": "Business Inquiries",
+        "content": "Interested in partnerships or have a business proposal? Reach out to business@pixpromax.com and we'll connect you with the right person on our team."
+      }
+    ]
+  },
+  "disclaimer": {
+    "kicker": "Legal Disclaimer",
+    "heading": "Important Limitations",
+    "lede": "Please read this disclaimer carefully before using PixProMax tools and services.",
+    "sections": [
+      {
+        "title": "No Guarantees",
+        "content": "PixProMax is provided 'as is' without warranties of any kind. We make no guarantees about tool accuracy, reliability, or fitness for a particular purpose. Use at your own risk."
+      },
+      {
+        "title": "Browser Limitations",
+        "content": "Since all processing happens in your browser, results depend on your browser's capabilities and available memory. We cannot guarantee results for extremely large files or unusual formats."
+      },
+      {
+        "title": "Data Loss",
+        "content": "While we process files locally and securely, we're not responsible for data loss from browser crashes, power failures, or other circumstances beyond our control. Always keep backups of important files."
+      },
+      {
+        "title": "Third-Party Links",
+        "content": "PixProMax may contain links to third-party websites. We're not responsible for the content, accuracy, or practices of external sites. Review their terms and privacy policies separately."
+      }
+    ]
+  },
+  "faq": {
+    "kicker": "Common Questions",
+    "heading": "Frequently Asked Questions",
+    "faqs": [
+      {
+        "question": "Are my files secure?",
+        "answer": "Yes, all processing happens in your browser. Your files never leave your device and are not sent to our servers. PixProMax never stores, analyzes, or tracks your uploads."
+      },
+      {
+        "question": "What file formats do you support?",
+        "answer": "We support PNG, JPG, WebP, TIFF, BMP, and many other image formats, as well as PDF files. Support depends on your browser's capabilities."
+      },
+      {
+        "question": "Is there a file size limit?",
+        "answer": "No hard size limit, but processing depends on your browser's available memory. Most modern browsers can handle files up to several hundred megabytes."
+      },
+      {
+        "question": "Do you store my images?",
+        "answer": "No, we never store images. They're processed locally on your device and deleted automatically once you close the browser tab."
+      },
+      {
+        "question": "Can I use it on mobile?",
+        "answer": "Yes, PixProMax is fully responsive and works on smartphones and tablets with modern browsers."
+      },
+      {
+        "question": "Is it free?",
+        "answer": "Yes, all tools on PixProMax are completely free and always will be. There are no premium plans, subscriptions, or hidden costs."
+      }
+    ]
+  },
+  "privacyPolicy": {
+    "kicker": "Your Privacy Matters",
+    "heading": "Privacy Policy",
+    "lede": "PixProMax respects your privacy. This policy explains how we handle information and protect your data.",
+    "lastUpdated": "Last updated: September 18, 2024",
+    "sections": [
+      {
+        "title": "Local Processing",
+        "content": "All image and PDF processing happens locally in your browser. We never send your files to our servers, process them on external servers, or store them anywhere. Your files remain completely under your control."
+      },
+      {
+        "title": "No File Tracking",
+        "content": "We don't track what files you upload, how you process them, or what tools you use. We have no way to identify your files or connect uploads to your account or device."
+      },
+      {
+        "title": "No Cookies for Tracking",
+        "content": "We don't use cookies for tracking your behavior, creating profiles, or building advertising data. We may use minimal cookies for essential functionality like language preferences, which you can clear anytime."
+      },
+      {
+        "title": "Analytics",
+        "content": "We use privacy-respecting analytics tools that don't identify individual users. Analytics may include page views and tool usage counts, but no personal data is collected."
+      },
+      {
+        "title": "Data We Collect",
+        "content": "PixProMax minimally collects: your browser type and version, pages visited, and referring URLs. We never collect IP addresses for tracking purposes or use fingerprinting techniques."
+      },
+      {
+        "title": "Third-Party Services",
+        "content": "PixProMax uses trusted hosting and analytics services that comply with privacy standards. Third-party services cannot access your uploaded files or personal data."
+      },
+      {
+        "title": "GDPR and Privacy Rights",
+        "content": "If you're in the EU or have privacy rights under GDPR, we comply with those rights. Since we collect minimal data and process files only locally, most privacy rights requests are handled automatically."
+      },
+      {
+        "title": "Changes to This Policy",
+        "content": "We may update this privacy policy occasionally. Significant changes will be announced on our website. Continued use of PixProMax means you accept the updated policy."
+      },
+      {
+        "title": "Contact Privacy Team",
+        "content": "If you have privacy questions or concerns, email privacy@pixpromax.com. We respond to all inquiries within 7 business days."
+      }
+    ]
+  },
+  "terms": {
+    "kicker": "Legal Terms",
+    "heading": "Terms & Conditions",
+    "lede": "By using PixProMax, you agree to these terms. Please read them carefully.",
+    "sections": [
+      {
+        "title": "Acceptable Use",
+        "content": "You agree to use PixProMax only for lawful purposes. Don't use it to process illegal content, violate copyright laws, or harm others. Respect intellectual property rights and privacy of others."
+      },
+      {
+        "title": "No Liability",
+        "content": "PixProMax is provided 'as-is' without warranties. We're not liable for data loss, software conflicts, or any indirect or consequential damages from tool use. Use at your own risk."
+      },
+      {
+        "title": "Intellectual Property",
+        "content": "PixProMax and its design are protected by copyright. You may use the tools for personal and business purposes, but may not reverse-engineer, copy, or distribute the software."
+      },
+      {
+        "title": "Service Availability",
+        "content": "We aim for 99% uptime but make no guarantees about continuous availability. PixProMax may be unavailable for maintenance or unforeseen circumstances without liability."
+      },
+      {
+        "title": "User Content",
+        "content": "You own all files you upload. We process them locally and never claim ownership, rights, or compensation for your content."
+      },
+      {
+        "title": "Changes and Discontinuation",
+        "content": "We may update tools, add features, or discontinue services without notice. We'll maintain core tools indefinitely, but no service is guaranteed to continue forever."
+      }
+    ]
+  }
+}

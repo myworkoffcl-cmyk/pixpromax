@@ -1,3 +1,8 @@
 import type { Metadata } from "next";
+import { DisclaimerPageClient } from "./disclaimer-client";
+
 export const metadata: Metadata = { title: "Disclaimer", description: "Important limitations for PixProMax image and PDF utilities.", alternates: { canonical: "/disclaimer" } };
-export default function DisclaimerPage() { return <article className="legal-page shell"><span className="kicker">IMPORTANT INFORMATION</span><h1>Disclaimer</h1><p className="lede">PixProMax provides practical browser-based utilities. Please verify outputs before relying on them.</p><h2>Utility outputs</h2><p>Image conversion, compression, resizing, cropping, and PDF tools can change quality, dimensions, metadata, or compatibility. Check the downloaded result and keep an original copy of important files.</p><h2>Passport and ID photos</h2><p>Photo dimensions and presets are convenience guides, not an official certification or guarantee of acceptance. Requirements differ by authority and can change. Verify current rules with the organization receiving your photo.</p><h2>Your responsibility</h2><p>You are responsible for the files you choose, the permissions you have to use them, and how you use the output. PixProMax does not provide legal, government, or official-document advice.</p><h2>Third parties</h2><p>PixProMax does not guarantee that a converted file will be accepted by a particular website, device, authority, or other third party.</p></article>; }
+
+export default function DisclaimerPage() {
+  return <DisclaimerPageClient />;
+}
