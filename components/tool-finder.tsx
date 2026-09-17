@@ -7,18 +7,18 @@ import { useState } from "react";
 
 const categories = ["All tools", "Size & quality", "Applications", "Convert & export"];
 const groups: Record<string, string[]> = {
-  "Size & quality": ["compress-image", "resize-image", "resize-image-to-kb", "crop-image"],
-  "Applications": ["resize-image-to-kb", "signature-resizer", "passport-photo-maker"],
-  "Convert & export": ["convert-image", "image-to-pdf", "batch-converter"],
+  "Size & quality": ["compress-image", "resize-image", "compress-to-target-size", "crop-image"],
+  "Applications": ["compress-to-target-size", "signature-resizer", "passport-photo-resizer"],
+  "Convert & export": ["convert-image", "jpg-to-pdf", "bulk-image-compressor"],
 };
 
 const quickActions = [
   { label: "Compress", href: "/compress-image" },
   { label: "Resize", href: "/resize-image" },
-  { label: "File size in KB", href: "/resize-image-to-kb" },
-  { label: "Passport", href: "/passport-photo-maker" },
+  { label: "File size in KB", href: "/compress-to-target-size" },
+  { label: "Passport", href: "/passport-photo-resizer" },
   { label: "Signature", href: "/signature-resizer" },
-  { label: "Image to PDF", href: "/image-to-pdf" },
+  { label: "Image to PDF", href: "/jpg-to-pdf" },
 ];
 
 export function ToolFinder() {
