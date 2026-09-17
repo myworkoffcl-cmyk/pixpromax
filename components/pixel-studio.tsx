@@ -7,7 +7,7 @@ import { WorkspaceEntry } from "@/components/workspace/workspace-entry";
 import { useState } from "react";
 
 const shortcuts = [
-  { href: "/compress-image", title: "Less size. More room.", text: "Compress an image", icon: ImageDown, style: "shrink", detail: "JPG · PNG · WebP" },
+  { href: "/image-tools/compress", title: "Less size. More room.", text: "Compress an image", icon: ImageDown, style: "shrink", detail: "JPG · PNG · WebP" },
   { href: "/compress-to-target-size", title: "Make it fit.", text: "Set a file-size limit", icon: Aperture, style: "fit", detail: "20 KB · 50 KB · Custom" },
   { href: "/merge-pdf", title: "Pages together.", text: "Merge PDF files", icon: FileStack, style: "apply", detail: "Local · private" },
 ];
