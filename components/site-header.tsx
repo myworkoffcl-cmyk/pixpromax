@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "@/components/site-link";
-import { FileStack, House, Images, Menu, ScanLine, ShieldCheck, X } from "lucide-react";
+import { FileStack, House, Menu, ScanLine, ShieldCheck, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { HeaderToolSearch } from "@/components/header-tool-search";
 import { ThemeToggle } from "@/components/theme-toggle";
@@ -34,8 +34,8 @@ export function SiteHeader() {
         </Link>
         <HeaderToolSearch />
         <div className="header-actions">
-          <Link href="/#directory-image-tools" className="icon-button" aria-label="Image tools"><Images /></Link>
-          <Link href="/#directory-document-tools" className="icon-button" aria-label="Document tools"><FileStack /></Link>
+          <Link href="/#directory-image-tools" className="header-shortcut">Image tools</Link>
+          <Link href="/#directory-document-tools" className="header-shortcut">Document tools</Link>
           <div className="header-options-wrap" ref={menuRef}>
             <button className={`icon-button menu-button ${open ? "active" : ""}`} type="button" onClick={() => setOpen((value) => !value)} aria-expanded={open} aria-haspopup="menu" aria-controls="header-options-menu" aria-label={open ? "Close options menu" : "Open options menu"}>
               {open ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}

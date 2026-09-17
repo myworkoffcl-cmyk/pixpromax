@@ -22,7 +22,9 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .brand-mark svg { width: 21px; height: 21px; stroke-width: 2.4; }
 .desktop-nav { display: flex; gap: 28px; color: var(--muted); font-size: 14px; }
 .desktop-nav a:hover { color: var(--ink); }
-.header-actions { display: flex; align-items: center; gap: 8px; }
+.header-actions { display: flex; align-items: center; gap: 12px; }
+.header-shortcut { height: 42px; padding: 0 14px; display: inline-flex; align-items: center; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); background: var(--surface); font-size: 13px; font-weight: 700; cursor: pointer; transition: color .18s ease, border-color .18s ease; }
+.header-shortcut:hover { color: var(--brand-dark); border-color: color-mix(in srgb, var(--brand), transparent 35%); }
 .header-search-wrap { position: relative; }
 .header-search-trigger { height: 42px; padding: 0 14px; display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); background: var(--surface); cursor: pointer; transition: color .18s ease, border-color .18s ease, transform .18s ease; }
 .header-search-trigger:hover, .header-search-trigger.active { color: var(--brand-dark); border-color: color-mix(in srgb, var(--brand), transparent 35%); transform: translateY(-1px); }
