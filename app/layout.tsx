@@ -46,7 +46,7 @@ export default function RootLayout({
         <main id="main-content">{children}</main>
         <SiteFooter />
         <ServiceWorkerRegister />
-        {process.env.NEXT_PUBLIC_ADSENSE_CLIENT ? <Script src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${encodeURIComponent(process.env.NEXT_PUBLIC_ADSENSE_CLIENT)}`} strategy="afterInteractive" crossOrigin="anonymous" /> : null}
+        {process.env.NEXT_PUBLIC_ADSENSE_CLIENT ? <Script src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${encodeURIComponent(process.env.NEXT_PUBLIC_ADSENSE_CLIENT)}`} strategy="lazyOnload" crossOrigin="anonymous" /> : null}
         <Analytics />
         <CookieConsent enabled={optionalServicesEnabled} />
       </body>
