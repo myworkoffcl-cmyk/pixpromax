@@ -12,6 +12,7 @@ const SHOWN_BY_DEFAULT = 6;
 export function PixelStudio() {
   const [expandedSections, setExpandedSections] = useState<{ [key: string]: boolean }>({});
   const { t } = useTranslation("home");
+  const { t: tCommon } = useTranslation("common");
 
   const shortcuts = [
     { href: "/image-tools/compress", title: t("shortcuts.compress.title", "Less size. More room."), text: t("shortcuts.compress.text", "Compress an image"), icon: ImageDown, style: "shrink", detail: "JPG · PNG · WebP" },
@@ -56,7 +57,7 @@ export function PixelStudio() {
             {section.name === t("sections.imageTools", "Image tools") && <WorkspaceEntry />}
             <div className="studio-tool-grid">{displayedItems.map(tool => {
               const Icon = tool.icon;
-              return <Link href={`/${tool.slug}`} className={`studio-tool accent-${tool.accent}`} key={tool.slug}><span className="studio-tool-icon"><Icon aria-hidden="true" /></span><div><h3>{t(`tools.${tool.slug}`, tool.name)}</h3><p>{t(`toolDescriptions.${tool.slug}`, tool.description)}</p></div><ArrowUpRight className="studio-tool-arrow" aria-hidden="true" /></Link>;
+              return <Link href={`/${tool.slug}`} className={`studio-tool accent-${tool.accent}`} key={tool.slug}><span className="studio-tool-icon"><Icon aria-hidden="true" /></span><div><h3>{tCommon(`tools.${tool.slug}`, tool.name)}</h3><p>{tCommon(`toolDescriptions.${tool.slug}`, tool.description)}</p></div><ArrowUpRight className="studio-tool-arrow" aria-hidden="true" /></Link>;
             })}</div>
             {hasMore && (
               <button
