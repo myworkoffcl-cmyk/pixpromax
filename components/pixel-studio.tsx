@@ -12,7 +12,7 @@ const shortcuts = [
   { href: "/merge-pdf", title: "Pages together.", text: "Merge PDF files", icon: FileStack, style: "apply", detail: "Local · private" },
 ];
 
-const SHOWN_BY_DEFAULT = 8; // Show 8 most important tools by default
+const SHOWN_BY_DEFAULT = 6; // Show 6 most important tools by default
 
 export function PixelStudio() {
   const [expandedSections, setExpandedSections] = useState<{ [key: string]: boolean }>({});

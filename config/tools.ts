@@ -40,7 +40,7 @@ export const tools: ToolConfig[] = [
     status: "active",
     icon: Maximize2,
     accent: "violet",
-    related: ["compress-image", "crop-image", "resize-image-to-kb"],
+    related: ["compress-image", "crop-image", "bulk-image-compressor"],
   },
   {
     name: "Crop & Rotate Image",
@@ -62,32 +62,10 @@ export const tools: ToolConfig[] = [
     status: "active",
     icon: RefreshCw,
     accent: "sky",
-    related: ["batch-converter", "compress-image", "jpg-to-png"],
+    related: ["bulk-image-compressor", "compress-image", "jpg-to-png"],
   },
 
   // Most Popular Tools (shown by default in grid)
-  {
-    name: "Resize Image to KB",
-    slug: "resize-image-to-kb",
-    description: "Aim for 20 KB, 50 KB, 100 KB, or a custom size.",
-    longDescription: "Use bounded quality and dimension optimization to approach a practical target file size.",
-    category: "Optimization",
-    status: "active",
-    icon: Aperture,
-    accent: "rose",
-    related: ["compress-image", "resize-image", "bulk-image-compressor"],
-  },
-  {
-    name: "Batch Converter",
-    slug: "batch-converter",
-    description: "Convert a queue of images and download one ZIP.",
-    longDescription: "Process multiple images without uploading them, then download files individually or together.",
-    category: "Batch tools",
-    status: "active",
-    icon: Images,
-    accent: "amber",
-    related: ["convert-image", "jpg-to-png", "bulk-image-compressor"],
-  },
   {
     name: "JPG to PNG",
     slug: "jpg-to-png",
@@ -209,7 +187,7 @@ export const tools: ToolConfig[] = [
     status: "active",
     icon: Images,
     accent: "rose",
-    related: ["batch-converter", "bulk-image-compressor", "resize-image"],
+    related: ["bulk-image-compressor", "bulk-image-resizer", "resize-image"],
   },
   {
     name: "Pixelate Image",
@@ -266,18 +244,6 @@ export const tools: ToolConfig[] = [
     accent: "indigo",
     related: ["id-photo-resizer", "visa-photo-resizer", "resize-image"],
   },
-  {
-    name: "Passport Photo Maker",
-    slug: "passport-photo-maker",
-    description: "Crop and position portraits for common photo sizes.",
-    longDescription: "Prepare a portrait with configurable presets, zoom, positioning, and high-resolution export.",
-    category: "Passport",
-    status: "active",
-    icon: ScanFace,
-    accent: "indigo",
-    related: ["resize-image", "passport-photo-resizer", "id-photo-resizer"],
-  },
-
   // PDF Tools
   {
     name: "JPG to PDF",
