@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, ArrowUpRight, ScanFace, Lock, CircleCheck, Brain, ImageDown, Aperture, FileStack, ChevronDown } from "lucide-react";
+import { ArrowRight, ArrowUpRight, ScanFace, Lock, CircleCheck, Brain, ImageDown, Aperture, FileStack, ChevronDown, Zap, ShieldCheck } from "lucide-react";
 import Link from "@/components/site-link";
 import { tools } from "@/config/tools";
 import { WorkspaceEntry } from "@/components/workspace/workspace-entry";
