@@ -3,6 +3,45 @@
     "title": "Free Online Image Tools",
     "subtitle": "Edit, resize, convert, and compress images online"
   },
+  "studio": {
+    "badge": "FAST, FREE, ON YOUR DEVICE",
+    "heading": "Files ready.",
+    "subheading": "In moments.",
+    "description": "Resize images, prepare applications, and manage PDFs without uploading a file.",
+    "stamp": "No account.",
+    "stamp2": "No watermark.",
+    "privacy": "100% Private",
+    "privacyText": "Files stay on your device",
+    "tool": "tool",
+    "tools": "tools",
+    "promise1": "Processed on your device",
+    "promise2": "No watermark",
+    "promise3": "No AI needed",
+    "photoTools": "PHOTO & APPLICATION TOOLS",
+    "photoTitle": "Right dimensions. One less worry.",
+    "photoDesc": "Crop and position your photo with size presets. Always check your application's official requirements.",
+    "photoLink": "Prepare a photo",
+    "showFewer": "Show fewer",
+    "showMore": "Show more"
+  },
+  "sections": {
+    "imageTools": "Image tools",
+    "documentTools": "Document tools"
+  },
+  "shortcuts": {
+    "compress": {
+      "title": "Less size. More room.",
+      "text": "Compress an image"
+    },
+    "fit": {
+      "title": "Make it fit.",
+      "text": "Set a file-size limit"
+    },
+    "merge": {
+      "title": "Pages together.",
+      "text": "Merge PDF files"
+    }
+  },
   "features": {
     "noInstallation": "No Installation",
     "noRegistration": "No Registration",
