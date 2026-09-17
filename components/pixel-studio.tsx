@@ -56,7 +56,7 @@ export function PixelStudio() {
             {section.name === t("sections.imageTools", "Image tools") && <WorkspaceEntry />}
             <div className="studio-tool-grid">{displayedItems.map(tool => {
               const Icon = tool.icon;
-              return <Link href={`/${tool.slug}`} className={`studio-tool accent-${tool.accent}`} key={tool.slug}><span className="studio-tool-icon"><Icon aria-hidden="true" /></span><div><h3>{tool.name}</h3><p>{tool.description}</p></div><ArrowUpRight className="studio-tool-arrow" aria-hidden="true" /></Link>;
+              return <Link href={`/${tool.slug}`} className={`studio-tool accent-${tool.accent}`} key={tool.slug}><span className="studio-tool-icon"><Icon aria-hidden="true" /></span><div><h3>{t(`tools.${tool.slug}`, tool.name)}</h3><p>{t(`toolDescriptions.${tool.slug}`, tool.description)}</p></div><ArrowUpRight className="studio-tool-arrow" aria-hidden="true" /></Link>;
             })}</div>
             {hasMore && (
               <button
