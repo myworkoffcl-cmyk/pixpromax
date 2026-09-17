@@ -9,7 +9,7 @@ import { ProcessingButton } from "@/components/tools/processing-button";
 import { UploadDropzone } from "@/components/tools/upload-dropzone";
 import { parsePageList, validatePdfFile } from "@/lib/pdf/validate";
 
-type PdfMode = "merge" | "split" | "organize" | "to-jpg";
+type PdfMode = "merge" | "split" | "organize" | "to-jpg" | "to-png";
 interface PdfToolProps { mode: PdfMode }
 
 const labels: Record<PdfMode, { action: string; multiple: boolean; hint: string }> = {
@@ -17,6 +17,7 @@ const labels: Record<PdfMode, { action: string; multiple: boolean; hint: string 
   split: { action: "Extract pages", multiple: false, hint: "Choose one PDF, then enter the pages to extract." },
   organize: { action: "Organize PDF", multiple: false, hint: "Choose one PDF, then enter the page order you want to keep." },
   "to-jpg": { action: "Convert to JPG", multiple: false, hint: "Choose one PDF and export every page as a JPG image." },
+  "to-png": { action: "Convert to PNG", multiple: false, hint: "Choose one PDF and export every page as a PNG image." },
 };
 
 function fileStem(name: string) { return name.replace(/\.pdf$/i, ""); }
@@ -73,17 +74,20 @@ export function PdfTool({ mode }: PdfToolProps) {
         pdfjs.GlobalWorkerOptions.workerSrc = new URL("pdfjs-dist/legacy/build/pdf.worker.mjs", import.meta.url).href;
         const pdfDocument = await pdfjs.getDocument({ data: new Uint8Array(await files[0].arrayBuffer()) }).promise;
         const zip = new JSZip();
+        const isJpeg = mode === "to-jpg";
+        const imageType = isJpeg ? "image/jpeg" : "image/png";
+        const ext = isJpeg ? "jpg" : "png";
         for (let index = 1; index <= pdfDocument.numPages; index += 1) {
           const page = await pdfDocument.getPage(index); const viewport = page.getViewport({ scale: 1.5 });
           const canvas = window.document.createElement("canvas");
           canvas.width = Math.ceil(viewport.width); canvas.height = Math.ceil(viewport.height);
           const context = canvas.getContext("2d"); if (!context) throw new Error("Your browser cannot render this PDF.");
           await page.render({ canvas, canvasContext: context, viewport }).promise;
-          const image = await new Promise<Blob>((resolve, reject) => canvas.toBlob(blob => blob ? resolve(blob) : reject(new Error("A PDF page could not be converted.")), "image/jpeg", quality / 100));
+          const image = await new Promise<Blob>((resolve, reject) => canvas.toBlob(blob => blob ? resolve(blob) : reject(new Error("A PDF page could not be converted.")), imageType, isJpeg ? quality / 100 : undefined));
           canvas.width = 1; canvas.height = 1;
-          zip.file(`${fileStem(files[0].name)}-page-${index}.jpg`, image);
+          zip.file(`${fileStem(files[0].name)}-page-${index}.${ext}`, image);
         }
-        setResult(await zip.generateAsync({ type: "blob" })); setFilename(`${fileStem(files[0].name)}-jpg.zip`);
+        setResult(await zip.generateAsync({ type: "blob" })); setFilename(`${fileStem(files[0].name)}-${ext}.zip`);
       }
     } catch (reason) { setError(reason instanceof Error ? reason.message : "The PDF could not be processed."); }
     finally { setBusy(false); }

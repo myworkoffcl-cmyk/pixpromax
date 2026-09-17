@@ -311,6 +311,28 @@ export const tools: ToolConfig[] = [
     accent: "amber",
     related: ["jpg-to-pdf", "merge-pdf", "compress-image"],
   },
+  {
+    name: "PDF to PNG",
+    slug: "pdf-to-png",
+    description: "Turn PDF pages into clear PNG images.",
+    longDescription: "Export PDF pages as PNG images locally, with full transparency support.",
+    category: "PDF tools",
+    status: "active",
+    icon: FileImage,
+    accent: "mint",
+    related: ["pdf-to-jpg", "merge-pdf", "jpg-to-pdf"],
+  },
+  {
+    name: "Compress PDF",
+    slug: "pdf-compress",
+    description: "Reduce PDF file size by removing unnecessary data.",
+    longDescription: "Optimize PDFs locally by removing metadata and compressing content without compromising quality.",
+    category: "PDF tools",
+    status: "active",
+    icon: FileStack,
+    accent: "rose",
+    related: ["pdf-to-jpg", "merge-pdf", "organize-pdf"],
+  },
 ];
 
 export const getTool = (slug: string) => tools.find((tool) => tool.slug === slug);
