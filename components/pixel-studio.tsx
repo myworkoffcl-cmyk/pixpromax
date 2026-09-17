@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, ArrowUpRight, ScanFace, ShieldCheck, Zap, Check, ImageDown, Aperture, FileStack, ChevronDown } from "lucide-react";
+import { ArrowRight, ArrowUpRight, ScanFace, Lock, CircleCheck, Brain, ImageDown, Aperture, FileStack, ChevronDown } from "lucide-react";
 import Link from "@/components/site-link";
 import { tools } from "@/config/tools";
 import { WorkspaceEntry } from "@/components/workspace/workspace-entry";
@@ -69,7 +69,20 @@ export function PixelStudio() {
           </section>;
         })}
       </div>
-      <div className="studio-promise"><span><ShieldCheck aria-hidden="true" /> Processed on your device</span><span><Check aria-hidden="true" /> No watermark</span><span><Zap aria-hidden="true" /> No AI needed</span></div>
+      <div className="studio-promise">
+        <div className="promise-card">
+          <div className="promise-icon promise-icon-blue"><Lock aria-hidden="true" /></div>
+          <span>Processed on your device</span>
+        </div>
+        <div className="promise-card">
+          <div className="promise-icon promise-icon-green"><CircleCheck aria-hidden="true" /></div>
+          <span>No watermark</span>
+        </div>
+        <div className="promise-card">
+          <div className="promise-icon promise-icon-purple"><Brain aria-hidden="true" /></div>
+          <span>No AI needed</span>
+        </div>
+      </div>
       <Link className="studio-application" href="/passport-photo-resizer"><span className="application-icon"><ScanFace aria-hidden="true" /></span><div><span>PHOTO & APPLICATION TOOLS</span><h2>Right dimensions. One less worry.</h2><p>Crop and position your photo with size presets. Always check your application’s official requirements.</p></div><span className="application-link">Prepare a photo <ArrowRight aria-hidden="true" /></span></Link>
     </div>
   </div>;
