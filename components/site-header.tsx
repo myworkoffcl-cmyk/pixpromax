@@ -1,14 +1,15 @@
 "use client";
 
 import Link from "@/components/site-link";
-import { FileStack, House, Images, Menu, ScanLine, ShieldCheck, X } from "lucide-react";
+import { FileStack, House, Images, Menu, Moon, ScanLine, ShieldCheck, Sun, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
-import { ThemeToggle } from "@/components/theme-toggle";
 import { HeaderToolSearch } from "@/components/header-tool-search";
+import { useTheme } from "next-themes";
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
+  const { theme, setTheme } = useTheme();
 
   useEffect(() => {
     const closeOnOutsideClick = (event: PointerEvent) => {
@@ -34,7 +35,8 @@ export function SiteHeader() {
         </Link>
         <HeaderToolSearch />
         <div className="header-actions">
-          <ThemeToggle />
+          <Link href="/#directory-image-tools" className="icon-button" aria-label="Image tools"><Images /></Link>
+          <Link href="/#directory-document-tools" className="icon-button" aria-label="Document tools"><FileStack /></Link>
           <div className="header-options-wrap" ref={menuRef}>
             <button className={`icon-button menu-button ${open ? "active" : ""}`} type="button" onClick={() => setOpen((value) => !value)} aria-expanded={open} aria-haspopup="menu" aria-controls="header-options-menu" aria-label={open ? "Close options menu" : "Open options menu"}>
               {open ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
@@ -45,6 +47,7 @@ export function SiteHeader() {
                 <Link href="/#directory-image-tools" onClick={() => setOpen(false)}><Images aria-hidden="true" /><span><strong>Image tools</strong><small>Edit, resize, and convert</small></span></Link>
                 <Link href="/#directory-document-tools" onClick={() => setOpen(false)}><FileStack aria-hidden="true" /><span><strong>Document tools</strong><small>Work with images and PDFs</small></span></Link>
                 <Link href="/privacy-policy" onClick={() => setOpen(false)}><ShieldCheck aria-hidden="true" /><span><strong>Privacy</strong><small>How local processing works</small></span></Link>
+                <button type="button" onClick={() => { setTheme(theme === "light" ? "dark" : "light"); setOpen(false); }} className="menu-theme-button"><span className="theme-icon">{theme === "light" ? <Moon aria-hidden="true" /> : <Sun aria-hidden="true" />}</span><span><strong>Theme</strong><small>{theme === "light" ? "Switch to dark" : "Switch to light"}</small></span></button>
               </nav>
             ) : null}
           </div>
