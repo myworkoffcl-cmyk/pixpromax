@@ -17,5 +17,44 @@
     "answer2": "No, PixProMax is a web-based tool. Just open it in your browser and start using it.",
     "question3": "Can I use it offline?",
     "answer3": "Yes, after the first load, PixProMax can work offline with service workers."
+  },
+  "studio": {
+    "badge": "तेज, मुफ्त, आपके डिवाइस पर",
+    "heading": "फाइलें तैयार।",
+    "subheading": "पलों में।",
+    "description": "फाइल अपलोड किए बिना छवियों को पुनः आकार दें, एप्लिकेशन तैयार करें और पीडीएफ प्रबंधित करें।",
+    "stamp": "कोई खाता नहीं।",
+    "stamp2": "कोई वॉटरमार्क नहीं।",
+    "privacy": "100% निजी",
+    "privacyText": "फाइलें आपके डिवाइस पर रहती हैं",
+    "tool": "उपकरण",
+    "tools": "उपकरण",
+    "promise1": "आपके डिवाइस पर संसाधित",
+    "promise2": "कोई वॉटरमार्क नहीं",
+    "promise3": "कोई एआई आवश्यक नहीं",
+    "photoTools": "फोटो और एप्लिकेशन टूल्स",
+    "photoTitle": "सही आयाम। एक कम चिंता।",
+    "photoDesc": "आकार प्रीसेट के साथ अपनी फोटो को क्रॉप और स्थिति दें। हमेशा अपने एप्लिकेशन की आधिकारिक आवश्यकताओं की जांच करें।",
+    "photoLink": "फोटो तैयार करें",
+    "showFewer": "कम दिखाएं",
+    "showMore": "अधिक दिखाएं"
+  },
+  "sections": {
+    "imageTools": "छवि उपकरण",
+    "documentTools": "दस्तावेज़ उपकरण"
+  },
+  "shortcuts": {
+    "compress": {
+      "title": "कम आकार। अधिक जगह।",
+      "text": "एक छवि संपीड़ित करें"
+    },
+    "fit": {
+      "title": "इसे फिट करें।",
+      "text": "फाइल-आकार सीमा सेट करें"
+    },
+    "merge": {
+      "title": "पृष्ठ एक साथ।",
+      "text": "पीडीएफ फाइलें मर्ज करें"
+    }
   }
 }

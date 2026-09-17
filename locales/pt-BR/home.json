@@ -17,5 +17,44 @@
     "answer2": "No, PixProMax is a web-based tool. Just open it in your browser and start using it.",
     "question3": "Can I use it offline?",
     "answer3": "Yes, after the first load, PixProMax can work offline with service workers."
+  },
+  "studio": {
+    "badge": "RÁPIDO, GRATUITO, EM SEU DISPOSITIVO",
+    "heading": "Arquivos prontos.",
+    "subheading": "Em instantes.",
+    "description": "Redimensione imagens, prepare aplicativos e gerencie PDFs sem fazer upload de um arquivo.",
+    "stamp": "Sem conta.",
+    "stamp2": "Sem marca d'água.",
+    "privacy": "100% Privado",
+    "privacyText": "Os arquivos permanecem no seu dispositivo",
+    "tool": "ferramenta",
+    "tools": "ferramentas",
+    "promise1": "Processado no seu dispositivo",
+    "promise2": "Sem marca d'água",
+    "promise3": "Sem IA necessária",
+    "photoTools": "FERRAMENTAS DE FOTO E APLICATIVO",
+    "photoTitle": "Dimensões certas. Uma preocupação a menos.",
+    "photoDesc": "Corte e posicione sua foto com predefinições de tamanho. Sempre verifique os requisitos oficiais do seu aplicativo.",
+    "photoLink": "Preparar uma foto",
+    "showFewer": "Mostrar menos",
+    "showMore": "Mostrar mais"
+  },
+  "sections": {
+    "imageTools": "Ferramentas de imagem",
+    "documentTools": "Ferramentas de documento"
+  },
+  "shortcuts": {
+    "compress": {
+      "title": "Tamanho menor. Mais espaço.",
+      "text": "Comprimir uma imagem"
+    },
+    "fit": {
+      "title": "Faça caber.",
+      "text": "Definir um limite de tamanho de arquivo"
+    },
+    "merge": {
+      "title": "Páginas juntas.",
+      "text": "Mesclar arquivos PDF"
+    }
   }
 }

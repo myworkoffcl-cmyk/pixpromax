@@ -17,5 +17,44 @@
     "answer2": "No, PixProMax is a web-based tool. Just open it in your browser and start using it.",
     "question3": "Can I use it offline?",
     "answer3": "Yes, after the first load, PixProMax can work offline with service workers."
+  },
+  "studio": {
+    "badge": "দ্রুত, বিনামূল্যে, আপনার ডিভাইসে",
+    "heading": "ফাইল প্রস্তুত।",
+    "subheading": "মুহূর্তে।",
+    "description": "আপনার ডিভাইস থেকে ফাইল আপলোড না করে ছবি পুনরায় আকার দিন, অ্যাপ্লিকেশন প্রস্তুত করুন এবং পিডিএফ পরিচালনা করুন।",
+    "stamp": "কোন অ্যাকাউন্ট নেই।",
+    "stamp2": "কোন জলচিহ্ন নেই।",
+    "privacy": "১০০% ব্যক্তিগত",
+    "privacyText": "ফাইলগুলি আপনার ডিভাইসে থাকে",
+    "tool": "সরঞ্জাম",
+    "tools": "সরঞ্জাম",
+    "promise1": "আপনার ডিভাইসে প্রক্রিয়াকৃত",
+    "promise2": "কোন জলচিহ্ন নেই",
+    "promise3": "কোন এআই প্রয়োজন নেই",
+    "photoTools": "ফটো এবং অ্যাপ্লিকেশন সরঞ্জাম",
+    "photoTitle": "সঠিক মাত্রা। একটি কম চিন্তা।",
+    "photoDesc": "আপনার ফটো ফসল এবং অবস্থান আকার প্রি-সেট সহ। সর্বদা আপনার অ্যাপ্লিকেশনের অফিসিয়াল প্রয়োজনীয়তা পরীক্ষা করুন।",
+    "photoLink": "ছবি প্রস্তুত করুন",
+    "showFewer": "কম দেখান",
+    "showMore": "আরও দেখান"
+  },
+  "sections": {
+    "imageTools": "ইমেজ সরঞ্জাম",
+    "documentTools": "নথি সরঞ্জাম"
+  },
+  "shortcuts": {
+    "compress": {
+      "title": "কম আকার। আরও জায়গা।",
+      "text": "একটি ছবি সংকুচিত করুন"
+    },
+    "fit": {
+      "title": "এটি ফিট করুন।",
+      "text": "একটি ফাইল-সাইজ সীমা সেট করুন"
+    },
+    "merge": {
+      "title": "একসাথে পৃষ্ঠা।",
+      "text": "পিডিএফ ফাইল মার্জ করুন"
+    }
   }
 }

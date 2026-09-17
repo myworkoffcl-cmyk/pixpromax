@@ -17,5 +17,44 @@
     "answer2": "No, PixProMax is a web-based tool. Just open it in your browser and start using it.",
     "question3": "Can I use it offline?",
     "answer3": "Yes, after the first load, PixProMax can work offline with service workers."
+  },
+  "studio": {
+    "badge": "SCHNELL, KOSTENLOS, AUF IHREM GERÄT",
+    "heading": "Dateien bereit.",
+    "subheading": "Im Handumdrehen.",
+    "description": "Ändern Sie die Größe von Bildern, bereiten Sie Anwendungen vor und verwalten Sie PDFs, ohne eine Datei hochzuladen.",
+    "stamp": "Kein Konto.",
+    "stamp2": "Kein Wasserzeichen.",
+    "privacy": "100% Privat",
+    "privacyText": "Dateien bleiben auf Ihrem Gerät",
+    "tool": "Werkzeug",
+    "tools": "Werkzeuge",
+    "promise1": "Auf Ihrem Gerät verarbeitet",
+    "promise2": "Kein Wasserzeichen",
+    "promise3": "Keine KI erforderlich",
+    "photoTools": "FOTO- UND ANWENDUNGSWERKZEUGE",
+    "photoTitle": "Die richtige Größe. Weniger Sorgen.",
+    "photoDesc": "Schneiden Sie Ihr Foto zu und positionieren Sie es mit Größenvorgaben. Überprüfen Sie immer die offiziellen Anforderungen Ihrer Anwendung.",
+    "photoLink": "Foto vorbereiten",
+    "showFewer": "Weniger anzeigen",
+    "showMore": "Mehr anzeigen"
+  },
+  "sections": {
+    "imageTools": "Bildwerkzeuge",
+    "documentTools": "Dokumentenwerkzeuge"
+  },
+  "shortcuts": {
+    "compress": {
+      "title": "Kleinere Größe. Mehr Platz.",
+      "text": "Ein Bild komprimieren"
+    },
+    "fit": {
+      "title": "Passt es an.",
+      "text": "Legen Sie eine Dateigrößenbeschränkung fest"
+    },
+    "merge": {
+      "title": "Seiten zusammen.",
+      "text": "PDF-Dateien zusammenführen"
+    }
   }
 }
