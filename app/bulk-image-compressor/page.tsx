@@ -1,20 +1,23 @@
 import type { Metadata } from "next";
 import { UniversalWorkspace } from "@/components/workspace/workspace";
-import { SITE_NAME } from "@/config/site";
+import { JsonLd } from "@/components/seo/json-ld";
+import { getTool } from "@/config/tools";
+import { toolMetadata, getToolSchemas } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: `Bulk Image Compressor – ${SITE_NAME}`,
-  description:
-    "Compress multiple images at once. Batch process up to 20 images. Download as ZIP. No upload, instant, free.",
-  alternates: { canonical: "/bulk-image-compressor" },
-};
+const tool = getTool("bulk-image-compressor")!;
+export const metadata: Metadata = toolMetadata(tool);
 
 export default function BulkImageCompressorPage() {
+  const schemas = getToolSchemas(tool);
+
   return (
     <main className="workspace-page">
+      {schemas.map((schema, i) => (
+        <JsonLd key={i} data={schema} />
+      ))}
       <div className="workspace-category-header shell">
-        <h1>Bulk Image Compressor</h1>
-        <p>Compress multiple images at once and download as ZIP.</p>
+        <h1>{tool.name}</h1>
+        <p>{tool.longDescription}</p>
       </div>
       <UniversalWorkspace
         init={{

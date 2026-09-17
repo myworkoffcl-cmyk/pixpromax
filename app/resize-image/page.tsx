@@ -1,20 +1,23 @@
 import type { Metadata } from "next";
 import { UniversalWorkspace } from "@/components/workspace/workspace";
-import { SITE_NAME } from "@/config/site";
+import { JsonLd } from "@/components/seo/json-ld";
+import { getTool } from "@/config/tools";
+import { toolMetadata, getToolSchemas } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: `Resize Image Online – ${SITE_NAME}`,
-  description:
-    "Resize photos with precise dimensions, useful presets, and aspect-ratio control. No upload, no account needed.",
-  alternates: { canonical: "/resize-image" },
-};
+const tool = getTool("resize-image")!;
+export const metadata: Metadata = toolMetadata(tool);
 
 export default function ResizeImagePage() {
+  const schemas = getToolSchemas(tool);
+
   return (
     <main className="workspace-page">
+      {schemas.map((schema, i) => (
+        <JsonLd key={i} data={schema} />
+      ))}
       <div className="workspace-category-header shell">
-        <h1>Resize Image</h1>
-        <p>Resize photos with precise dimensions, useful presets, and aspect-ratio control.</p>
+        <h1>{tool.name}</h1>
+        <p>{tool.longDescription}</p>
       </div>
       <UniversalWorkspace
         init={{

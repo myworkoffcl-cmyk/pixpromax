@@ -1,20 +1,23 @@
 import type { Metadata } from "next";
 import { UniversalWorkspace } from "@/components/workspace/workspace";
-import { SITE_NAME } from "@/config/site";
+import { JsonLd } from "@/components/seo/json-ld";
+import { getTool } from "@/config/tools";
+import { toolMetadata, getToolSchemas } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: `Compress Image Online – ${SITE_NAME}`,
-  description:
-    "Reduce image file size without losing quality. Adjust quality manually or hit a target KB. Supports JPG, PNG, and WebP.",
-  alternates: { canonical: "/compress-image" },
-};
+const tool = getTool("compress-image")!;
+export const metadata: Metadata = toolMetadata(tool);
 
 export default function CompressImagePage() {
+  const schemas = getToolSchemas(tool);
+
   return (
     <main className="workspace-page">
+      {schemas.map((schema, i) => (
+        <JsonLd key={i} data={schema} />
+      ))}
       <div className="workspace-category-header shell">
-        <h1>Compress Image</h1>
-        <p>Reduce file size while keeping quality. Set a quality level or target a specific KB.</p>
+        <h1>{tool.name}</h1>
+        <p>{tool.longDescription}</p>
       </div>
       <UniversalWorkspace
         init={{

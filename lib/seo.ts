@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { SITE_NAME } from "@/config/site";
+import { SITE_NAME, SITE_URL } from "@/config/site";
 import type { ToolConfig } from "@/types/tool";
 
 const seoTitles: Record<string, string> = {
@@ -23,5 +23,57 @@ export function toolMetadata(tool: ToolConfig): Metadata {
     alternates: { canonical: url },
     openGraph: { title: `${title} | ${SITE_NAME}`, description: tool.longDescription, url },
     twitter: { card: "summary_large_image", title: `${title} | ${SITE_NAME}`, description: tool.longDescription },
+  };
+}
+
+export function getToolSchemas(tool: ToolConfig) {
+  const baseUrl = SITE_URL.replace(/\/$/, "");
+  const toolUrl = `${baseUrl}/${tool.slug}`;
+
+  return [
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: baseUrl,
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: tool.name,
+          item: toolUrl,
+        },
+      ],
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      name: tool.name,
+      description: tool.longDescription,
+      applicationCategory: "Multimedia",
+      operatingSystem: "Web",
+      url: toolUrl,
+      offers: {
+        "@type": "Offer",
+        price: "0",
+        priceCurrency: "USD",
+      },
+    },
+  ];
+}
+
+export function getOrganizationSchema() {
+  const baseUrl = SITE_URL.replace(/\/$/, "");
+  return {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: SITE_NAME,
+    url: baseUrl,
+    description: "Free online image and PDF tools for browser-based processing",
+    image: `${baseUrl}/logo.svg`,
   };
 }

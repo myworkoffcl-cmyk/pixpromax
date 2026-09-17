@@ -1,20 +1,23 @@
 import type { Metadata } from "next";
 import { UniversalWorkspace } from "@/components/workspace/workspace";
-import { SITE_NAME } from "@/config/site";
+import { JsonLd } from "@/components/seo/json-ld";
+import { getTool } from "@/config/tools";
+import { toolMetadata, getToolSchemas } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: `WebP to JPG Converter – ${SITE_NAME}`,
-  description:
-    "Convert WebP images to JPG format. Restore compatibility with older systems. No upload, fast, free.",
-  alternates: { canonical: "/webp-to-jpg" },
-};
+const tool = getTool("webp-to-jpg")!;
+export const metadata: Metadata = toolMetadata(tool);
 
 export default function WebpToJpgPage() {
+  const schemas = getToolSchemas(tool);
+
   return (
     <main className="workspace-page">
+      {schemas.map((schema, i) => (
+        <JsonLd key={i} data={schema} />
+      ))}
       <div className="workspace-category-header shell">
-        <h1>WebP to JPG</h1>
-        <p>Convert WebP images to JPG format for universal compatibility.</p>
+        <h1>{tool.name}</h1>
+        <p>{tool.longDescription}</p>
       </div>
       <UniversalWorkspace
         init={{

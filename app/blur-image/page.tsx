@@ -1,20 +1,23 @@
 import type { Metadata } from "next";
 import { UniversalWorkspace } from "@/components/workspace/workspace";
-import { SITE_NAME } from "@/config/site";
+import { JsonLd } from "@/components/seo/json-ld";
+import { getTool } from "@/config/tools";
+import { toolMetadata, getToolSchemas } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: `Blur Image Online – ${SITE_NAME}`,
-  description:
-    "Blur images for privacy or artistic effect. Adjustable blur strength. No upload, instant, free.",
-  alternates: { canonical: "/blur-image" },
-};
+const tool = getTool("blur-image")!;
+export const metadata: Metadata = toolMetadata(tool);
 
 export default function BlurImagePage() {
+  const schemas = getToolSchemas(tool);
+
   return (
     <main className="workspace-page">
+      {schemas.map((schema, i) => (
+        <JsonLd key={i} data={schema} />
+      ))}
       <div className="workspace-category-header shell">
-        <h1>Blur Image</h1>
-        <p>Apply blur effects to images with adjustable strength.</p>
+        <h1>{tool.name}</h1>
+        <p>{tool.longDescription}</p>
       </div>
       <UniversalWorkspace
         init={{

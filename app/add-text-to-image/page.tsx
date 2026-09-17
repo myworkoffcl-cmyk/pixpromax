@@ -1,20 +1,23 @@
 import type { Metadata } from "next";
 import { UniversalWorkspace } from "@/components/workspace/workspace";
-import { SITE_NAME } from "@/config/site";
+import { JsonLd } from "@/components/seo/json-ld";
+import { getTool } from "@/config/tools";
+import { toolMetadata, getToolSchemas } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: `Add Text to Image – ${SITE_NAME}`,
-  description:
-    "Add text overlays to images. Customize font, size, color, and position. No upload, instant, free.",
-  alternates: { canonical: "/add-text-to-image" },
-};
+const tool = getTool("add-text-to-image")!;
+export const metadata: Metadata = toolMetadata(tool);
 
 export default function AddTextToImagePage() {
+  const schemas = getToolSchemas(tool);
+
   return (
     <main className="workspace-page">
+      {schemas.map((schema, i) => (
+        <JsonLd key={i} data={schema} />
+      ))}
       <div className="workspace-category-header shell">
-        <h1>Add Text to Image</h1>
-        <p>Add text overlays to your images with full customization.</p>
+        <h1>{tool.name}</h1>
+        <p>{tool.longDescription}</p>
       </div>
       <UniversalWorkspace
         init={{

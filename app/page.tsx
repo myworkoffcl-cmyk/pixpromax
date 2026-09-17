@@ -17,6 +17,14 @@ const structuredData = {
   "@context": "https://schema.org",
   "@graph": [
     {
+      "@type": "Organization",
+      "@id": `${SITE_URL}/#organization`,
+      name: SITE_NAME,
+      url: SITE_URL,
+      description: "Free online image and PDF tools for browser-based processing",
+      image: `${SITE_URL}/logo.svg`,
+    },
+    {
       "@type": "WebSite",
       "@id": `${SITE_URL}/#website`,
       url: SITE_URL,

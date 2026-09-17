@@ -1,20 +1,23 @@
 import type { Metadata } from "next";
 import { UniversalWorkspace } from "@/components/workspace/workspace";
-import { SITE_NAME } from "@/config/site";
+import { JsonLd } from "@/components/seo/json-ld";
+import { getTool } from "@/config/tools";
+import { toolMetadata, getToolSchemas } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: `ID Photo Resizer – ${SITE_NAME}`,
-  description:
-    "Resize ID photos to specification. Supports driver's license, state ID, and similar documents. No upload.",
-  alternates: { canonical: "/id-photo-resizer" },
-};
+const tool = getTool("id-photo-resizer")!;
+export const metadata: Metadata = toolMetadata(tool);
 
 export default function IdPhotoResizerPage() {
+  const schemas = getToolSchemas(tool);
+
   return (
     <main className="workspace-page">
+      {schemas.map((schema, i) => (
+        <JsonLd key={i} data={schema} />
+      ))}
       <div className="workspace-category-header shell">
-        <h1>ID Photo Resizer</h1>
-        <p>Prepare ID photos to official specifications.</p>
+        <h1>{tool.name}</h1>
+        <p>{tool.longDescription}</p>
       </div>
       <UniversalWorkspace
         init={{

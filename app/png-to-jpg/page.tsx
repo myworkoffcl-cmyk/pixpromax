@@ -1,20 +1,23 @@
 import type { Metadata } from "next";
 import { UniversalWorkspace } from "@/components/workspace/workspace";
-import { SITE_NAME } from "@/config/site";
+import { JsonLd } from "@/components/seo/json-ld";
+import { getTool } from "@/config/tools";
+import { toolMetadata, getToolSchemas } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: `PNG to JPG Converter – ${SITE_NAME}`,
-  description:
-    "Convert PNG images to JPG format online. Reduce file size while maintaining quality. Fast, free, no upload.",
-  alternates: { canonical: "/png-to-jpg" },
-};
+const tool = getTool("png-to-jpg")!;
+export const metadata: Metadata = toolMetadata(tool);
 
 export default function PngToJpgPage() {
+  const schemas = getToolSchemas(tool);
+
   return (
     <main className="workspace-page">
+      {schemas.map((schema, i) => (
+        <JsonLd key={i} data={schema} />
+      ))}
       <div className="workspace-category-header shell">
-        <h1>PNG to JPG</h1>
-        <p>Convert PNG images to JPG format and reduce file size.</p>
+        <h1>{tool.name}</h1>
+        <p>{tool.longDescription}</p>
       </div>
       <UniversalWorkspace
         init={{

@@ -1,20 +1,23 @@
 import type { Metadata } from "next";
 import { UniversalWorkspace } from "@/components/workspace/workspace";
-import { SITE_NAME } from "@/config/site";
+import { JsonLd } from "@/components/seo/json-ld";
+import { getTool } from "@/config/tools";
+import { toolMetadata, getToolSchemas } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: `Bulk Image Resizer – ${SITE_NAME}`,
-  description:
-    "Resize multiple images at once. Set dimensions or scale by percentage. Download as ZIP. No upload, instant, free.",
-  alternates: { canonical: "/bulk-image-resizer" },
-};
+const tool = getTool("bulk-image-resizer")!;
+export const metadata: Metadata = toolMetadata(tool);
 
 export default function BulkImageResizerPage() {
+  const schemas = getToolSchemas(tool);
+
   return (
     <main className="workspace-page">
+      {schemas.map((schema, i) => (
+        <JsonLd key={i} data={schema} />
+      ))}
       <div className="workspace-category-header shell">
-        <h1>Bulk Image Resizer</h1>
-        <p>Resize multiple images at once and download as ZIP.</p>
+        <h1>{tool.name}</h1>
+        <p>{tool.longDescription}</p>
       </div>
       <UniversalWorkspace
         init={{
