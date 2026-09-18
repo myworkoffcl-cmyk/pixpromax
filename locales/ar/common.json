@@ -133,6 +133,21 @@
     "sizeLimit": "حتى 30 ميجابايت",
     "filesLimit": "حتى {{maxFiles}} ملف"
   },
+  "mergePdf": {
+    "howItWorks": "كيفية العمل",
+    "step1Title": "قم بتحميل ملفات PDF الخاصة بك",
+    "step1Desc": "حدد أو اسحب عدة ملفات PDF في المرة الواحدة",
+    "step2Title": "رتبها حسب الترتيب الذي تريده",
+    "step2Desc": "أعد ترتيب ملفات PDF بالسحب أو باستخدام أزرار الأسهم",
+    "step3Title": "قم بتحميل الملف المدمج",
+    "step3Desc": "ملف PDF واحد مدمج، جاهز للاستخدام",
+    "noAccount": "لا حساب مطلوب",
+    "noAccountDesc": "ابدأ على الفور",
+    "browserBased": "قائم على المتصفح",
+    "browserBasedDesc": "معالجة سريعة",
+    "private": "100% خاص",
+    "privateDesc": "الملفات لا تغادر الجهاز"
+  },
   "errors": {
     "notFound": "لم يتم العثور عليه",
     "pageNotFound": "الصفحة غير موجودة",

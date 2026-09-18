@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { PdfTool } from "@/components/tools/pdf-tool";
+import { MergePdfGuide } from "@/components/tools/merge-pdf-guide";
+import { MergePdfValues } from "@/components/tools/merge-pdf-values";
 import { JsonLd } from "@/components/seo/json-ld";
 import { ToolPageHeader } from "@/components/tool-page-header";
 import { getTool } from "@/config/tools";
@@ -17,7 +19,11 @@ export default function MergePdfPage() {
         <JsonLd key={i} data={schema} />
       ))}
       <ToolPageHeader toolSlug={tool.slug} toolName={tool.name} toolLongDescription={tool.longDescription} />
-      <PdfTool mode="merge" />
+      <div className="tool-workspace-wrapper">
+        <PdfTool mode="merge" />
+        <MergePdfValues />
+        <MergePdfGuide />
+      </div>
     </main>
   );
 }

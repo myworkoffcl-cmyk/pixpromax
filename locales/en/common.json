@@ -127,6 +127,21 @@
     "sizeLimit": "up to 30 MB",
     "filesLimit": "up to {{maxFiles}} files"
   },
+  "mergePdf": {
+    "howItWorks": "How it works",
+    "step1Title": "Upload your PDFs",
+    "step1Desc": "Select or drag multiple PDF files at once",
+    "step2Title": "Arrange in order",
+    "step2Desc": "Reorder PDFs by dragging or using arrow buttons",
+    "step3Title": "Download merged file",
+    "step3Desc": "One combined PDF, ready to use",
+    "noAccount": "No Account Needed",
+    "noAccountDesc": "Start instantly",
+    "browserBased": "Browser-Based",
+    "browserBasedDesc": "Fast processing",
+    "private": "100% Private",
+    "privateDesc": "Files never leave device"
+  },
   "errors": {
     "notFound": "Not found",
     "pageNotFound": "Page not found",
