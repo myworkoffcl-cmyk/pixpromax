@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import styles from "./locale-notification.module.css";
 
 export function LocaleNotification() {
-  const { locale, autoDetected } = useLocale();
+  const { locale, autoDetected, setLocale } = useLocale();
   const [isDismissed, setIsDismissed] = useState(true);
   const [isClient, setIsClient] = useState(false);
 
@@ -19,16 +19,31 @@ export function LocaleNotification() {
     }
   }, [autoDetected]);
 
+  const handleChangeToEnglish = () => {
+    setLocale('en');
+    setIsDismissed(true);
+  };
+
   if (isDismissed || !isClient || !autoDetected) {
     return null;
   }
 
   const localeName = SUPPORTED_LOCALES[locale]?.nativeName || locale;
+  const isEnglish = locale === 'en';
 
   return (
     <div className={styles.notification}>
       <p className={styles.text}>
-        Language auto-detected: <strong>{localeName}</strong>
+        {isEnglish ? (
+          <>Language auto-detected: <strong>{localeName}</strong></>
+        ) : (
+          <>
+            Viewing in <strong>{localeName}</strong> •
+            <button className={styles.changeButton} onClick={handleChangeToEnglish}>
+              Change to English
+            </button>
+          </>
+        )}
       </p>
       <button
         className={styles.closeButton}

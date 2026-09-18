@@ -48,3 +48,20 @@
 .closeButton:hover {
   opacity: 1;
 }
+
+.changeButton {
+  margin-left: 0.5rem;
+  padding: 0.25rem 0.75rem;
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.changeButton:hover {
+  opacity: 0.8;
+}
