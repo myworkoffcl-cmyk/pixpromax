@@ -1,0 +1,46 @@
+C:\Users\Manoj\Desktop\pixpromax-site\AGENTS.md
+C:\Users\Manoj\Desktop\pixpromax-site\ARCHITECTURE_FIXES.md
+C:\Users\Manoj\Desktop\pixpromax-site\ARCHITECTURE_FIX_FINAL_REPORT.md
+C:\Users\Manoj\Desktop\pixpromax-site\BUILD_VALIDATION_REPORT.txt
+C:\Users\Manoj\Desktop\pixpromax-site\CLAUDE.md
+C:\Users\Manoj\Desktop\pixpromax-site\DECOMMISSION_AND_REBUILD_PLAN.md
+C:\Users\Manoj\Desktop\pixpromax-site\DECOMMISSION_STATUS.md
+C:\Users\Manoj\Desktop\pixpromax-site\IMPLEMENTATION_FINDINGS.md
+C:\Users\Manoj\Desktop\pixpromax-site\LINK_AUDIT_FINAL_REPORT.txt
+C:\Users\Manoj\Desktop\pixpromax-site\LINK_AUDIT_REPORT.md
+C:\Users\Manoj\Desktop\pixpromax-site\MULTILINGUAL_ARCHITECTURE.md
+C:\Users\Manoj\Desktop\pixpromax-site\MULTILINGUAL_SUMMARY.md
+C:\Users\Manoj\Desktop\pixpromax-site\PAGESPEED_ACTUAL_RESULTS_TEMPLATE.md
+C:\Users\Manoj\Desktop\pixpromax-site\PAGESPEED_VERIFICATION_GUIDE.md
+C:\Users\Manoj\Desktop\pixpromax-site\PERFORMANCE_ANALYSIS.md
+C:\Users\Manoj\Desktop\pixpromax-site\PERFORMANCE_INDEX.md
+C:\Users\Manoj\Desktop\pixpromax-site\PERFORMANCE_OPTIMIZATION_REPORT.md
+C:\Users\Manoj\Desktop\pixpromax-site\PERFORMANCE_OPTIMIZATION_SUMMARY.txt
+C:\Users\Manoj\Desktop\pixpromax-site\PHASE2A_ARCHITECTURE_DESIGN.md
+C:\Users\Manoj\Desktop\pixpromax-site\PHASE_1.5_IMPLEMENTATION_REPORT.md
+C:\Users\Manoj\Desktop\pixpromax-site\PRODUCTION_DEPLOYMENT_REPORT.md
+C:\Users\Manoj\Desktop\pixpromax-site\README.md
+C:\Users\Manoj\Desktop\pixpromax-site\STRINGS_EXTRACTION_GUIDE.md
+C:\Users\Manoj\Desktop\pixpromax-site\extension\README.md
+C:\Users\Manoj\Desktop\pixpromax-site\extension\popup.html
+C:\Users\Manoj\Desktop\pixpromax-site\legacy-static\index.html
+C:\Users\Manoj\Desktop\pixpromax-site\legacy-static\test.html
+C:\Users\Manoj\Desktop\pixpromax-site\legacy-static\tools\New folder\compress-image.html
+C:\Users\Manoj\Desktop\pixpromax-site\legacy-static\tools\New folder\resize-image.html
+C:\Users\Manoj\Desktop\pixpromax-site\legacy-static\tools\New folder\universal-converter.html
+C:\Users\Manoj\Desktop\pixpromax-site\legacy-static\tools\batch.html
+C:\Users\Manoj\Desktop\pixpromax-site\legacy-static\tools\compress.html
+C:\Users\Manoj\Desktop\pixpromax-site\legacy-static\tools\convert.html
+C:\Users\Manoj\Desktop\pixpromax-site\legacy-static\tools\jpg-to-png.html
+C:\Users\Manoj\Desktop\pixpromax-site\legacy-static\tools\png-to-jpg.html
+C:\Users\Manoj\Desktop\pixpromax-site\legacy-static\tools\png-to-webp.html
+C:\Users\Manoj\Desktop\pixpromax-site\legacy-static\tools\resize.html
+C:\Users\Manoj\Desktop\pixpromax-site\legacy-static\tools\webp-to-jpg.html
+C:\Users\Manoj\Desktop\pixpromax-site\pnpm-workspace.yaml
+C:\Users\Manoj\Desktop\pixpromax-site\public\ads.txt
+C:\Users\Manoj\Desktop\pixpromax-site\app\icon.png
+C:\Users\Manoj\Desktop\pixpromax-site\legacy-static\images\favicon.png
+C:\Users\Manoj\Desktop\pixpromax-site\legacy-static\images\logo.png
+C:\Users\Manoj\Desktop\pixpromax-site\legacy-static\images\logo1.png
+C:\Users\Manoj\Desktop\pixpromax-site\public\icon.png
+C:\Users\Manoj\Desktop\pixpromax-site\public\og.png

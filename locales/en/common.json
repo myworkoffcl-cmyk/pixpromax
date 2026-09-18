@@ -142,6 +142,24 @@
     "private": "100% Private",
     "privateDesc": "Files never leave device"
   },
+  "splitPdf": {
+    "howItWorks": "How it works",
+    "step1": "Step 1",
+    "step1Title": "Upload your PDF",
+    "step1Desc": "Choose one PDF file from your device",
+    "step2": "Step 2",
+    "step2Title": "Select pages",
+    "step2Desc": "Choose which pages to extract with visual preview",
+    "step3": "Step 3",
+    "step3Title": "Download your PDF",
+    "step3Desc": "Get your extracted pages as a new PDF file",
+    "noAccount": "No Account Needed",
+    "noAccountDesc": "Start instantly without sign-up",
+    "browserBased": "Browser-Based",
+    "browserBasedDesc": "Fast processing locally on your device",
+    "private": "100% Private",
+    "privateDesc": "Files never leave your device"
+  },
   "errors": {
     "notFound": "Not found",
     "pageNotFound": "Page not found",

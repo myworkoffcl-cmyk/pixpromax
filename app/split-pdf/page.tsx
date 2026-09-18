@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { PdfTool } from "@/components/tools/pdf-tool";
+import { SplitPdfGuide } from "@/components/tools/split-pdf-guide";
+import { SplitPdfValues } from "@/components/tools/split-pdf-values";
 import { JsonLd } from "@/components/seo/json-ld";
 import { ToolPageHeader } from "@/components/tool-page-header";
 import { getTool } from "@/config/tools";
@@ -17,7 +19,11 @@ export default function SplitPdfPage() {
         <JsonLd key={i} data={schema} />
       ))}
       <ToolPageHeader toolSlug={tool.slug} toolName={tool.name} toolLongDescription={tool.longDescription} />
-      <PdfTool mode="split" />
+      <div className="tool-workspace-wrapper">
+        <PdfTool mode="split" />
+        <SplitPdfValues />
+        <SplitPdfGuide />
+      </div>
     </main>
   );
 }

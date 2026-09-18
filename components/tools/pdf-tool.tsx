@@ -8,6 +8,8 @@ import { DownloadLink } from "@/components/tools/download-link";
 import { ProcessingButton } from "@/components/tools/processing-button";
 import { UploadDropzone } from "@/components/tools/upload-dropzone";
 import { PDFPreview } from "@/components/tools/pdf-preview";
+import { PDFPageSelector } from "@/components/tools/pdf-page-selector";
+import { SplitPdfModeSelector } from "@/components/tools/split-pdf-mode-selector";
 import { parsePageList, validatePdfFile } from "@/lib/pdf/validate";
 
 type PdfMode = "merge" | "split" | "organize" | "to-jpg" | "to-png";
@@ -35,6 +37,8 @@ export function PdfTool({ mode }: PdfToolProps) {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [deletedPageIds, setDeletedPageIds] = useState<Set<string>>(new Set());
+  const [splitMode, setSplitMode] = useState<"range" | "pages" | "all">("pages");
+  const [selectedPages, setSelectedPages] = useState<number[]>([]);
 
   const inspectPages = async (file: File) => {
     const { PDFDocument } = await import("pdf-lib");
@@ -99,7 +103,7 @@ export function PdfTool({ mode }: PdfToolProps) {
       return updated;
     });
   };
-  const reset = () => { setFiles([]); setResult(null); setError(null); setPageCount(0); setPages(""); };
+  const reset = () => { setFiles([]); setResult(null); setError(null); setPageCount(0); setPages(""); setSelectedPages([]); setSplitMode("pages"); };
   const downloadPDF = (blob: Blob, name: string) => {
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
@@ -134,14 +138,25 @@ export function PdfTool({ mode }: PdfToolProps) {
         setResult(mergedBlob);
         setFilename("pixpromax-merged.pdf");
         downloadPDF(mergedBlob, "pixpromax-merged.pdf");
-      } else if (mode === "split" || mode === "organize") {
+      } else if (mode === "split") {
+        const pagesToExtract = splitMode === "all" ? Array.from({length: pageCount}, (_, i) => i + 1) : selectedPages;
+        if (pagesToExtract.length === 0) throw new Error("Please select at least one page.");
+        const { PDFDocument } = await import("pdf-lib");
+        const source = await PDFDocument.load(await files[0].arrayBuffer(), { ignoreEncryption: true });
+        const output = await PDFDocument.create();
+        const copied = await output.copyPages(source, pagesToExtract.map(page => page - 1));
+        copied.forEach(page => output.addPage(page));
+        setResult(bytesBlob(await output.save({ useObjectStreams: false })));
+        setFilename(`${fileStem(files[0].name)}-extracted.pdf`);
+        downloadPDF(bytesBlob(await output.save({ useObjectStreams: false })), `${fileStem(files[0].name)}-extracted.pdf`);
+      } else if (mode === "organize") {
         const wanted = parsePageList(pages, pageCount);
         if (!wanted) throw new Error(`Enter page numbers from 1 to ${pageCount}, such as 1-3, 5.`);
         const { PDFDocument } = await import("pdf-lib");
         const source = await PDFDocument.load(await files[0].arrayBuffer(), { ignoreEncryption: true });
         const output = await PDFDocument.create();
         const copied = await output.copyPages(source, wanted.map(page => page - 1)); copied.forEach(page => output.addPage(page));
-        setResult(bytesBlob(await output.save({ useObjectStreams: false }))); setFilename(`${fileStem(files[0].name)}-${mode === "split" ? "pages" : "organized"}.pdf`);
+        setResult(bytesBlob(await output.save({ useObjectStreams: false }))); setFilename(`${fileStem(files[0].name)}-organized.pdf`);
       } else {
         const pdfjs = await import("pdfjs-dist/legacy/build/pdf.mjs");
         pdfjs.GlobalWorkerOptions.workerSrc = new URL("pdfjs-dist/legacy/build/pdf.worker.mjs", import.meta.url).href;
@@ -167,5 +182,5 @@ export function PdfTool({ mode }: PdfToolProps) {
   };
 
   if (!files.length) return <UploadDropzone accept="application/pdf,.pdf" multiple={config.multiple} fileKind="PDF" note={`PDF · ${config.multiple ? `up to ${MAX_PDF_FILES} files` : "up to 100 MB"}`} onFiles={addFiles} error={error} />;
-  return <><div className="tool-panel"><div className="control-card"><div className="control-heading"><div><span className="kicker">YOUR PDF{config.multiple ? "S" : ""}</span><h2>{config.hint}</h2></div><strong>{mode === "merge" ? `${files.length} ${files.length === 1 ? "file" : "files"}` : `${pageCount} pages`}</strong></div><div className="pdf-file-list merge-enhanced">{files.map((file, index) => <article key={`${file.name}-${index}`} className="pdf-file-item"><div className="file-position">{index + 1}</div><div className="file-icon"><FileText aria-hidden="true" /></div><div className="file-info"><strong>{file.name}</strong><small>{Math.ceil(file.size / 1024)} KB</small></div>{mode === "merge" && <nav className="file-controls" aria-label={`Reorder ${file.name}`}><button type="button" className="reorder-btn" disabled={index === 0} onClick={() => move(index, -1)} aria-label={`Move ${file.name} up`} title="Move up"><GripVertical /></button><button type="button" className="reorder-btn" disabled={index === files.length - 1} onClick={() => move(index, 1)} aria-label={`Move ${file.name} down`} title="Move down"><GripVertical style={{transform: 'rotate(180deg)'}} /></button></nav>}<button type="button" className="remove-file" aria-label={`Remove ${file.name}`} onClick={() => { setFiles(current => current.filter((_, itemIndex) => itemIndex !== index)); setResult(null); }}><Trash2 /></button></article>)}</div>{mode === "merge" && <UploadDropzone accept="application/pdf,.pdf" multiple compact onFiles={addFiles} error={error} />}</div>{mode === "merge" && <div className="preview-grid"><PDFPreview files={files} onPageDelete={handlePageDelete} deletedPageIds={deletedPageIds} onAddFiles={handleAddFiles} onMoveFile={move} onDeleteFile={deleteFile} /></div>}{mode !== "merge" && <div className="control-card"><div className="control-heading"><div><span className="kicker">PAGE SETTINGS</span><h2>{mode === "to-jpg" ? "Choose output quality." : "Choose the pages."}</h2></div></div>{mode === "to-jpg" ? <label className="range-field"><span>JPG quality · {quality}%</span><input type="range" min="55" max="95" value={quality} onChange={event => { setQuality(Number(event.target.value)); setResult(null); }} /><div><small>Smaller files</small><small>Sharper images</small></div></label> : <label className="single-field"><span>{mode === "organize" ? "Page order to keep" : "Pages to extract"}</span><input value={pages} onChange={event => { setPages(event.target.value); setResult(null); }} aria-describedby="page-help" /><small id="page-help">Use commas or ranges: 1-3, 5. Repeating a page is allowed when organizing.</small></label>}<div className="notice"><Info /> Processing stays on this device. Password-protected or damaged PDFs may not open.</div></div>}{error && <p className="form-error" role="alert">{error}</p>}{busy && mode === "merge" && files.length > 2 && <p className="notice"><Info /> Merging large PDFs can take a minute — keep this tab open.</p>}{mode !== "merge" && <div className="action-row">{result ? <DownloadLink blob={result} filename={filename}>Download {mode === "to-jpg" ? "JPG ZIP" : "PDF"}</DownloadLink> : <ProcessingButton busy={busy} disabled={mode !== "merge" && pageCount === 0} onClick={process}>{config.action}</ProcessingButton>}<button className="button secondary" type="button" onClick={reset}><FilePlus2 /> Start over</button></div>}</div>{mode === "merge" && <div className="action-row">{result ? <DownloadLink blob={result} filename={filename}>Download PDF</DownloadLink> : <ProcessingButton busy={busy} onClick={process}>{config.action}</ProcessingButton>}<button className="button secondary" type="button" onClick={reset}><FilePlus2 /> Start over</button></div>}</>
+  return <><div className="tool-panel"><div className="control-card"><div className="control-heading"><div><span className="kicker">YOUR PDF{config.multiple ? "S" : ""}</span><h2>{config.hint}</h2></div><strong>{mode === "merge" ? `${files.length} ${files.length === 1 ? "file" : "files"}` : `${pageCount} pages`}</strong></div><div className="pdf-file-list merge-enhanced">{files.map((file, index) => <article key={`${file.name}-${index}`} className="pdf-file-item"><div className="file-position">{index + 1}</div><div className="file-icon"><FileText aria-hidden="true" /></div><div className="file-info"><strong>{file.name}</strong><small>{Math.ceil(file.size / 1024)} KB</small></div>{mode === "merge" && <nav className="file-controls" aria-label={`Reorder ${file.name}`}><button type="button" className="reorder-btn" disabled={index === 0} onClick={() => move(index, -1)} aria-label={`Move ${file.name} up`} title="Move up"><GripVertical /></button><button type="button" className="reorder-btn" disabled={index === files.length - 1} onClick={() => move(index, 1)} aria-label={`Move ${file.name} down`} title="Move down"><GripVertical style={{transform: 'rotate(180deg)'}} /></button></nav>}<button type="button" className="remove-file" aria-label={`Remove ${file.name}`} onClick={() => { setFiles(current => current.filter((_, itemIndex) => itemIndex !== index)); setResult(null); }}><Trash2 /></button></article>)}</div>{mode === "merge" && <UploadDropzone accept="application/pdf,.pdf" multiple compact onFiles={addFiles} error={error} />}</div>{mode === "merge" && <div className="preview-grid"><PDFPreview files={files} onPageDelete={handlePageDelete} deletedPageIds={deletedPageIds} onAddFiles={handleAddFiles} onMoveFile={move} onDeleteFile={deleteFile} /></div>}{mode === "split" && <div className="split-mode-section" style={{padding: "16px", background: "var(--surface-soft)", borderRadius: "8px", marginBottom: "16px"}}><SplitPdfModeSelector selectedMode={splitMode} onModeChange={setSplitMode} />{splitMode === "pages" && <PDFPageSelector file={files[0]} onSelectionChange={setSelectedPages} mode="pages" />}{splitMode === "all" && <div style={{padding: "16px", textAlign: "center", background: "var(--surface)", borderRadius: "6px", border: "1px solid var(--line)"}}><div style={{fontSize: "14px", color: "var(--ink)"}}><strong>Extract All Pages</strong></div><div style={{fontSize: "12px", color: "var(--muted)", marginTop: "4px"}}>Will create {pageCount} individual PDF files</div></div>}</div>}{mode !== "merge" && mode !== "split" && <div className="control-card"><div className="control-heading"><div><span className="kicker">PAGE SETTINGS</span><h2>{mode === "to-jpg" ? "Choose output quality." : "Choose the pages."}</h2></div></div>{mode === "to-jpg" ? <label className="range-field"><span>JPG quality · {quality}%</span><input type="range" min="55" max="95" value={quality} onChange={event => { setQuality(Number(event.target.value)); setResult(null); }} /><div><small>Smaller files</small><small>Sharper images</small></div></label> : <label className="single-field"><span>{mode === "organize" ? "Page order to keep" : "Pages to extract"}</span><input value={pages} onChange={event => { setPages(event.target.value); setResult(null); }} aria-describedby="page-help" /><small id="page-help">Use commas or ranges: 1-3, 5. Repeating a page is allowed when organizing.</small></label>}<div className="notice"><Info /> Processing stays on this device. Password-protected or damaged PDFs may not open.</div></div>}{error && <p className="form-error" role="alert">{error}</p>}{busy && mode === "merge" && files.length > 2 && <p className="notice"><Info /> Merging large PDFs can take a minute — keep this tab open.</p>}{(mode !== "merge" || true) && <div className="action-row">{result ? <DownloadLink blob={result} filename={filename}>Download {mode === "to-jpg" ? "JPG ZIP" : "PDF"}</DownloadLink> : <ProcessingButton busy={busy} disabled={(mode === "split" && selectedPages.length === 0) || (mode !== "merge" && mode !== "split" && pageCount === 0) || (mode === "merge" && files.length === 0)} onClick={process}>{config.action}</ProcessingButton>}<button className="button secondary" type="button" onClick={reset}><FilePlus2 /> Start over</button></div>}</div></>
 }
