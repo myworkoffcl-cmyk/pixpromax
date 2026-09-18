@@ -41,7 +41,7 @@ export function PixelStudio() {
 
   return <div className="pixel-studio shell">
     <div className="studio-main">
-      <div className="studio-heading"><div><span className="studio-overline"><span /> {t("studio.badge", "FAST, FREE, ON YOUR DEVICE")}</span><h1>{t("studio.heading", "Files ready.")}<br className="mobile-break" /> <em>{t("studio.subheading", "In moments.")}</em></h1><p>{t("studio.description", "Resize images, prepare applications, and manage PDFs without uploading a file.")}</p></div><span className="studio-stamp"><Zap aria-hidden="true" />{t("studio.stamp", "No account.") }<br />{t("studio.stamp2", "No watermark.")}</span><Link href="/privacy-policy" className="privacy-badge"><ShieldCheck aria-hidden="true" /><strong>{t("studio.privacy", "100% Private")}</strong><span>{t("studio.privacyText", "Files stay on your device")}</span><ArrowUpRight className="privacy-badge-arrow" aria-hidden="true" /></Link></div>
+      <div className="studio-heading"><div><span className="studio-overline"><span /> {t("studio.badge", "FAST, FREE, ON YOUR DEVICE")}</span><h1>{t("studio.heading", "Files ready.")}<br className="mobile-break" /> <em>{t("studio.subheading", "In moments.")}</em></h1><p>{t("studio.description", "Resize images, prepare applications, and manage PDFs without uploading a file.")}</p></div><span className="studio-stamp"><Zap aria-hidden="true" />{t("studio.stamp", "No account.") }<br />{t("studio.stamp2", "No watermark.")}</span><Link href="/privacy-policy" className="privacy-badge"><div className="privacy-badge-arrow"><ArrowUpRight aria-hidden="true" /></div><ShieldCheck aria-hidden="true" className="privacy-badge-icon" /><div className="privacy-badge-content"><strong>{t("studio.privacy", "100% Private")}</strong><span>{t("studio.privacyText", "Files stay on your device")}</span></div></Link></div>
       <section className="studio-shortcuts" aria-label="Quick image tasks">{shortcuts.map(item => {
         const Icon = item.icon;
         return <Link href={item.href} key={item.href} className={`studio-shortcut ${item.style}`}><span className="shortcut-top"><Icon aria-hidden="true" /><ArrowUpRight aria-hidden="true" /></span><strong>{item.title}</strong><span>{item.text}</span><small>{item.detail}</small></Link>;
@@ -74,16 +74,19 @@ export function PixelStudio() {
       </div>
       <div className="studio-promise">
         <div className="promise-card">
-          <div className="promise-icon promise-icon-blue"><Lock aria-hidden="true" /></div>
-          <span>{t("studio.promise1", "Processed on your device")}</span>
+          <div className="promise-icon promise-icon-purple"><Brain aria-hidden="true" /></div>
+          <span>{t("studio.promise3", "No AI needed")}</span>
+          <span className="promise-description">{t("studio.promise3Desc", "Traditional algorithms only")}</span>
         </div>
         <div className="promise-card">
           <div className="promise-icon promise-icon-green"><CircleCheck aria-hidden="true" /></div>
           <span>{t("studio.promise2", "No watermark")}</span>
+          <span className="promise-description">{t("studio.promise2Desc", "Clean output files")}</span>
         </div>
         <div className="promise-card">
-          <div className="promise-icon promise-icon-purple"><Brain aria-hidden="true" /></div>
-          <span>{t("studio.promise3", "No AI needed")}</span>
+          <div className="promise-icon promise-icon-blue"><Lock aria-hidden="true" /></div>
+          <span>{t("studio.promise1", "Processed on your device")}</span>
+          <span className="promise-description">{t("studio.promise1Desc", "Your privacy protected")}</span>
         </div>
       </div>
       <Link className="studio-application" href="/passport-photo-resizer"><span className="application-icon"><ScanFace aria-hidden="true" /></span><div><span>{t("studio.photoTools", "PHOTO & APPLICATION TOOLS")}</span><h2>{t("studio.photoTitle", "Right dimensions. One less worry.")}</h2><p>{t("studio.photoDesc", "Crop and position your photo with size presets. Always check your application's official requirements.")}</p></div><span className="application-link">{t("studio.photoLink", "Prepare a photo")} <ArrowRight aria-hidden="true" /></span></Link>

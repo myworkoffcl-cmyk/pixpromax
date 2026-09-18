@@ -34,6 +34,18 @@
 .mobile-break { display: none; }
 .studio-stamp { display: flex; gap: 8px; align-items: center; flex-shrink: 0; color: var(--muted); font-size: 12px; line-height: 1.4; transform: rotate(5deg); }
 .studio-stamp svg { width: 33px; height: 33px; padding: 7px; background: var(--lime); border-radius: 50%; color: #344319; }
+.privacy-badge { display: inline-flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: 12px; padding: 20px 24px; position: relative; background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%); border: 1px solid rgba(0, 0, 0, 0.08); border-radius: 20px; text-decoration: none; color: #1a1a1a; font-size: 14px; transition: all 0.3s ease; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), inset 0 1px 1px rgba(255, 255, 255, 0.8); min-width: 140px; text-align: center; }
+.privacy-badge:hover { background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%); border-color: rgba(0, 0, 0, 0.12); transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0, 0, 0, 0.16), inset 0 1px 1px rgba(255, 255, 255, 0.9); }
+.privacy-badge-arrow { position: absolute; top: 12px; right: 12px; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; background: rgba(212, 175, 55, 0.1); border-radius: 6px; transition: all 0.2s ease; }
+.privacy-badge:hover .privacy-badge-arrow { background: rgba(212, 175, 55, 0.15); transform: translate(2px, -2px); }
+.privacy-badge-arrow svg { width: 14px; height: 14px; color: #d4af37; }
+@keyframes goldenPulse { 0%, 100% { filter: drop-shadow(0 2px 4px rgba(212, 175, 55, 0.3)) drop-shadow(0 0 8px rgba(212, 175, 55, 0.2)); } 50% { filter: drop-shadow(0 2px 8px rgba(212, 175, 55, 0.5)) drop-shadow(0 0 16px rgba(212, 175, 55, 0.4)); } }
+@keyframes goldenShine { 0%, 100% { opacity: 0; } 50% { opacity: 1; } }
+.privacy-badge-icon { width: 36px; height: 36px; flex-shrink: 0; stroke-width: 1.5; color: #d4af37; filter: drop-shadow(0 2px 4px rgba(212, 175, 55, 0.3)); animation: goldenPulse 3s ease-in-out infinite; position: relative; }
+.privacy-badge-icon::before { content: ''; position: absolute; inset: -4px; background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.3) 20%, transparent 70%); border-radius: 50%; pointer-events: none; animation: goldenShine 3s ease-in-out infinite; opacity: 0; mix-blend-mode: screen; }
+.privacy-badge-content { display: flex; flex-direction: column; gap: 4px; }
+.privacy-badge strong { font-weight: 600; font-size: 14px; color: #1a1a1a; }
+.privacy-badge span { font-size: 12px; color: #666666; line-height: 1.3; }
 .studio-shortcuts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
 .studio-shortcut { padding: 20px; min-height: 190px; border-radius: 19px; display: flex; flex-direction: column; border: 1px solid #00000009; transition: transform .2s, box-shadow .2s; }
 .studio-shortcut:hover { transform: translateY(-4px); box-shadow: 0 12px 20px #20233814; }
@@ -65,21 +77,25 @@
 .studio-tool-arrow { position: absolute; width: 17px; height: 17px; top: 17px; right: 16px; color: var(--tile, var(--brand)); transition: transform .24s ease, opacity .24s ease; }
 .studio-tool:hover .studio-tool-arrow { transform: translate(3px, -3px); }
 :root[data-theme="dark"] .studio-tool-icon { color: color-mix(in srgb, var(--tile-end, var(--brand)), white 25%); }
-.studio-promise { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 16px; padding: 2rem 1rem; margin: 18px 0; border-radius: 16px; background: linear-gradient(135deg, #1a2744 0%, #2a3f5f 100%); }
-.promise-card { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 12px; padding: 20px 16px; background: rgba(255, 255, 255, 0.08); border: 0.5px solid rgba(255, 255, 255, 0.15); border-radius: 12px; font-size: 13px; font-weight: 500; color: #f5f5f5; backdrop-filter: blur(10px); }
-.promise-icon { width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; border-radius: 50%; }
-.promise-icon svg { width: 26px; height: 26px; stroke-width: 1.5; }
-.promise-icon-blue { background: rgba(24, 95, 165, 0.2); color: #6eb3ff; }
-.promise-icon-green { background: rgba(59, 109, 17, 0.3); color: #7dd3c0; }
-.promise-icon-purple { background: rgba(147, 112, 219, 0.2); color: #d4a5ff; }
-.studio-application { display: flex; align-items: center; gap: 20px; padding: 23px; background: var(--surface-soft); border-radius: 16px; border: 1px solid var(--line); }
-.application-icon { flex-shrink: 0; width: 55px; height: 64px; display: grid; place-items: center; border-radius: 12px; background: var(--surface); color: var(--brand); transform: rotate(-6deg); }
-.application-icon svg { width: 30px; height: 30px; }
-.studio-application > div > span { color: var(--brand); font-size: 12px; font-weight: 700; letter-spacing: .08em; }
-.studio-application h2 { margin: 6px 0; font: 650 21px/1.25 var(--font-display), sans-serif; letter-spacing: -.04em; }
-.studio-application p { margin: 0; font-size: 14px; color: var(--muted); line-height: 1.5; max-width: 460px; }
-.application-link { display: flex; gap: 7px; align-items: center; margin-left: auto; font-size: 14px; font-weight: 650; flex-shrink: 0; }
-.application-link svg { width: 17px; }
+.studio-promise { display: flex; gap: 16px; padding: 2rem 1rem; margin: 18px 0; flex-wrap: wrap; justify-content: center; background: transparent; border: none; color: #1a1a1a; }
+.promise-card { display: flex; flex: 1; flex-direction: column; align-items: center; text-align: center; gap: 6px; padding: 24px 20px; background: linear-gradient(125deg, #211159, #5030d7); border: 1px solid rgba(255, 255, 255, .18); border-radius: 18px; font-size: 14px; font-weight: 500; color: #ffffff; text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), inset 0 1px 1px rgba(255, 255, 255, 0.1); transition: all 0.3s ease; min-width: 140px; min-height: 119px; justify-content: center; }
+.promise-icon { width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; border-radius: 50%; color: #ffffff; animation: goldenPulse 3s ease-in-out infinite; position: relative; }
+.promise-icon svg { width: 26px; height: 26px; stroke-width: 1.5; color: #ffffff; filter: drop-shadow(0 1px 2px rgba(255, 255, 255, 0.3)); }
+.promise-description { display: block; font-size: 12px; font-weight: 400; color: #c4ff4f; margin-top: 4px; opacity: 1; }
+.promise-icon-blue { background: rgba(212, 175, 55, 0.12); }
+.promise-icon-green { background: rgba(212, 175, 55, 0.12); }
+.promise-icon-purple { background: rgba(212, 175, 55, 0.12); }
+.studio-application { display: flex; align-items: center; gap: 20px; padding: 28px 32px; background: linear-gradient(135deg, #e6d9ff 0%, #d4e7ff 100%); border-radius: 20px; border: 1.5px solid rgba(102, 85, 217, 0.3); box-shadow: 0 12px 32px rgba(102, 85, 217, 0.15), inset 0 1px 1px rgba(255, 255, 255, 0.8); transition: all 0.3s ease; }
+.studio-application:hover { transform: translateY(-4px); border-color: rgba(102, 85, 217, 0.5); box-shadow: 0 20px 48px rgba(102, 85, 217, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.9); }
+.application-icon { flex-shrink: 0; width: 64px; height: 72px; display: grid; place-items: center; border-radius: 16px; background: linear-gradient(135deg, #6555d9, #8b75ff); color: #ffffff; transform: rotate(-6deg); box-shadow: 0 8px 20px rgba(102, 85, 217, 0.3); transition: all 0.3s ease; }
+.application-icon svg { width: 32px; height: 32px; stroke-width: 1.8; }
+.studio-application:hover .application-icon { transform: rotate(-6deg) translateY(-2px) scale(1.05); box-shadow: 0 12px 28px rgba(102, 85, 217, 0.4); }
+.studio-application > div > span { color: #6555d9; font-size: 12px; font-weight: 700; letter-spacing: .08em; }
+.studio-application h2 { margin: 6px 0; font: 650 24px/1.25 var(--font-display), sans-serif; letter-spacing: -.04em; color: #202338; }
+.studio-application p { margin: 0; font-size: 15px; color: #62677c; line-height: 1.6; max-width: 460px; }
+.application-link { display: flex; gap: 8px; align-items: center; margin-left: auto; font-size: 15px; font-weight: 700; flex-shrink: 0; color: #6555d9; padding: 10px 16px; background: rgba(102, 85, 217, 0.1); border-radius: 8px; transition: all 0.2s ease; }
+.application-link:hover { background: rgba(102, 85, 217, 0.2); transform: translateX(4px); }
+.application-link svg { width: 18px; }
 .ad-wrap { padding-block: 25px; }
 .ad-slot .adsbygoogle { display: block; min-height: 120px; width: 100%; }
 .faq-section { padding-block: 38px 55px; }
@@ -131,7 +147,7 @@ body { background: radial-gradient(circle at 0 0, #dce3ff 0, transparent 28rem),
 .home-live-background .studio-shortcut { border: 1px solid rgba(255, 255, 255, .58); box-shadow: 0 14px 34px rgba(31, 35, 70, .12), inset 0 1px rgba(255, 255, 255, .38); }
 .home-live-background .studio-tool { border-color: rgba(255, 255, 255, .78); background: color-mix(in srgb, var(--surface), transparent 15%); box-shadow: 0 12px 28px rgba(30, 36, 72, .09), inset 0 1px rgba(255, 255, 255, .72); backdrop-filter: blur(18px) saturate(135%); }
 .home-live-background .studio-tool:hover { border-color: color-mix(in srgb, var(--tile, var(--brand)), white 62%); background: color-mix(in srgb, var(--surface), transparent 4%); box-shadow: 0 20px 38px color-mix(in srgb, var(--tile, var(--brand)), transparent 84%), inset 0 1px rgba(255, 255, 255, .82); }
-.home-live-background .studio-promise { margin: 18px 0; background: linear-gradient(135deg, #1a2744 0%, #2a3f5f 100%); border: 1px solid rgba(255, 255, 255, 0.15); box-shadow: 0 18px 48px rgba(29, 35, 68, .1); }
+.home-live-background .studio-promise { margin: 18px 0; }
 .home-live-background .studio-application, .home-live-background .faq-list details { border-color: rgba(255, 255, 255, .7); background: color-mix(in srgb, var(--surface), transparent 16%); box-shadow: 0 14px 32px rgba(30, 36, 72, .09), inset 0 1px rgba(255, 255, 255, .68); backdrop-filter: blur(18px) saturate(130%); }
 :root[data-theme="dark"] .home-live-background .studio-rail, :root[data-theme="dark"] .home-live-background .studio-tool, :root[data-theme="dark"] .home-live-background .studio-promise, :root[data-theme="dark"] .home-live-background .studio-application, :root[data-theme="dark"] .home-live-background .faq-list details { border-color: rgba(255, 255, 255, .13); box-shadow: 0 18px 42px rgba(0, 0, 0, .24), inset 0 1px rgba(255, 255, 255, .08); }
 .site-header { background: color-mix(in srgb, var(--surface), transparent 5%); backdrop-filter: blur(16px); }

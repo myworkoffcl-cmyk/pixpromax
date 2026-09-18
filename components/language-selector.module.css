@@ -26,8 +26,9 @@
 
 .flag {
   font-size: 1rem;
+  font-weight: 600;
   flex-shrink: 0;
-  filter: brightness(0);
+  color: var(--text);
 }
 
 .label {
