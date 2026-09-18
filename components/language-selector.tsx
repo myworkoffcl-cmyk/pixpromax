@@ -35,7 +35,7 @@ export function LanguageSelector() {
         aria-label="Select language"
         aria-expanded={isOpen}
       >
-        <span className={styles.flag}>🌐</span>
+        <span className={styles.flag}>🗣️</span>
         <span className={styles.label}>{currentLocale.nativeName}</span>
       </button>
 
