@@ -35,11 +35,13 @@
     },
     "fit": {
       "title": "调整大小。",
-      "text": "设置文件大小限制"
+      "text": "设置文件大小限制",
+      "detail": "20 KB · 50 KB · 自定义"
     },
     "merge": {
       "title": "合并页面。",
-      "text": "合并PDF文件"
+      "text": "合并PDF文件",
+      "detail": "本地 · 私密"
     }
   },
   "features": {

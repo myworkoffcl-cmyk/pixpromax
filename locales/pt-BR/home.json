@@ -50,11 +50,13 @@
     },
     "fit": {
       "title": "Faça caber.",
-      "text": "Definir um limite de tamanho de arquivo"
+      "text": "Definir um limite de tamanho de arquivo",
+      "detail": "20 KB · 50 KB · Personalizado"
     },
     "merge": {
       "title": "Páginas juntas.",
-      "text": "Mesclar arquivos PDF"
+      "text": "Mesclar arquivos PDF",
+      "detail": "Local · privado"
     }
   }
 }

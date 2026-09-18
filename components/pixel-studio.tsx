@@ -16,8 +16,8 @@ export function PixelStudio() {
 
   const shortcuts = [
     { href: "/image-tools/compress", title: t("shortcuts.compress.title", "Less size. More room."), text: t("shortcuts.compress.text", "Compress an image"), icon: ImageDown, style: "shrink", detail: "JPG · PNG · WebP" },
-    { href: "/compress-to-target-size", title: t("shortcuts.fit.title", "Make it fit."), text: t("shortcuts.fit.text", "Set a file-size limit"), icon: Aperture, style: "fit", detail: "20 KB · 50 KB · Custom" },
-    { href: "/merge-pdf", title: t("shortcuts.merge.title", "Pages together."), text: t("shortcuts.merge.text", "Merge PDF files"), icon: FileStack, style: "apply", detail: "Local · private" },
+    { href: "/compress-to-target-size", title: t("shortcuts.fit.title", "Make it fit."), text: t("shortcuts.fit.text", "Set a file-size limit"), icon: Aperture, style: "fit", detail: t("shortcuts.fit.detail", "20 KB · 50 KB · Custom") },
+    { href: "/merge-pdf", title: t("shortcuts.merge.title", "Pages together."), text: t("shortcuts.merge.text", "Merge PDF files"), icon: FileStack, style: "apply", detail: t("shortcuts.merge.detail", "Local · private") },
   ];
 
   const active = tools.filter(t => t.status === "active");

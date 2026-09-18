@@ -4,8 +4,10 @@ import Link from "@/components/site-link";
 import { Search, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { tools } from "@/config/tools";
+import { useTranslation } from "@/lib/use-translation";
 
 export function HeaderToolSearch() {
+  const { t } = useTranslation("common");
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
   const searchRef = useRef<HTMLDivElement>(null);
@@ -38,22 +40,21 @@ export function HeaderToolSearch() {
     <div className="header-search-wrap" ref={searchRef}>
       <button className={`header-search-trigger ${open ? "active" : ""}`} type="button" onClick={() => setOpen((value) => !value)} aria-expanded={open} aria-haspopup="dialog" aria-controls="header-tool-search">
         {open ? <X aria-hidden="true" /> : <Search aria-hidden="true" />}
-        <span>Search tools</span>
-        <kbd>Ctrl K</kbd>
+        <span>{t("header.search", "Search tools")}</span>
       </button>
       {open ? (
         <div className="header-search-panel" id="header-tool-search" role="dialog" aria-label="Search PixProMax tools">
           <label>
             <Search aria-hidden="true" />
-            <span className="sr-only">Search image tools</span>
-            <input autoFocus type="search" placeholder="Try “50 KB”, “passport”, or “PDF”" value={query} onChange={(event) => setQuery(event.target.value)} onKeyDown={(event) => { if (event.key === "Escape") setOpen(false); }} />
+            <span className="sr-only">{t("header.searchLabel", "Search image tools")}</span>
+            <input autoFocus type="search" placeholder={t("header.searchPlaceholder", "Try “50 KB”, “passport”, or “PDF”")} value={query} onChange={(event) => setQuery(event.target.value)} onKeyDown={(event) => { if (event.key === "Escape") setOpen(false); }} />
           </label>
           <div className="header-search-results">
             {matches.map((tool) => {
               const Icon = tool.icon;
               return <Link href={`/${tool.slug}`} key={tool.slug} onClick={() => { setOpen(false); setQuery(""); }}><span className={`search-result-icon accent-${tool.accent}`}><Icon aria-hidden="true" /></span><span><strong>{tool.name}</strong><small>{tool.description}</small></span></Link>;
             })}
-            {matches.length === 0 ? <p>No matching tool. Try a format, size, or task.</p> : null}
+            {matches.length === 0 ? <p>{t("header.searchNoResults", "No matching tool. Try a format, size, or task.")}</p> : null}
           </div>
         </div>
       ) : null}

@@ -123,7 +123,7 @@
     "dismiss": "Dismiss"
   },
   "uploadDropzone": {
-    "dropSingle": "अपनी छवि यहाँ ड्रॉप करें",
+    "dropSingle": "अपनी छवि यहाँ ड्रॉप करें", "dropSinglePdf": "अपनी PDF यहाँ ड्रॉप करें", "dropMultiplePdf": "अपनी PDF फ़ाइलें यहाँ ड्रॉप करें",
     "dropMultiple": "अपनी छवियाँ यहाँ ड्रॉप करें",
     "browseSingle": "एक फाइल ब्राउज़ करें",
     "browseMultiple": "फाइलें ब्राउज़ करें",

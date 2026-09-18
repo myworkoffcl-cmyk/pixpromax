@@ -50,11 +50,13 @@
     },
     "fit": {
       "title": "Ajuster la taille.",
-      "text": "Définir une limite de taille de fichier"
+      "text": "Définir une limite de taille de fichier",
+      "detail": "20 KB · 50 KB · Personnalisé"
     },
     "merge": {
       "title": "Pages ensemble.",
-      "text": "Fusionner les fichiers PDF"
+      "text": "Fusionner les fichiers PDF",
+      "detail": "Local · privé"
     }
   }
 }

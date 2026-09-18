@@ -123,7 +123,7 @@
     "dismiss": "Dismiss"
   },
   "uploadDropzone": {
-    "dropSingle": "画像をここにドラッグしてください",
+    "dropSingle": "画像をここにドラッグしてください", "dropSinglePdf": "PDFをここにドラッグしてください", "dropMultiplePdf": "PDFをここにドラッグしてください",
     "dropMultiple": "画像をここにドラッグしてください",
     "browseSingle": "ファイルを参照",
     "browseMultiple": "ファイルを参照",

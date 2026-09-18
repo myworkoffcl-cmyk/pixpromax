@@ -169,6 +169,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .footer-bottom { margin-top: 38px; padding-top: 20px; display: flex; justify-content: space-between; gap: 12px; color: #718079; border-top: 1px solid #29342e; font-size: 13px; }
 @media (max-width: 900px) {
   .desktop-nav { display: none; } .menu-button { display: grid; }
+  .header-shortcut { display: none; }
   .hero-grid { grid-template-columns: 1fr; gap: 20px; padding-block: 66px; }
   .hero-visual { min-height: 430px; }
   .tool-grid { grid-template-columns: repeat(2, 1fr); }

@@ -123,7 +123,7 @@
     "dismiss": "Dismiss"
   },
   "uploadDropzone": {
-    "dropSingle": "আপনার ছবি এখানে ড্র্যাগ করুন",
+    "dropSingle": "আপনার ছবি এখানে ড্র্যাগ করুন", "dropSinglePdf": "আপনার PDF এখানে ড্র্যাগ করুন", "dropMultiplePdf": "আপনার PDF ফাইলগুলি এখানে ড্র্যাগ করুন",
     "dropMultiple": "আপনার ছবিগুলি এখানে ড্র্যাগ করুন",
     "browseSingle": "একটি ফাইল ব্রাউজ করুন",
     "browseMultiple": "ফাইলগুলি ব্রাউজ করুন",

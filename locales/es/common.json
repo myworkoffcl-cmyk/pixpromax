@@ -123,7 +123,7 @@
     "dismiss": "Descartar"
   },
   "uploadDropzone": {
-    "dropSingle": "Suelta tu imagen aquí",
+    "dropSingle": "Suelta tu imagen aquí", "dropSinglePdf": "Suelta tu PDF aquí", "dropMultiplePdf": "Suelta tus PDFs aquí",
     "dropMultiple": "Suelta tus imágenes aquí",
     "browseSingle": "examinar un archivo",
     "browseMultiple": "examinar archivos",

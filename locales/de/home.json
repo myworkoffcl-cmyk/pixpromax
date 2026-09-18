@@ -50,11 +50,13 @@
     },
     "fit": {
       "title": "Passt es an.",
-      "text": "Legen Sie eine Dateigrößenbeschränkung fest"
+      "text": "Legen Sie eine Dateigrößenbeschränkung fest",
+      "detail": "20 KB · 50 KB · Benutzerdefiniert"
     },
     "merge": {
       "title": "Seiten zusammen.",
-      "text": "PDF-Dateien zusammenführen"
+      "text": "PDF-Dateien zusammenführen",
+      "detail": "Lokal · privat"
     }
   }
 }

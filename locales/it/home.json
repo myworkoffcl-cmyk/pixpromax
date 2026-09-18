@@ -50,11 +50,13 @@
     },
     "fit": {
       "title": "Adattalo.",
-      "text": "Imposta un limite di dimensione del file"
+      "text": "Imposta un limite di dimensione del file",
+      "detail": "20 KB · 50 KB · Personalizzato"
     },
     "merge": {
       "title": "Pagine insieme.",
-      "text": "Unisci file PDF"
+      "text": "Unisci file PDF",
+      "detail": "Locale · privato"
     }
   }
 }

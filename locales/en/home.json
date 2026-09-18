@@ -35,11 +35,13 @@
     },
     "fit": {
       "title": "Make it fit.",
-      "text": "Set a file-size limit"
+      "text": "Set a file-size limit",
+      "detail": "20 KB · 50 KB · Custom"
     },
     "merge": {
       "title": "Pages together.",
-      "text": "Merge PDF files"
+      "text": "Merge PDF files",
+      "detail": "Local · private"
     }
   },
   "features": {

@@ -35,11 +35,13 @@
     },
     "fit": {
       "title": "Ajustarlo.",
-      "text": "Establecer un límite de tamaño de archivo"
+      "text": "Establecer un límite de tamaño de archivo",
+      "detail": "20 KB · 50 KB · Personalizado"
     },
     "merge": {
       "title": "Páginas juntas.",
-      "text": "Fusionar archivos PDF"
+      "text": "Fusionar archivos PDF",
+      "detail": "Local · privado"
     }
   },
   "features": {

@@ -117,6 +117,8 @@
   "uploadDropzone": {
     "dropSingle": "Drop your image here",
     "dropMultiple": "Drop your images here",
+    "dropSinglePdf": "Drop your PDF here",
+    "dropMultiplePdf": "Drop your PDFs here",
     "browseSingle": "browse a file",
     "browseMultiple": "browse files",
     "fromDevice": "from your device",

@@ -31,7 +31,9 @@ export function UploadDropzone({ multiple = false, onFiles, error, compact = fal
       <input ref={inputRef} id={id} type="file" accept={acceptedTypes} multiple={multiple} onChange={(event) => { handleFiles(Array.from(event.target.files ?? [])); event.target.value = ""; }} />
       <button type="button" className="dropzone-button" onClick={() => inputRef.current?.click()}>
         <span className="upload-orbit"><UploadCloud aria-hidden="true" />{fileKind === "PDF" ? <File aria-hidden="true" /> : <FileImage aria-hidden="true" />}</span>
-        <strong>{multiple ? t("uploadDropzone.dropMultiple", `Drop your ${fileKind}s here`) : t("uploadDropzone.dropSingle", `Drop your ${fileKind} here`)}</strong>
+        <strong>{fileKind === "PDF"
+          ? (multiple ? t("uploadDropzone.dropMultiplePdf", "Drop your PDFs here") : t("uploadDropzone.dropSinglePdf", "Drop your PDF here"))
+          : (multiple ? t("uploadDropzone.dropMultiple", "Drop your images here") : t("uploadDropzone.dropSingle", "Drop your image here"))}</strong>
         <span>or <u>{multiple ? t("uploadDropzone.browseMultiple", "browse files") : t("uploadDropzone.browseSingle", "browse a file")}</u> {t("uploadDropzone.fromDevice", "from your device")}</span>
         <small>{note ?? `${fileKind === "PDF" ? t("uploadDropzone.fileTypesPDF", "PDF") : t("uploadDropzone.fileTypesImage", "JPG, PNG or WebP")} · ${multiple ? t("uploadDropzone.filesLimit", `up to ${MAX_BATCH_FILES} files`) : t("uploadDropzone.sizeLimit", `up to ${MAX_SINGLE_IMAGE_SIZE / 1024 / 1024} MB`)}`}</small>
       </button>

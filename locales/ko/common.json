@@ -123,7 +123,7 @@
     "dismiss": "Dismiss"
   },
   "uploadDropzone": {
-    "dropSingle": "이미지를 여기에 놓으세요",
+    "dropSingle": "이미지를 여기에 놓으세요", "dropSinglePdf": "PDF를 여기에 놓으세요", "dropMultiplePdf": "PDF를 여기에 놓으세요",
     "dropMultiple": "이미지를 여기에 놓으세요",
     "browseSingle": "파일 찾기",
     "browseMultiple": "파일 찾기",

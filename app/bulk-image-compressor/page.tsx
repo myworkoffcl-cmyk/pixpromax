@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { UniversalWorkspace } from "@/components/workspace/workspace";
+import { BulkImageTool } from "@/components/tools/bulk-image-tool";
 import { JsonLd } from "@/components/seo/json-ld";
 import { ToolPageHeader } from "@/components/tool-page-header";
 import { getTool } from "@/config/tools";
@@ -17,12 +17,7 @@ export default function BulkImageCompressorPage() {
         <JsonLd key={i} data={schema} />
       ))}
       <ToolPageHeader toolSlug={tool.slug} toolName={tool.name} toolLongDescription={tool.longDescription} />
-      <UniversalWorkspace
-        init={{
-          initialEngine: "compress",
-          compress: { enabled: true },
-        }}
-      />
+      <BulkImageTool mode="compress" />
     </main>
   );
 }

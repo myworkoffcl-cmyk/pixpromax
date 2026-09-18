@@ -123,7 +123,7 @@
     "dismiss": "关闭"
   },
   "uploadDropzone": {
-    "dropSingle": "将您的图像放在这里",
+    "dropSingle": "将您的图像放在这里", "dropSinglePdf": "将您的PDF放在这里", "dropMultiplePdf": "将您的PDF文件放在这里",
     "dropMultiple": "将您的图像放在这里",
     "browseSingle": "浏览文件",
     "browseMultiple": "浏览文件",

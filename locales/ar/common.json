@@ -123,7 +123,7 @@
     "dismiss": "رفض"
   },
   "uploadDropzone": {
-    "dropSingle": "أسقط صورتك هنا",
+    "dropSingle": "أسقط صورتك هنا", "dropSinglePdf": "أسقط ملف PDF هنا", "dropMultiplePdf": "أسقط ملفات PDF هنا",
     "dropMultiple": "أسقط صورك هنا",
     "browseSingle": "استعرض ملف",
     "browseMultiple": "استعرض الملفات",
