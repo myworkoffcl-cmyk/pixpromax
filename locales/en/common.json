@@ -160,6 +160,21 @@
     "private": "100% Private",
     "privateDesc": "Files never leave your device"
   },
+  "organizePdf": {
+    "howItWorks": "How it works",
+    "step1Title": "Upload your PDF",
+    "step1Desc": "Choose one PDF file from your device",
+    "step2Title": "Reorder or select pages",
+    "step2Desc": "Arrange pages and remove unwanted ones with visual preview",
+    "step3Title": "Download your PDF",
+    "step3Desc": "Get your organized PDF with pages in your preferred order",
+    "noAccount": "No Account Needed",
+    "noAccountDesc": "Start instantly without sign-up",
+    "browserBased": "Browser-Based",
+    "browserBasedDesc": "Fast processing locally on your device",
+    "private": "100% Private",
+    "privateDesc": "Files never leave your device"
+  },
   "errors": {
     "notFound": "Not found",
     "pageNotFound": "Page not found",

@@ -166,6 +166,21 @@
     "private": "100% خاص",
     "privateDesc": "الملفات لا تغادر جهازك"
   },
+  "organizePdf": {
+    "howItWorks": "كيفية العمل",
+    "step1Title": "قم بتحميل ملف PDF الخاص بك",
+    "step1Desc": "اختر ملف PDF واحد من جهازك",
+    "step2Title": "أعد ترتيب أو حدد الصفحات",
+    "step2Desc": "رتب الصفحات وأزل الصفحات غير المرغوبة مع معاينة مرئية",
+    "step3Title": "قم بتحميل ملف PDF الخاص بك",
+    "step3Desc": "احصل على ملف PDF منظم مع صفحات بترتيبك المفضل",
+    "noAccount": "لا حساب مطلوب",
+    "noAccountDesc": "ابدأ بدون تسجيل",
+    "browserBased": "قائم على المتصفح",
+    "browserBasedDesc": "معالجة سريعة على جهازك",
+    "private": "100% خاص",
+    "privateDesc": "الملفات لا تغادر جهازك"
+  },
   "errors": {
     "notFound": "لم يتم العثور عليه",
     "pageNotFound": "الصفحة غير موجودة",

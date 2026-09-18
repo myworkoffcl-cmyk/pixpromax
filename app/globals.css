@@ -540,6 +540,12 @@ input[type="range"] { width: 100%; accent-color: var(--brand); }
 /* Split PDF Value Strip */
 .split-pdf-values { margin: 8px 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
 
+/* Organize PDF Value Strip */
+.organize-pdf-values { margin: 8px 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+
+/* Organize PDF Guide */
+.organize-pdf-guide { margin: 8px 0; padding-block: 8px; border-top: 1px solid var(--line); }
+
 .value-item { padding: 24px 20px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 12px; border: 1px solid color-mix(in srgb, var(--brand), var(--line) 80%); border-radius: 16px; background: linear-gradient(135deg, color-mix(in srgb, var(--brand), var(--surface) 96%), var(--surface) 70%); box-shadow: 0 4px 12px color-mix(in srgb, var(--ink), transparent 94%); }
 .value-icon { width: 48px; height: 48px; display: grid; place-items: center; border-radius: 12px; background: linear-gradient(135deg, color-mix(in srgb, var(--brand), transparent 85%), color-mix(in srgb, var(--brand-dark), transparent 90%)); color: var(--brand); }
 .value-icon svg { width: 24px; height: 24px; stroke-width: 2; }
@@ -589,7 +595,8 @@ input[type="range"] { width: 100%; accent-color: var(--brand); }
   .tool-workspace { margin-top: 2px; margin-bottom: 58px; }
   .dropzone { min-height: 190px; padding: 12px; }
   .split-pdf-values,
-  .merge-pdf-values { grid-template-columns: 1fr; }
+  .merge-pdf-values,
+  .organize-pdf-values { grid-template-columns: 1fr; }
   .steps-grid { grid-template-columns: 1fr; }
   .dropzone-button { min-height: 164px; }
   .dropzone-button strong { font-size: 19px; }

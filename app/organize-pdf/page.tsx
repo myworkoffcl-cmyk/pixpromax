@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { PdfTool } from "@/components/tools/pdf-tool";
+import { OrganizePdfGuide } from "@/components/tools/organize-pdf-guide";
+import { OrganizePdfValues } from "@/components/tools/organize-pdf-values";
 import { JsonLd } from "@/components/seo/json-ld";
 import { ToolPageHeader } from "@/components/tool-page-header";
 import { getTool } from "@/config/tools";
@@ -17,7 +19,11 @@ export default function OrganizePdfPage() {
         <JsonLd key={i} data={schema} />
       ))}
       <ToolPageHeader toolSlug={tool.slug} toolName={tool.name} toolLongDescription={tool.longDescription} />
-      <PdfTool mode="organize" />
+      <div className="tool-workspace-wrapper">
+        <PdfTool mode="organize" />
+        <OrganizePdfValues />
+        <OrganizePdfGuide />
+      </div>
     </main>
   );
 }

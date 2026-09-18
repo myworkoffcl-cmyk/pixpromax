@@ -166,6 +166,21 @@
     "private": "100% Privado",
     "privateDesc": "Los archivos nunca salen de tu dispositivo"
   },
+  "organizePdf": {
+    "howItWorks": "Cómo funciona",
+    "step1Title": "Sube tu PDF",
+    "step1Desc": "Elige un archivo PDF de tu dispositivo",
+    "step2Title": "Reordena o selecciona páginas",
+    "step2Desc": "Organiza páginas y elimina las que no necesites con vista previa",
+    "step3Title": "Descarga tu PDF",
+    "step3Desc": "Obtén tu PDF organizado con páginas en tu orden preferido",
+    "noAccount": "Sin Cuenta Necesaria",
+    "noAccountDesc": "Comienza sin registrarte",
+    "browserBased": "Basado en Navegador",
+    "browserBasedDesc": "Procesamiento rápido en tu dispositivo",
+    "private": "100% Privado",
+    "privateDesc": "Los archivos nunca salen de tu dispositivo"
+  },
   "errors": {
     "notFound": "No encontrado",
     "pageNotFound": "Página no encontrada",
