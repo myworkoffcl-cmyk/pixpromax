@@ -30,10 +30,11 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .header-search-trigger:hover, .header-search-trigger.active { color: var(--brand-dark); border-color: color-mix(in srgb, var(--brand), transparent 35%); transform: translateY(-1px); }
 .header-search-trigger svg { width: 17px; }
 .header-search-trigger span { font-size: 13px; font-weight: 700; }
+.header-search-placeholder { font-size: 13px; font-weight: 700; animation: textScroll 8s ease-in-out infinite; display: inline-block; }
+.header-search-input { flex: 1; border: 0; outline: 0; color: var(--ink); background: transparent; font-size: 13px; font-weight: 400; min-width: 0; }
+.header-search-input::placeholder { color: var(--muted); animation: textScroll 8s ease-in-out infinite; }
+@keyframes textScroll { 0%, 100% { opacity: 1; } 40%, 60% { opacity: 0.5; } }
 .header-search-panel { width: min(420px, calc(100vw - 28px)); padding: 12px; position: absolute; z-index: 60; top: calc(100% + 12px); right: 0; border: 1px solid var(--line); border-radius: 17px; background: var(--surface); box-shadow: 0 22px 65px rgba(20, 32, 25, .2); animation: searchReveal .18s ease both; }
-.header-search-panel > label { height: 48px; padding: 0 13px; display: flex; align-items: center; gap: 9px; border: 1px solid var(--line); border-radius: 11px; background: var(--bg); }
-.header-search-panel > label svg { width: 18px; color: var(--brand); }
-.header-search-panel input { width: 100%; border: 0; outline: 0; color: var(--ink); background: transparent; }
 .header-search-results { margin-top: 8px; display: grid; gap: 3px; }
 .header-search-results > a { min-width: 0; padding: 9px; display: flex; align-items: center; gap: 10px; border-radius: 11px; transition: background .16s ease, transform .16s ease; }
 .header-search-results > a:hover { background: var(--surface-soft); transform: translateX(3px); }
