@@ -12,10 +12,12 @@ interface PDFPageInfo {
 interface PDFPageSelectorProps {
   file: File;
   onSelectionChange?: (selectedPages: number[]) => void;
-  mode?: "pages" | "range";
+  mode?: "pages" | "range" | "all";
+  previewPages?: number[];
+  readOnly?: boolean;
 }
 
-export function PDFPageSelector({ file, onSelectionChange, mode = "pages" }: PDFPageSelectorProps) {
+export function PDFPageSelector({ file, onSelectionChange, mode = "pages", previewPages, readOnly = false }: PDFPageSelectorProps) {
   const [pageInfo, setPageInfo] = useState<PDFPageInfo[]>([]);
   const [selectedPages, setSelectedPages] = useState<Set<number>>(new Set());
   const [loading, setLoading] = useState(true);
@@ -58,6 +60,10 @@ export function PDFPageSelector({ file, onSelectionChange, mode = "pages" }: PDF
           allPages.push(pageData);
           setPageInfo([...allPages]);
         }
+
+        if (readOnly && previewPages) {
+          setSelectedPages(new Set(previewPages));
+        }
       } catch (error) {
         console.error("Error analyzing PDF:", error);
       } finally {
@@ -68,7 +74,7 @@ export function PDFPageSelector({ file, onSelectionChange, mode = "pages" }: PDF
     if (file) {
       analyzeFile();
     }
-  }, [file]);
+  }, [file, readOnly, previewPages]);
 
   const togglePageSelection = (pageNum: number) => {
     const updated = new Set(selectedPages);
@@ -110,49 +116,51 @@ export function PDFPageSelector({ file, onSelectionChange, mode = "pages" }: PDF
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", paddingBottom: "8px", borderBottom: "1px solid var(--line)" }}>
-        <div style={{ fontSize: "13px", color: "var(--ink)" }}>
-          <strong style={{ color: "var(--ink)" }}>{selectedPages.size}</strong> of <strong>{pageInfo.length}</strong> pages selected
+      {!readOnly && (
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", paddingBottom: "8px", borderBottom: "1px solid var(--line)" }}>
+          <div style={{ fontSize: "13px", color: "var(--ink)" }}>
+            <strong style={{ color: "var(--ink)" }}>{selectedPages.size}</strong> of <strong>{pageInfo.length}</strong> pages selected
+          </div>
+          <div style={{ display: "flex", gap: "8px" }}>
+            <button
+              type="button"
+              onClick={selectAll}
+              style={{
+                padding: "4px 12px",
+                fontSize: "12px",
+                border: "1px solid var(--line)",
+                background: "transparent",
+                borderRadius: "6px",
+                cursor: "pointer",
+                color: "var(--brand)",
+                transition: "background 0.2s"
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.background = "color-mix(in srgb, var(--brand), transparent 92%)")}
+              onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
+            >
+              Select All
+            </button>
+            <button
+              type="button"
+              onClick={clearAll}
+              style={{
+                padding: "4px 12px",
+                fontSize: "12px",
+                border: "1px solid var(--line)",
+                background: "transparent",
+                borderRadius: "6px",
+                cursor: "pointer",
+                color: "var(--muted)",
+                transition: "background 0.2s"
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.background = "color-mix(in srgb, var(--ink), transparent 94%)")}
+              onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
+            >
+              Clear All
+            </button>
+          </div>
         </div>
-        <div style={{ display: "flex", gap: "8px" }}>
-          <button
-            type="button"
-            onClick={selectAll}
-            style={{
-              padding: "4px 12px",
-              fontSize: "12px",
-              border: "1px solid var(--line)",
-              background: "transparent",
-              borderRadius: "6px",
-              cursor: "pointer",
-              color: "var(--brand)",
-              transition: "background 0.2s"
-            }}
-            onMouseEnter={(e) => (e.currentTarget.style.background = "color-mix(in srgb, var(--brand), transparent 92%)")}
-            onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
-          >
-            Select All
-          </button>
-          <button
-            type="button"
-            onClick={clearAll}
-            style={{
-              padding: "4px 12px",
-              fontSize: "12px",
-              border: "1px solid var(--line)",
-              background: "transparent",
-              borderRadius: "6px",
-              cursor: "pointer",
-              color: "var(--muted)",
-              transition: "background 0.2s"
-            }}
-            onMouseEnter={(e) => (e.currentTarget.style.background = "color-mix(in srgb, var(--ink), transparent 94%)")}
-            onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
-          >
-            Clear All
-          </button>
-        </div>
-      </div>
+      )}
 
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(100px, 1fr))", gap: "8px" }}>
         {pageInfo.map((page) => (
@@ -164,14 +172,14 @@ export function PDFPageSelector({ file, onSelectionChange, mode = "pages" }: PDF
               border: selectedPages.has(page.pageNumber) ? "2px solid var(--brand)" : "1px solid var(--line)",
               borderRadius: "6px",
               background: "var(--surface)",
-              cursor: "pointer",
+              cursor: readOnly ? "default" : "pointer",
               overflow: "hidden",
               transition: "border-color 0.2s, transform 0.2s",
               transform: selectedPages.has(page.pageNumber) ? "scale(0.98)" : "scale(1)",
             }}
-            onClick={() => togglePageSelection(page.pageNumber)}
-            onMouseEnter={(e) => !selectedPages.has(page.pageNumber) && (e.currentTarget.style.borderColor = "var(--brand)")}
-            onMouseLeave={(e) => !selectedPages.has(page.pageNumber) && (e.currentTarget.style.borderColor = "var(--line)")}
+            onClick={() => !readOnly && togglePageSelection(page.pageNumber)}
+            onMouseEnter={(e) => !readOnly && !selectedPages.has(page.pageNumber) && (e.currentTarget.style.borderColor = "var(--brand)")}
+            onMouseLeave={(e) => !readOnly && !selectedPages.has(page.pageNumber) && (e.currentTarget.style.borderColor = "var(--line)")}
           >
             {page.thumbnail ? (
               <img
@@ -213,18 +221,22 @@ export function PDFPageSelector({ file, onSelectionChange, mode = "pages" }: PDF
                 transition: "background 0.2s",
               }}
             >
-              <input
-                type="checkbox"
-                checked={selectedPages.has(page.pageNumber)}
-                onChange={() => togglePageSelection(page.pageNumber)}
-                onClick={(e) => e.stopPropagation()}
-                style={{
-                  width: "20px",
-                  height: "20px",
-                  cursor: "pointer",
-                  opacity: selectedPages.has(page.pageNumber) ? 1 : 0.4,
-                }}
-              />
+              {!readOnly ? (
+                <input
+                  type="checkbox"
+                  checked={selectedPages.has(page.pageNumber)}
+                  onChange={() => togglePageSelection(page.pageNumber)}
+                  onClick={(e) => e.stopPropagation()}
+                  style={{
+                    width: "20px",
+                    height: "20px",
+                    cursor: "pointer",
+                    opacity: selectedPages.has(page.pageNumber) ? 1 : 0.4,
+                  }}
+                />
+              ) : selectedPages.has(page.pageNumber) ? (
+                <div style={{ fontSize: "24px", color: "white", fontWeight: "bold" }}>✓</div>
+              ) : null}
             </div>
 
             <div
