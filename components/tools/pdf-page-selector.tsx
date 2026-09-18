@@ -60,10 +60,6 @@ export function PDFPageSelector({ file, onSelectionChange, mode = "pages", previ
           allPages.push(pageData);
           setPageInfo([...allPages]);
         }
-
-        if (readOnly && previewPages) {
-          setSelectedPages(new Set(previewPages));
-        }
       } catch (error) {
         console.error("Error analyzing PDF:", error);
       } finally {
@@ -74,7 +70,13 @@ export function PDFPageSelector({ file, onSelectionChange, mode = "pages", previ
     if (file) {
       analyzeFile();
     }
-  }, [file, readOnly, previewPages]);
+  }, [file]);
+
+  useEffect(() => {
+    if (readOnly && previewPages && previewPages.length > 0) {
+      setSelectedPages(new Set(previewPages));
+    }
+  }, [readOnly, previewPages]);
 
   const togglePageSelection = (pageNum: number) => {
     const updated = new Set(selectedPages);
