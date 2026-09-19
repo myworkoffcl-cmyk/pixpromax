@@ -369,7 +369,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .result-placeholder svg { width: 36px; height: 36px; color: var(--brand); }
 .result-placeholder span { max-width: 300px; line-height: 1.6; }
 .control-card { padding: 34px; border: 1px solid var(--line); border-radius: 20px; background: var(--surface); }
-.settings-buttons-wrapper { display: flex; gap: 20px; align-items: flex-start; }
+.settings-buttons-wrapper { display: flex; gap: 20px; align-items: flex-start; margin-top: -12px; }
 .settings-buttons-wrapper > .control-card { width: calc(50% - 10px); padding: 10px 8px; }
 .settings-buttons-wrapper > .control-card .control-heading { margin-bottom: 8px; }
 .settings-buttons-wrapper > .control-card .kicker { font-size: 9px; letter-spacing: 0.1em; }
