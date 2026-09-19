@@ -317,6 +317,8 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .privacy-chip { width: fit-content; max-width: 360px; margin: 0 0 0 auto; padding: 10px 12px; display: flex; align-items: flex-start; gap: 8px; border-radius: 11px; color: var(--brand-dark); background: color-mix(in srgb, var(--brand), transparent 89%); font-size: 12px; font-weight: 650; line-height: 1.4; }
 .privacy-chip svg { width: 16px; flex: 0 0 auto; }
 .tool-workspace { position: relative; margin-top: 8px; margin-bottom: 72px; }
+.workspace-page { display: flex; flex-direction: column; width: 100%; }
+
 .tool-workspace-wrapper { display: flex; flex-direction: column; gap: 8px; padding-block: 0; max-width: 1200px; margin-inline: auto; width: 100%; padding-inline: 20px; }
 .dropzone { min-height: 220px; padding: 16px; display: grid; place-items: center; position: relative; border: 1.5px dashed color-mix(in srgb, var(--brand), var(--line) 62%); border-radius: 20px; background: linear-gradient(135deg, var(--surface), color-mix(in srgb, var(--surface-soft), transparent 30%)); box-shadow: 0 15px 45px color-mix(in srgb, var(--ink), transparent 94%); transition: border-color .2s, background .2s, transform .2s; }
 .dropzone.is-dragging { border-color: var(--brand); background: color-mix(in srgb, var(--brand), var(--surface) 96%); transform: scale(1.01); }
@@ -339,8 +341,8 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .dropzone.compact strong { font-size: 17px; }
 .form-error { margin: 16px 0 0; padding: 12px 14px; border-radius: 10px; color: #9e2f35; background: #fff0f1; font-size: 14px; }
 :root[data-theme="dark"] .form-error { color: #ffb7bb; background: #422226; }
-.tool-panel { display: flex; flex-direction: row; align-items: flex-start; gap: 20px; flex-wrap: wrap; }
-.tool-panel .control-card { display: none; }
+.tool-panel { display: flex; flex-direction: row; align-items: flex-start; gap: 20px; flex-wrap: wrap; width: 100%; }
+.tool-panel > .control-card { flex: 1; min-width: 300px; }
 .tool-panel .preview-grid { flex: 1; min-width: 0; display: flex; flex-direction: column; border: none; border-radius: 0; background: transparent; position: relative; width: 100%; }
 .tool-panel .preview-col { flex: 1; min-width: 0; display: flex; flex-direction: column; align-items: flex-end; gap: 12px; }
 .tool-panel .preview-col .preview-grid { flex: unset; width: 100%; }
@@ -358,6 +360,15 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .result-placeholder svg { width: 36px; height: 36px; color: var(--brand); }
 .result-placeholder span { max-width: 300px; line-height: 1.6; }
 .control-card { padding: 34px; border: 1px solid var(--line); border-radius: 20px; background: var(--surface); }
+.tool-panel + .control-card { padding: 20px; }
+.tool-panel + .control-card .control-heading { margin-bottom: 16px; }
+.tool-panel + .control-card h2 { font-size: 18px !important; margin: 4px 0 0 !important; }
+.tool-panel + .control-card .single-field, .tool-panel + .control-card .range-field { gap: 8px; }
+.tool-panel + .control-card .single-field span, .tool-panel + .control-card .range-field span { font-size: 14px; }
+.tool-panel + .control-card input { font-size: 14px; padding: 8px 10px; }
+.tool-panel + .control-card small { font-size: 12px; }
+.tool-panel + .control-card .notice { padding: 10px 12px; font-size: 12px; gap: 6px; }
+.tool-panel + .control-card .notice svg { width: 16px; height: 16px; }
 .control-heading { margin-bottom: 28px; display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; }
 .control-heading h2 { margin: 8px 0 0; font: 730 30px/1.1 var(--font-display), sans-serif; letter-spacing: -.045em; }
 .control-heading > strong { color: var(--brand); font: 750 25px var(--font-display), sans-serif; }
@@ -487,10 +498,10 @@ input[type="range"] { width: 100%; accent-color: var(--brand); }
 .edit-button-row button { min-height: 42px; padding: 0 12px; display: inline-flex; align-items: center; gap: 7px; border: 1px solid var(--line); border-radius: 9px; color: var(--muted); background: var(--surface); cursor: pointer; }
 .edit-button-row button:hover, .edit-button-row button.active { color: var(--brand-dark); border-color: var(--brand); background: color-mix(in srgb, var(--brand), transparent 91%); }
 .edit-button-row svg { width: 16px; }
-.pdf-image-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.pdf-image-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
 .pdf-image-grid article { min-width: 0; padding: 9px; border: 1px solid var(--line); border-radius: 12px; background: var(--bg); }
-.pdf-image-grid article > div { height: 180px; position: relative; overflow: hidden; border-radius: 8px; background: var(--surface-soft); }
-.pdf-image-grid article img { object-fit: cover; }
+.pdf-image-grid article > div { height: 80px; position: relative; overflow: hidden; border-radius: 8px; background: var(--surface-soft); }
+.pdf-image-grid article img { object-fit: contain; }
 .pdf-image-grid article > span { min-width: 0; margin: 9px 0 7px; display: grid; grid-template-columns: 15px 18px minmax(0, 1fr); align-items: center; gap: 4px; }
 .pdf-image-grid article > span svg { width: 14px; color: var(--muted); }
 .pdf-image-grid article small { overflow: hidden; color: var(--muted); text-overflow: ellipsis; white-space: nowrap; }
@@ -543,8 +554,32 @@ input[type="range"] { width: 100%; accent-color: var(--brand); }
 /* Organize PDF Value Strip */
 .organize-pdf-values { margin: 8px 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
 
+/* PDF to JPG Value Strip */
+.pdf-to-jpg-values { margin: 8px 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+
+/* PDF to PNG Value Strip */
+.pdf-to-png-values { margin: 8px 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+
+/* JPG to PDF Value Strip */
+.jpg-to-pdf-values { margin: 8px 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+
+/* PDF Compress Value Strip */
+.pdf-compress-values { margin: 8px 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+
 /* Organize PDF Guide */
 .organize-pdf-guide { margin: 8px 0; padding-block: 8px; border-top: 1px solid var(--line); }
+
+/* PDF to JPG Guide */
+.pdf-to-jpg-guide { margin: 8px 0; padding-block: 8px; border-top: 1px solid var(--line); }
+
+/* PDF to PNG Guide */
+.pdf-to-png-guide { margin: 8px 0; padding-block: 8px; border-top: 1px solid var(--line); }
+
+/* JPG to PDF Guide */
+.jpg-to-pdf-guide { margin: 8px 0; padding-block: 8px; border-top: 1px solid var(--line); }
+
+/* PDF Compress Guide */
+.pdf-compress-guide { margin: 8px 0; padding-block: 8px; border-top: 1px solid var(--line); }
 
 .value-item { padding: 24px 20px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 12px; border: 1px solid color-mix(in srgb, var(--brand), var(--line) 80%); border-radius: 16px; background: linear-gradient(135deg, color-mix(in srgb, var(--brand), var(--surface) 96%), var(--surface) 70%); box-shadow: 0 4px 12px color-mix(in srgb, var(--ink), transparent 94%); }
 .value-icon { width: 48px; height: 48px; display: grid; place-items: center; border-radius: 12px; background: linear-gradient(135deg, color-mix(in srgb, var(--brand), transparent 85%), color-mix(in srgb, var(--brand-dark), transparent 90%)); color: var(--brand); }
@@ -605,6 +640,8 @@ input[type="range"] { width: 100%; accent-color: var(--brand); }
   .result-placeholder { min-height: 340px; }
   .control-card { padding: 23px 18px; }
   .control-heading { flex-direction: column; gap: 14px; }
+  .tool-panel { flex-direction: column; }
+  .tool-panel > .control-card { width: 100%; }
   .field-grid { grid-template-columns: 1fr; }
   .stat-row { grid-template-columns: 1fr 1fr; }
   .stat-row > span:nth-child(2) { border-right: 0; }
@@ -1104,3 +1141,8 @@ summary.ws-subsection-header:hover { background: color-mix(in srgb, var(--brand)
   .ws-crop-aspects { gap: 4px; }
   .ws-pill--aspect { padding: 3px 8px; font-size: 10px; }
 }
+
+/* PDF Compress Tool - Show file details and compression controls */
+#main-content .pdf-compress-tool .control-card { display: block !important; width: 100% !important; margin-bottom: 16px !important; }
+#main-content .pdf-compress-tool { display: flex !important; flex-direction: column !important; gap: 0 !important; }
+
