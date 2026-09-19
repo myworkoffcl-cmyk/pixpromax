@@ -468,7 +468,7 @@ function EditControls({
   function selectAspect(aspect: CropAspect) {
     const rect = computeCropRect(aspect, cfg.crop.customAspectW, cfg.crop.customAspectH, sourceW, sourceH);
     onChange({
-      crop: { ...cfg.crop, aspect, enabled: aspect !== "free", ...rect },
+      crop: { ...cfg.crop, aspect, enabled: true, ...rect },
     });
   }
 
