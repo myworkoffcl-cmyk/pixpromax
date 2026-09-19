@@ -28,6 +28,7 @@ import {
   X,
 } from "lucide-react";
 import { UploadDropzone } from "@/components/tools/upload-dropzone";
+import { CropOverlay } from "@/components/workspace/crop-overlay";
 import { runPipeline } from "@/lib/image/pipeline";
 import { imageDimensions } from "@/lib/image/process";
 import { validateImageFile } from "@/lib/image/validate";
@@ -1255,6 +1256,8 @@ export function UniversalWorkspace({ init }: { init?: WorkspaceInitConfig }) {
     [state.ops.resize]
   );
 
+  const imgRef = useRef<HTMLImageElement>(null);
+
   const setOp = useCallback(
     <K extends keyof WorkspaceOps>(key: K, partial: Partial<WorkspaceOps[K]>) => {
       dispatch({
@@ -1339,18 +1342,27 @@ export function UniversalWorkspace({ init }: { init?: WorkspaceInitConfig }) {
 
         {/* Right: preview */}
         <section className="ws-preview-area" aria-label="Image preview">
-          <div className="ws-preview-frame">
+          <div className="ws-preview-frame" style={{ position: "relative" }}>
             {displayUrl ? (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img
-                src={displayUrl}
-                alt={
-                  state.previewMode === "original"
-                    ? "Original image"
-                    : "Processed preview"
-                }
-                className="ws-preview-img"
-              />
+              <>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  ref={imgRef}
+                  src={displayUrl}
+                  alt={
+                    state.previewMode === "original"
+                      ? "Original image"
+                      : "Processed preview"
+                  }
+                  className="ws-preview-img"
+                />
+                <CropOverlay
+                  crop={state.ops.edit.crop}
+                  onChange={(partial) => setOp("edit", { crop: { ...state.ops.edit.crop, ...partial } })}
+                  imageElement={imgRef.current}
+                  enabled={state.previewMode === "original" && state.ops.edit.enabled}
+                />
+              </>
             ) : (
               <div className="ws-preview-placeholder">
                 <ImageIcon aria-hidden="true" />
