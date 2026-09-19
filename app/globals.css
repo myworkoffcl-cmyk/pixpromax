@@ -342,7 +342,10 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .form-error { margin: 16px 0 0; padding: 12px 14px; border-radius: 10px; color: #9e2f35; background: #fff0f1; font-size: 14px; }
 :root[data-theme="dark"] .form-error { color: #ffb7bb; background: #422226; }
 .pdf-tool-layout { display: contents; }
-.pdf-tool-layout-sidebyside { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; width: 100%; }
+.pdf-tool-layout-sidebyside { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; width: 100%; grid-template-areas: "preview settings" "actions settings"; }
+.pdf-tool-layout-sidebyside > .tool-panel { grid-area: preview; }
+.pdf-tool-layout-sidebyside > .settings-buttons-wrapper { grid-area: settings; }
+.pdf-tool-layout-sidebyside > .action-row { grid-area: actions; }
 .tool-panel { display: flex; flex-direction: row; align-items: flex-start; gap: 20px; flex-wrap: wrap; width: 100%; }
 .tool-panel > .control-card { flex: 1; min-width: 300px; padding: 16px 14px; }
 .tool-panel > .control-card .control-heading { margin-bottom: 10px; }
