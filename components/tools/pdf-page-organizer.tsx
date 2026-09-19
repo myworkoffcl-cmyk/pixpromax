@@ -47,7 +47,7 @@ export function PDFPageOrganizer({ file, onPageOrderChange }: PDFPageOrganizerPr
             const context = canvas.getContext("2d");
 
             if (context) {
-              await page.render({ canvasContext: context, viewport }).promise;
+              await page.render({ canvas, canvasContext: context, viewport }).promise;
               pageData.thumbnail = canvas.toDataURL("image/png");
             }
           } catch (error) {
@@ -125,13 +125,13 @@ export function PDFPageOrganizer({ file, onPageOrderChange }: PDFPageOrganizerPr
               key={pageData.id}
               style={{
                 position: "relative",
-                aspect: "3/4",
+                aspectRatio: "3/4",
                 border: "2px solid var(--line)",
                 borderRadius: "8px",
                 background: "var(--surface)",
                 overflow: "hidden",
                 transition: "border-color 0.2s",
-              }}
+              } as React.CSSProperties}
             >
               {pageData.thumbnail ? (
                 <img

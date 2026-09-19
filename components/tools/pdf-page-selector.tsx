@@ -50,7 +50,7 @@ export function PDFPageSelector({ file, onSelectionChange, mode = "pages", previ
             const context = canvas.getContext("2d");
 
             if (context) {
-              await page.render({ canvasContext: context, viewport }).promise;
+              await page.render({ canvas, canvasContext: context, viewport }).promise;
               pageData.thumbnail = canvas.toDataURL("image/png");
             }
           } catch (error) {
@@ -170,7 +170,7 @@ export function PDFPageSelector({ file, onSelectionChange, mode = "pages", previ
             key={page.id}
             style={{
               position: "relative",
-              aspect: "3/4",
+              aspectRatio: "3/4",
               border: selectedPages.has(page.pageNumber) ? "2px solid var(--brand)" : "1px solid var(--line)",
               borderRadius: "6px",
               background: "var(--surface)",
@@ -178,7 +178,7 @@ export function PDFPageSelector({ file, onSelectionChange, mode = "pages", previ
               overflow: "hidden",
               transition: "border-color 0.2s, transform 0.2s",
               transform: selectedPages.has(page.pageNumber) ? "scale(0.98)" : "scale(1)",
-            }}
+            } as React.CSSProperties}
             onClick={() => !readOnly && togglePageSelection(page.pageNumber)}
             onMouseEnter={(e) => !readOnly && !selectedPages.has(page.pageNumber) && (e.currentTarget.style.borderColor = "var(--brand)")}
             onMouseLeave={(e) => !readOnly && !selectedPages.has(page.pageNumber) && (e.currentTarget.style.borderColor = "var(--line)")}

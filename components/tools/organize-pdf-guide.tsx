@@ -10,26 +10,26 @@ export function OrganizePdfGuide() {
     {
       number: 1,
       icon: Upload,
-      title: t("organizePdf.step1Title"),
-      description: t("organizePdf.step1Desc"),
+      title: t("organizePdf.step1Title", "Upload a PDF"),
+      description: t("organizePdf.step1Desc", "Choose a PDF file from your computer"),
     },
     {
       number: 2,
       icon: Zap,
-      title: t("organizePdf.step2Title"),
-      description: t("organizePdf.step2Desc"),
+      title: t("organizePdf.step2Title", "Organize Pages"),
+      description: t("organizePdf.step2Desc", "Reorder or remove pages as needed"),
     },
     {
       number: 3,
       icon: Download,
-      title: t("organizePdf.step3Title"),
-      description: t("organizePdf.step3Desc"),
+      title: t("organizePdf.step3Title", "Download"),
+      description: t("organizePdf.step3Desc", "Download your organized PDF"),
     },
   ];
 
   return (
     <div className="organize-pdf-guide">
-      <h3>{t("organizePdf.howItWorks")}</h3>
+      <h3>{t("organizePdf.howItWorks", "How It Works")}</h3>
       <div className="steps-grid">
         {steps.map((step) => {
           const Icon = step.icon;

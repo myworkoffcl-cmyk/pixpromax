@@ -66,7 +66,7 @@ export function PDFPreview({ files, onPageDelete, deletedPageIds = new Set(), on
                 return;
               }
 
-              await page.render({ canvasContext: context, viewport }).promise;
+              await page.render({ canvas, canvasContext: context, viewport }).promise;
               const dataUrl = canvas.toDataURL("image/png");
 
               if (!dataUrl || dataUrl.length < 100) {
@@ -211,7 +211,7 @@ export function PDFPreview({ files, onPageDelete, deletedPageIds = new Set(), on
                 <div
                   key={page.id}
                   style={{
-                    aspect: "3/4",
+                    aspectRatio: "3/4",
                     border: "1px solid var(--line)",
                     borderRadius: "6px",
                     background: "var(--surface)",
@@ -222,8 +222,7 @@ export function PDFPreview({ files, onPageDelete, deletedPageIds = new Set(), on
                     overflow: "hidden",
                     position: "relative",
                     cursor: "pointer",
-                    group: "hover",
-                  }}
+                  } as React.CSSProperties}
                 >
                   {page.thumbnail ? (
                     <img
