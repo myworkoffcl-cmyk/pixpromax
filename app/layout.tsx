@@ -19,6 +19,12 @@ export const metadata: Metadata = {
   description: SITE_DESCRIPTION,
   applicationName: SITE_NAME,
   alternates: { canonical: "/" },
+  icons: {
+    icon: [
+      { url: "/icon.png", type: "image/png" },
+    ],
+    apple: "/icon.png",
+  },
   openGraph: { type: "website", url: "/", siteName: SITE_NAME, title: `Free Online Image Tools | ${SITE_NAME}`, description: SITE_DESCRIPTION, images: [{ url: "/og.png", width: 1731, height: 909, alt: "PixProMax — Images in. Better images out." }] },
   twitter: { card: "summary_large_image", title: `Free Online Image Tools | ${SITE_NAME}`, description: SITE_DESCRIPTION, images: ["/og.png"] },
   category: "Image tools",
