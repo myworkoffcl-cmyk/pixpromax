@@ -205,4 +205,4 @@ body { background: radial-gradient(circle at 0 0, #dce3ff 0, transparent 28rem),
 :root[data-theme="dark"] .header-search-trigger, :root[data-theme="dark"] .header-options-menu { box-shadow: 0 22px 58px rgba(0, 0, 0, .3), inset 0 1px rgba(255, 255, 255, .08); }
 @media (max-width: 900px) { .header-inner { grid-template-columns: auto minmax(160px, 480px) auto !important; gap: 14px; } }
 @media (max-width: 640px) { .header-inner { grid-template-columns: auto minmax(0, 1fr) auto !important; gap: 9px; } .header-search-trigger { width: 42px; height: 42px; padding: 0; justify-content: center; border-radius: 50%; } .header-search-trigger span { display: none; } .header-search-trigger kbd { display: none; } .header-search-panel { position: fixed; width: calc(100vw - 24px); top: 62px; left: 12px; right: auto; } .header-actions { gap: 5px; } .header-actions .icon-button { width: 40px; height: 40px; } }
-@media (max-width: 480px) { .header-inner { grid-template-columns: auto minmax(0, 1fr) auto !important; } .theme-toggle { display: none; } }
+@media (max-width: 480px) { .header-inner { grid-template-columns: auto minmax(0, 1fr) auto !important; } }
