@@ -360,15 +360,21 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .result-placeholder svg { width: 36px; height: 36px; color: var(--brand); }
 .result-placeholder span { max-width: 300px; line-height: 1.6; }
 .control-card { padding: 34px; border: 1px solid var(--line); border-radius: 20px; background: var(--surface); }
-.tool-panel + .control-card { padding: 20px; width: calc(50% - 10px); }
-.tool-panel + .control-card .control-heading { margin-bottom: 16px; }
-.tool-panel + .control-card h2 { font-size: 18px !important; margin: 4px 0 0 !important; }
-.tool-panel + .control-card .single-field, .tool-panel + .control-card .range-field { gap: 8px; }
-.tool-panel + .control-card .single-field span, .tool-panel + .control-card .range-field span { font-size: 14px; }
-.tool-panel + .control-card input { font-size: 14px; padding: 8px 10px; }
-.tool-panel + .control-card small { font-size: 12px; }
-.tool-panel + .control-card .notice { padding: 10px 12px; font-size: 12px; gap: 6px; }
-.tool-panel + .control-card .notice svg { width: 16px; height: 16px; }
+.settings-buttons-wrapper { display: flex; gap: 20px; align-items: flex-start; }
+.settings-buttons-wrapper > .control-card { width: calc(50% - 10px); padding: 20px; }
+.settings-buttons-wrapper > .control-card .control-heading { margin-bottom: 16px; }
+.settings-buttons-wrapper > .control-card h2 { font-size: 18px !important; margin: 4px 0 0 !important; }
+.settings-buttons-wrapper > .control-card .single-field, .settings-buttons-wrapper > .control-card .range-field { gap: 8px; }
+.settings-buttons-wrapper > .control-card .single-field span, .settings-buttons-wrapper > .control-card .range-field span { font-size: 14px; }
+.settings-buttons-wrapper > .control-card input { font-size: 14px; padding: 8px 10px; }
+.settings-buttons-wrapper > .control-card small { font-size: 12px; }
+.settings-buttons-wrapper > .control-card .notice { padding: 10px 12px; font-size: 12px; gap: 6px; }
+.settings-buttons-wrapper > .control-card .notice svg { width: 16px; height: 16px; }
+@media (max-width: 640px) {
+  .settings-buttons-wrapper { flex-direction: column; align-items: stretch; }
+  .settings-buttons-wrapper > .control-card { width: 100%; }
+  .settings-buttons-wrapper > .action-row { flex-direction: row; width: 100%; }
+}
 .control-heading { margin-bottom: 28px; display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; }
 .control-heading h2 { margin: 8px 0 0; font: 730 30px/1.1 var(--font-display), sans-serif; letter-spacing: -.045em; }
 .control-heading > strong { color: var(--brand); font: 750 25px var(--font-display), sans-serif; }
