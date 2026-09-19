@@ -26,18 +26,23 @@ export function CropOverlay({
   // Redraw the overlay
   useEffect(() => {
     const canvas = canvasRef.current;
-    if (!canvas || !imageElement) return;
+    const container = containerRef.current;
+    if (!canvas || !container || !imageElement) return;
 
-    const rect = canvas.getBoundingClientRect();
-    const containerRect = containerRef.current?.getBoundingClientRect();
-    if (!containerRect) return;
+    const rect = container.getBoundingClientRect();
+    const dpr = window.devicePixelRatio || 1;
 
-    // Match canvas size to container
-    canvas.width = containerRect.width;
-    canvas.height = containerRect.height;
+    // Set canvas resolution to match container size and device pixel ratio
+    const width = Math.round(rect.width * dpr);
+    const height = Math.round(rect.height * dpr);
 
+    canvas.width = width;
+    canvas.height = height;
+
+    // Scale context for device pixel ratio
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
+    ctx.scale(dpr, dpr);
 
     // Clear
     ctx.clearRect(0, 0, canvas.width, canvas.height);
