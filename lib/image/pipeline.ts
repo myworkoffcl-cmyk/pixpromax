@@ -133,7 +133,7 @@ export async function runPipeline(
     // ── 2. Crop ───────────────────────────────────────────────────────────
     const edit = ops.edit;
     let cropX = 0, cropY = 0, cropW = srcW, cropH = srcH;
-    if (edit.enabled && edit.crop.enabled && edit.crop.aspect !== "free") {
+    if (edit.enabled && edit.crop.enabled) {
       cropX = Math.round(edit.crop.x * srcW);
       cropY = Math.round(edit.crop.y * srcH);
       cropW = Math.max(1, Math.round(edit.crop.w * srcW));
