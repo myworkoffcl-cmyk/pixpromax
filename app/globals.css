@@ -842,7 +842,7 @@ body:has(.tool-workspace) .header-search-trigger { height: 29px !important; }
 .ws-preview-frame--upload { padding: 32px; flex-direction: column; }
 
 /* ws-preview-img: bounded image */
-.ws-preview-img { display: block; max-width: 100%; max-height: 65vh; object-fit: contain; width: auto; height: auto; }
+.ws-preview-img { display: block; max-width: 100%; max-height: 65vh; object-fit: contain; width: auto; height: auto; pointer-events: none; }
 
 /* ws-preview-toggle: segmented control inside the preview frame */
 .ws-preview-toggle { position: absolute; bottom: 12px; right: 12px; display: flex; gap: 2px; background: rgba(0,0,0,0.5); border-radius: 999px; padding: 3px; backdrop-filter: blur(4px); }
@@ -913,6 +913,19 @@ input[type="range"] { accent-color: var(--brand); width: 100%; }
 .ws-output-col--final { padding-left: 16px; border-left: 2px solid var(--brand); }
 .ws-output-label { font-size: 11px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-soft); }
 .ws-output-format, .ws-output-saved { font-size: 11px; font-weight: 700; color: var(--brand); }
+
+/* Output overlay - positioned in top right corner of preview */
+.ws-output-overlay { position: absolute; top: 12px; right: 12px; background: transparent; padding: 10px 14px; pointer-events: auto; }
+
+/* Output info columns are clickable to toggle preview mode */
+.ws-output-info { pointer-events: auto; }
+.ws-output-info > .ws-output-col[role="button"] { cursor: pointer; transition: opacity .15s; pointer-events: auto; }
+.ws-output-info > .ws-output-col[role="button"]:hover { opacity: 0.8; }
+.ws-output-label--active { color: var(--brand); font-weight: 700; }
+
+/* Crop overlay - ensure it can capture pointer events */
+.ws-preview-frame > div[style*="position: absolute"][style*="inset: 0"] { pointer-events: auto; z-index: 10; }
+.ws-preview-frame > div[style*="position: absolute"][style*="inset: 0"] canvas { pointer-events: auto; }
 
 /* Preview placeholder */
 .ws-preview-placeholder { display: flex; flex-direction: column; align-items: center; gap: 12px; color: var(--ink-soft); font-size: 13px; padding: 40px; }

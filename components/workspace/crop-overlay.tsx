@@ -111,10 +111,10 @@ export function CropOverlay({
     const x = clientX - rect.left;
     const y = clientY - rect.top;
 
-    const startX = crop.x * canvas.width;
-    const startY = crop.y * canvas.height;
-    const boxWidth = crop.w * canvas.width;
-    const boxHeight = crop.h * canvas.height;
+    const startX = crop.x * rect.width;
+    const startY = crop.y * rect.height;
+    const boxWidth = crop.w * rect.width;
+    const boxHeight = crop.h * rect.height;
     const threshold = 12;
 
     // Check handles
@@ -156,6 +156,20 @@ export function CropOverlay({
     return null;
   };
 
+  const handleMouseDown = useCallback(
+    (e: React.MouseEvent<HTMLCanvasElement>) => {
+      if (!enabled || !crop.enabled) return;
+      e.preventDefault();
+
+      const handle = getHandleAtPoint(e.clientX, e.clientY);
+      if (handle) {
+        setDragHandle(handle);
+        setIsDragging(true);
+      }
+    },
+    [enabled, crop.enabled]
+  );
+
   const handlePointerDown = useCallback(
     (e: React.PointerEvent<HTMLCanvasElement>) => {
       if (!enabled || !crop.enabled) return;
@@ -170,8 +184,8 @@ export function CropOverlay({
     [enabled, crop.enabled]
   );
 
-  const handlePointerMove = useCallback(
-    (e: PointerEvent) => {
+  const handleMouseMove = useCallback(
+    (e: MouseEvent) => {
       if (!isDragging || !dragHandle || !canvasRef.current) return;
 
       const canvas = canvasRef.current;
@@ -185,13 +199,10 @@ export function CropOverlay({
       let newCrop = { ...crop };
 
       if (dragHandle === "center") {
-        // Move crop box
         const deltaX = normX - (crop.x + crop.w / 2);
         const deltaY = normY - (crop.y + crop.h / 2);
-
         const newX = Math.max(0, Math.min(crop.x + deltaX, 1 - crop.w));
         const newY = Math.max(0, Math.min(crop.y + deltaY, 1 - crop.h));
-
         newCrop = { ...crop, x: newX, y: newY };
       } else if (dragHandle === "tl") {
         newCrop = {
@@ -228,22 +239,86 @@ export function CropOverlay({
     [isDragging, dragHandle, crop, onChange]
   );
 
+  const handlePointerMove = useCallback(
+    (e: PointerEvent) => {
+      if (!isDragging || !dragHandle || !canvasRef.current) return;
+
+      const canvas = canvasRef.current;
+      const rect = canvas.getBoundingClientRect();
+      const x = Math.max(0, Math.min(e.clientX - rect.left, rect.width));
+      const y = Math.max(0, Math.min(e.clientY - rect.top, rect.height));
+
+      const normX = x / rect.width;
+      const normY = y / rect.height;
+
+      let newCrop = { ...crop };
+
+      if (dragHandle === "center") {
+        const deltaX = normX - (crop.x + crop.w / 2);
+        const deltaY = normY - (crop.y + crop.h / 2);
+        const newX = Math.max(0, Math.min(crop.x + deltaX, 1 - crop.w));
+        const newY = Math.max(0, Math.min(crop.y + deltaY, 1 - crop.h));
+        newCrop = { ...crop, x: newX, y: newY };
+      } else if (dragHandle === "tl") {
+        newCrop = {
+          ...crop,
+          x: Math.min(normX, crop.x + crop.w - 0.05),
+          y: Math.min(normY, crop.y + crop.h - 0.05),
+          w: Math.max(0.05, crop.w + (crop.x - Math.min(normX, crop.x + crop.w - 0.05))),
+          h: Math.max(0.05, crop.h + (crop.y - Math.min(normY, crop.y + crop.h - 0.05))),
+        };
+      } else if (dragHandle === "tr") {
+        newCrop = {
+          ...crop,
+          y: Math.min(normY, crop.y + crop.h - 0.05),
+          w: Math.max(0.05, Math.min(normX, 1) - crop.x),
+          h: Math.max(0.05, crop.h + (crop.y - Math.min(normY, crop.y + crop.h - 0.05))),
+        };
+      } else if (dragHandle === "bl") {
+        newCrop = {
+          ...crop,
+          x: Math.min(normX, crop.x + crop.w - 0.05),
+          w: Math.max(0.05, crop.w + (crop.x - Math.min(normX, crop.x + crop.w - 0.05))),
+          h: Math.max(0.05, Math.min(normY, 1) - crop.y),
+        };
+      } else if (dragHandle === "br") {
+        newCrop = {
+          ...crop,
+          w: Math.max(0.05, Math.min(normX, 1) - crop.x),
+          h: Math.max(0.05, Math.min(normY, 1) - crop.y),
+        };
+      }
+
+      onChange(newCrop);
+    },
+    [isDragging, dragHandle, crop, onChange]
+  );
+
+  const handleMouseUp = useCallback(() => {
+    setIsDragging(false);
+    setDragHandle(null);
+  }, []);
+
   const handlePointerUp = useCallback(() => {
     setIsDragging(false);
     setDragHandle(null);
   }, []);
 
-  // Add global pointer event listeners
+  // Add global pointer/mouse event listeners
   useEffect(() => {
     if (isDragging) {
       document.addEventListener("pointermove", handlePointerMove);
       document.addEventListener("pointerup", handlePointerUp);
+      document.addEventListener("mousemove", handleMouseMove);
+      document.addEventListener("mouseup", handleMouseUp);
       return () => {
         document.removeEventListener("pointermove", handlePointerMove);
         document.removeEventListener("pointerup", handlePointerUp);
+        document.removeEventListener("mousemove", handleMouseMove);
+        document.removeEventListener("mouseup", handleMouseUp);
       };
     }
-  }, [isDragging, handlePointerMove, handlePointerUp]);
+  }, [isDragging, handlePointerMove, handlePointerUp, handleMouseMove, handleMouseUp]);
 
   // Update cursor
   useEffect(() => {
@@ -276,16 +351,21 @@ export function CropOverlay({
         inset: 0,
         touchAction: "none",
         userSelect: "none",
+        pointerEvents: "auto",
+        zIndex: 10,
       }}
     >
       <canvas
         ref={canvasRef}
         onPointerDown={handlePointerDown}
+        onMouseDown={handleMouseDown}
         style={{
           display: "block",
           width: "100%",
           height: "100%",
           cursor: "default",
+          pointerEvents: "auto",
+          backgroundColor: "transparent",
         }}
       />
     </div>
