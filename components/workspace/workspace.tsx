@@ -1210,7 +1210,15 @@ export function UniversalWorkspace({ init }: { init?: WorkspaceInitConfig }) {
       state.ops.resize.enabled ||
       state.ops.edit.enabled ||
       state.ops.convert.enabled;
+    console.log("Processing effect - anyEnabled:", anyEnabled, {
+      compress: state.ops.compress.enabled,
+      resize: state.ops.resize.enabled,
+      edit: state.ops.edit.enabled,
+      convert: state.ops.convert.enabled,
+      resultExists: !!state.result,
+    });
     if (!anyEnabled) {
+      console.log("No operations enabled, clearing result");
       dispatch({ type: "SET_RESULT", result: null });
       return;
     }
