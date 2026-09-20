@@ -77,8 +77,6 @@ function reducer(state: WorkspaceState, action: Action): WorkspaceState {
       return {
         ...state,
         ops: { ...state.ops, ...action.ops },
-        result: null,
-        status: "idle",
       };
     case "SET_RESULT":
       return { ...state, result: action.result, status: "done", error: null };
