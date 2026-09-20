@@ -66,7 +66,8 @@ export function CropOverlay({
     ctx.strokeRect(startX, startY, boxWidth, boxHeight);
 
     // Draw handles (circles at corners and center)
-    const handleRadius = Math.max(6, Math.min(10, Math.min(canvas.width, canvas.height) * 0.02));
+    // Use display dimensions, not DPI-scaled canvas dimensions
+    const handleRadius = 8; // Fixed size for visibility
     const handles = [
       { x: startX, y: startY, name: "tl" },
       { x: startX + boxWidth, y: startY, name: "tr" },
@@ -75,10 +76,18 @@ export function CropOverlay({
       { x: startX + boxWidth / 2, y: startY + boxHeight / 2, name: "center" },
     ];
 
-    handles.forEach(({ x, y }) => {
-      ctx.fillStyle = "#6440e8";
+    // Draw handles with white border for visibility
+    handles.forEach(({ x, y, name }) => {
+      // Draw white background for visibility
+      ctx.fillStyle = "rgba(255, 255, 255, 0.9)";
       ctx.beginPath();
       ctx.arc(x, y, handleRadius, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Draw purple inner circle
+      ctx.fillStyle = "#6440e8";
+      ctx.beginPath();
+      ctx.arc(x, y, handleRadius * 0.6, 0, Math.PI * 2);
       ctx.fill();
     });
 
@@ -378,7 +387,12 @@ export function CropOverlay({
     return () => canvas.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
-  if (!enabled) return null;
+  console.log("CropOverlay render:", { enabled, cropEnabled: crop.enabled });
+
+  if (!enabled) {
+    console.log("CropOverlay disabled, returning null");
+    return null;
+  }
 
   return (
     <div
