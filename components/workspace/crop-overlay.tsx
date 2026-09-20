@@ -305,14 +305,16 @@ export function CropOverlay({
     setDragHandle(null);
   }, []);
 
-  const handlePointerUp = useCallback((e: React.PointerEvent) => {
+  const handlePointerUp = useCallback((e?: React.PointerEvent) => {
     setIsDragging(false);
     setDragHandle(null);
     // Release pointer capture
-    try {
-      e.currentTarget.releasePointerCapture(e.pointerId);
-    } catch (err) {
-      // Pointer may have already been released
+    if (e && canvasRef.current) {
+      try {
+        canvasRef.current.releasePointerCapture(e.pointerId);
+      } catch (err) {
+        // Pointer may have already been released
+      }
     }
   }, []);
 
