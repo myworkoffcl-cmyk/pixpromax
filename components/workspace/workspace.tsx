@@ -1052,25 +1052,29 @@ function OutputInfo({
   sourceW,
   sourceH,
   result,
+  onModeChange,
+  currentMode,
 }: {
   source: File;
   sourceW: number;
   sourceH: number;
   result: WorkspaceState["result"];
+  onModeChange?: (mode: "original" | "final") => void;
+  currentMode?: "original" | "final";
 }) {
   const reduction = result
     ? Math.max(0, Math.round((1 - result.blob.size / source.size) * 100))
     : null;
   return (
     <div className="ws-output-info">
-      <div className="ws-output-col">
-        <span className="ws-output-label">Original</span>
+      <div className="ws-output-col" onClick={() => onModeChange?.("original")} role={onModeChange ? "button" : undefined} tabIndex={onModeChange ? 0 : undefined} style={{ cursor: onModeChange ? "pointer" : "default" }}>
+        <span className={`ws-output-label${onModeChange && currentMode === "original" ? " ws-output-label--active" : ""}`}>Original</span>
         <strong>{sourceW} × {sourceH}</strong>
         <span>{formatFileSize(source.size)}</span>
       </div>
       {result && (
-        <div className="ws-output-col ws-output-col--final">
-          <span className="ws-output-label">Final</span>
+        <div className="ws-output-col ws-output-col--final" onClick={() => onModeChange?.("final")} role={onModeChange ? "button" : undefined} tabIndex={onModeChange ? 0 : undefined} style={{ cursor: onModeChange ? "pointer" : "default" }}>
+          <span className={`ws-output-label${onModeChange && currentMode === "final" ? " ws-output-label--active" : ""}`}>Final</span>
           <strong>{result.width} × {result.height}</strong>
           <span>{formatFileSize(result.blob.size)}</span>
           {result.mime !== source.type && (
@@ -1360,7 +1364,7 @@ export function UniversalWorkspace({ init }: { init?: WorkspaceInitConfig }) {
                   crop={state.ops.edit.crop}
                   onChange={(partial) => setOp("edit", { crop: { ...state.ops.edit.crop, ...partial } })}
                   imageElement={imgRef.current}
-                  enabled={state.previewMode === "original" && state.ops.edit.enabled}
+                  enabled={state.previewMode === "final" && state.ops.edit.enabled && !!state.result && state.ops.edit.crop.enabled}
                 />
               </>
             ) : (
@@ -1376,33 +1380,18 @@ export function UniversalWorkspace({ init }: { init?: WorkspaceInitConfig }) {
               </div>
             )}
 
-            {/* Original / Final segmented control */}
-            <div className="ws-preview-toggle" role="group" aria-label="Preview mode">
-              <button
-                type="button"
-                className={`ws-toggle-btn${state.previewMode === "original" ? " active" : ""}`}
-                onClick={() => dispatch({ type: "SET_PREVIEW", mode: "original" })}
-              >
-                Original
-              </button>
-              <button
-                type="button"
-                className={`ws-toggle-btn${state.previewMode === "final" ? " active" : ""}`}
-                onClick={() => dispatch({ type: "SET_PREVIEW", mode: "final" })}
-                disabled={!state.result}
-              >
-                Final
-              </button>
+            {/* Output meta with clickable toggle - positioned in top right corner */}
+            <div className="ws-output-overlay">
+              <OutputInfo
+                source={state.source}
+                sourceW={state.sourceWidth}
+                sourceH={state.sourceHeight}
+                result={state.result}
+                onModeChange={(mode) => dispatch({ type: "SET_PREVIEW", mode })}
+                currentMode={state.previewMode}
+              />
             </div>
           </div>
-
-          {/* Output meta */}
-          <OutputInfo
-            source={state.source}
-            sourceW={state.sourceWidth}
-            sourceH={state.sourceHeight}
-            result={state.result}
-          />
 
           {state.status === "error" && state.error && (
             <p className="ws-error" role="alert">
