@@ -304,21 +304,44 @@ export function CropOverlay({
     setDragHandle(null);
   }, []);
 
+  // Store handler refs to avoid dependency array issues
+  const handlerRefsRef = useRef({
+    handlePointerMove,
+    handlePointerUp,
+    handleMouseMove,
+    handleMouseUp,
+  });
+
+  useEffect(() => {
+    handlerRefsRef.current = {
+      handlePointerMove,
+      handlePointerUp,
+      handleMouseMove,
+      handleMouseUp,
+    };
+  }, [handlePointerMove, handlePointerUp, handleMouseMove, handleMouseUp]);
+
   // Add global pointer/mouse event listeners
   useEffect(() => {
-    if (isDragging) {
-      document.addEventListener("pointermove", handlePointerMove);
-      document.addEventListener("pointerup", handlePointerUp);
-      document.addEventListener("mousemove", handleMouseMove);
-      document.addEventListener("mouseup", handleMouseUp);
-      return () => {
-        document.removeEventListener("pointermove", handlePointerMove);
-        document.removeEventListener("pointerup", handlePointerUp);
-        document.removeEventListener("mousemove", handleMouseMove);
-        document.removeEventListener("mouseup", handleMouseUp);
-      };
-    }
-  }, [isDragging, handlePointerMove, handlePointerUp, handleMouseMove, handleMouseUp]);
+    if (!isDragging) return;
+
+    const onPointerMove = (e: PointerEvent) => handlerRefsRef.current.handlePointerMove(e);
+    const onPointerUp = () => handlerRefsRef.current.handlePointerUp();
+    const onMouseMove = (e: MouseEvent) => handlerRefsRef.current.handleMouseMove(e);
+    const onMouseUp = () => handlerRefsRef.current.handleMouseUp();
+
+    document.addEventListener("pointermove", onPointerMove);
+    document.addEventListener("pointerup", onPointerUp);
+    document.addEventListener("mousemove", onMouseMove);
+    document.addEventListener("mouseup", onMouseUp);
+
+    return () => {
+      document.removeEventListener("pointermove", onPointerMove);
+      document.removeEventListener("pointerup", onPointerUp);
+      document.removeEventListener("mousemove", onMouseMove);
+      document.removeEventListener("mouseup", onMouseUp);
+    };
+  }, [isDragging]);
 
   // Update cursor
   useEffect(() => {
