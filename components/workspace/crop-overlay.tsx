@@ -44,8 +44,8 @@ export function CropOverlay({
     if (!ctx) return;
     ctx.scale(dpr, dpr);
 
-    // Clear
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    // Clear canvas (use display dimensions, not DPI-scaled canvas dimensions)
+    ctx.clearRect(0, 0, rect.width, rect.height);
 
     if (!crop.enabled) return;
 
