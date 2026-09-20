@@ -165,6 +165,10 @@ export function CropOverlay({
       if (handle) {
         setDragHandle(handle);
         setIsDragging(true);
+        // Capture pointer events to this element during drag
+        if (canvasRef.current && 'setPointerCapture' in canvasRef.current) {
+          (canvasRef.current as any).setPointerCapture((e as any).pointerId);
+        }
       }
     },
     [enabled, crop.enabled]
@@ -179,6 +183,8 @@ export function CropOverlay({
       if (handle) {
         setDragHandle(handle);
         setIsDragging(true);
+        // Capture pointer events to this element during drag
+        e.currentTarget.setPointerCapture(e.pointerId);
       }
     },
     [enabled, crop.enabled]
@@ -299,9 +305,15 @@ export function CropOverlay({
     setDragHandle(null);
   }, []);
 
-  const handlePointerUp = useCallback(() => {
+  const handlePointerUp = useCallback((e: React.PointerEvent) => {
     setIsDragging(false);
     setDragHandle(null);
+    // Release pointer capture
+    try {
+      e.currentTarget.releasePointerCapture(e.pointerId);
+    } catch (err) {
+      // Pointer may have already been released
+    }
   }, []);
 
   // Store handler refs to avoid dependency array issues
