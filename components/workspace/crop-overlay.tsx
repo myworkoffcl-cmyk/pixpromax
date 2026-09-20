@@ -29,12 +29,13 @@ export function CropOverlay({
     const container = containerRef.current;
     if (!canvas || !container || !imageElement) return;
 
-    const rect = container.getBoundingClientRect();
+    const containerRect = container.getBoundingClientRect();
+    const imageRect = imageElement.getBoundingClientRect();
     const dpr = window.devicePixelRatio || 1;
 
     // Set canvas resolution to match container size and device pixel ratio
-    const width = Math.round(rect.width * dpr);
-    const height = Math.round(rect.height * dpr);
+    const width = Math.round(containerRect.width * dpr);
+    const height = Math.round(containerRect.height * dpr);
 
     canvas.width = width;
     canvas.height = height;
@@ -45,15 +46,21 @@ export function CropOverlay({
     ctx.scale(dpr, dpr);
 
     // Clear canvas (use display dimensions, not DPI-scaled canvas dimensions)
-    ctx.clearRect(0, 0, rect.width, rect.height);
+    ctx.clearRect(0, 0, containerRect.width, containerRect.height);
 
     if (!crop.enabled) return;
 
-    // Draw crop box (use display dimensions, not DPI-scaled canvas dimensions)
-    const startX = crop.x * rect.width;
-    const startY = crop.y * rect.height;
-    const boxWidth = crop.w * rect.width;
-    const boxHeight = crop.h * rect.height;
+    // Calculate image position relative to container
+    const imageX = imageRect.left - containerRect.left;
+    const imageY = imageRect.top - containerRect.top;
+    const imageWidth = imageRect.width;
+    const imageHeight = imageRect.height;
+
+    // Draw crop box relative to image position (use image dimensions for crop calculation)
+    const startX = imageX + crop.x * imageWidth;
+    const startY = imageY + crop.y * imageHeight;
+    const boxWidth = crop.w * imageWidth;
+    const boxHeight = crop.h * imageHeight;
 
     // Semi-transparent overlay outside crop area
     ctx.fillStyle = "rgba(0, 0, 0, 0.5)";
@@ -114,16 +121,26 @@ export function CropOverlay({
     clientY: number
   ): DragHandle => {
     const canvas = canvasRef.current;
-    if (!canvas) return null;
+    if (!canvas || !imageElement) return null;
 
-    const rect = canvas.getBoundingClientRect();
-    const x = clientX - rect.left;
-    const y = clientY - rect.top;
+    const containerRect = canvas.getBoundingClientRect();
+    const imageRect = imageElement.getBoundingClientRect();
 
-    const startX = crop.x * rect.width;
-    const startY = crop.y * rect.height;
-    const boxWidth = crop.w * rect.width;
-    const boxHeight = crop.h * rect.height;
+    // Position relative to container
+    const x = clientX - containerRect.left;
+    const y = clientY - containerRect.top;
+
+    // Image position and dimensions relative to container
+    const imageX = imageRect.left - containerRect.left;
+    const imageY = imageRect.top - containerRect.top;
+    const imageWidth = imageRect.width;
+    const imageHeight = imageRect.height;
+
+    // Crop box position relative to image
+    const startX = imageX + crop.x * imageWidth;
+    const startY = imageY + crop.y * imageHeight;
+    const boxWidth = crop.w * imageWidth;
+    const boxHeight = crop.h * imageHeight;
     const threshold = 12;
 
     // Check handles
