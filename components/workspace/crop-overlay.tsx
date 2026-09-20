@@ -49,15 +49,15 @@ export function CropOverlay({
 
     if (!crop.enabled) return;
 
-    // Draw crop box
-    const startX = crop.x * canvas.width;
-    const startY = crop.y * canvas.height;
-    const boxWidth = crop.w * canvas.width;
-    const boxHeight = crop.h * canvas.height;
+    // Draw crop box (use display dimensions, not DPI-scaled canvas dimensions)
+    const startX = crop.x * rect.width;
+    const startY = crop.y * rect.height;
+    const boxWidth = crop.w * rect.width;
+    const boxHeight = crop.h * rect.height;
 
     // Semi-transparent overlay outside crop area
     ctx.fillStyle = "rgba(0, 0, 0, 0.5)";
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillRect(0, 0, rect.width, rect.height);
     ctx.clearRect(startX, startY, boxWidth, boxHeight);
 
     // Crop box border
