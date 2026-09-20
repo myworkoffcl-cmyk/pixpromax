@@ -64,7 +64,7 @@ export function CropOverlay({
 
     // Semi-transparent overlay outside crop area
     ctx.fillStyle = "rgba(0, 0, 0, 0.5)";
-    ctx.fillRect(0, 0, rect.width, rect.height);
+    ctx.fillRect(0, 0, containerRect.width, containerRect.height);
     ctx.clearRect(startX, startY, boxWidth, boxHeight);
 
     // Crop box border
