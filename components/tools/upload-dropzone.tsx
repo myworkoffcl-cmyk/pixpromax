@@ -1,6 +1,6 @@
 "use client";
 
-import { File, FileImage, UploadCloud, Link as LinkIcon } from "lucide-react";
+import { File as FileIcon, FileImage, UploadCloud, Link as LinkIcon } from "lucide-react";
 import { useId, useRef, useState } from "react";
 import { MAX_BATCH_FILES, MAX_SINGLE_IMAGE_SIZE } from "@/config/limits";
 import { useTranslation } from "@/lib/use-translation";
@@ -67,7 +67,7 @@ export function UploadDropzone({ multiple = false, onFiles, error, compact = fal
     <div className={`dropzone ${dragging ? "is-dragging" : ""} ${compact ? "compact" : ""}`} onDragEnter={(event) => { event.preventDefault(); setDragging(true); }} onDragOver={(event) => event.preventDefault()} onDragLeave={(event) => { if (!event.currentTarget.contains(event.relatedTarget as Node)) setDragging(false); }} onDrop={(event) => { event.preventDefault(); setDragging(false); handleFiles(Array.from(event.dataTransfer.files)); }}>
       <input ref={inputRef} id={id} type="file" accept={acceptedTypes} multiple={multiple} onChange={(event) => { handleFiles(Array.from(event.target.files ?? [])); event.target.value = ""; }} />
       <button type="button" className="dropzone-button" onClick={() => inputRef.current?.click()}>
-        <span className="upload-orbit"><UploadCloud aria-hidden="true" />{fileKind === "PDF" ? <File aria-hidden="true" /> : <FileImage aria-hidden="true" />}</span>
+        <span className="upload-orbit"><UploadCloud aria-hidden="true" />{fileKind === "PDF" ? <FileIcon aria-hidden="true" /> : <FileImage aria-hidden="true" />}</span>
         <strong>{fileKind === "PDF"
           ? (multiple ? t("uploadDropzone.dropMultiplePdf", "Drop your PDFs here") : t("uploadDropzone.dropSinglePdf", "Drop your PDF here"))
           : (multiple ? t("uploadDropzone.dropMultiple", "Drop your images here") : t("uploadDropzone.dropSingle", "Drop your image here"))}</strong>
