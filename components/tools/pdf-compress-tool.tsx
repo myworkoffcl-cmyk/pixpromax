@@ -100,7 +100,7 @@ export function PdfCompressTool() {
     )}
     {error && <p className="form-error" role="alert">{error}</p>}
     <div className="action-row">
-      {result ? <DownloadLink blob={result} filename={`${item.file.name.replace(/\.pdf$/i, "")}-compressed.pdf`}><Zap style={{ width: "16px" }} /> Download Compressed PDF</DownloadLink> : <ProcessingButton busy={busy} onClick={compress}><Zap /> Compress PDF</ProcessingButton>}
+      {result ? <DownloadLink blob={result} filename={`pixpromax-${item.file.name.replace(/\.pdf$/i, "")}-compressed.pdf`}><Zap style={{ width: "16px" }} /> Download Compressed PDF</DownloadLink> : <ProcessingButton busy={busy} onClick={compress}><Zap /> Compress PDF</ProcessingButton>}
       <button className="button secondary" type="button" onClick={reset}><FilePlus2 /> Start over</button>
     </div>
   </div>;

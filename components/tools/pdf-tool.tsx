@@ -162,18 +162,18 @@ export function PdfTool({ mode }: PdfToolProps) {
             const copied = await output.copyPages(source, [pageNum - 1]);
             copied.forEach(page => output.addPage(page));
             const pdfBytes = await output.save({ useObjectStreams: false });
-            zip.file(`${fileStem(files[0].name)}-page-${pageNum}.pdf`, pdfBytes);
+            zip.file(`pixpromax-${fileStem(files[0].name)}-page-${pageNum}.pdf`, pdfBytes);
           }
           setResult(await zip.generateAsync({ type: "blob" }));
-          setFilename(`${fileStem(files[0].name)}-split.zip`);
-          downloadPDF(await zip.generateAsync({ type: "blob" }), `${fileStem(files[0].name)}-split.zip`);
+          setFilename(`pixpromax-${fileStem(files[0].name)}-split.zip`);
+          downloadPDF(await zip.generateAsync({ type: "blob" }), `pixpromax-${fileStem(files[0].name)}-split.zip`);
         } else {
           const output = await PDFDocument.create();
           const copied = await output.copyPages(source, pagesToExtract.map(page => page - 1));
           copied.forEach(page => output.addPage(page));
           setResult(bytesBlob(await output.save({ useObjectStreams: false })));
-          setFilename(`${fileStem(files[0].name)}-extracted.pdf`);
-          downloadPDF(bytesBlob(await output.save({ useObjectStreams: false })), `${fileStem(files[0].name)}-extracted.pdf`);
+          setFilename(`pixpromax-${fileStem(files[0].name)}-extracted.pdf`);
+          downloadPDF(bytesBlob(await output.save({ useObjectStreams: false })), `pixpromax-${fileStem(files[0].name)}-extracted.pdf`);
         }
       } else if (mode === "organize") {
         if (pageOrder.length === 0) throw new Error("Please select at least one page to keep.");
@@ -183,8 +183,8 @@ export function PdfTool({ mode }: PdfToolProps) {
         const copied = await output.copyPages(source, pageOrder.map(page => page - 1));
         copied.forEach(page => output.addPage(page));
         setResult(bytesBlob(await output.save({ useObjectStreams: false })));
-        setFilename(`${fileStem(files[0].name)}-organized.pdf`);
-        downloadPDF(bytesBlob(await output.save({ useObjectStreams: false })), `${fileStem(files[0].name)}-organized.pdf`);
+        setFilename(`pixpromax-${fileStem(files[0].name)}-organized.pdf`);
+        downloadPDF(bytesBlob(await output.save({ useObjectStreams: false })), `pixpromax-${fileStem(files[0].name)}-organized.pdf`);
       } else {
         const pdfjs = await import("pdfjs-dist/legacy/build/pdf.mjs");
         pdfjs.GlobalWorkerOptions.workerSrc = new URL("pdfjs-dist/legacy/build/pdf.worker.mjs", import.meta.url).href;
@@ -201,9 +201,9 @@ export function PdfTool({ mode }: PdfToolProps) {
           await page.render({ canvas, canvasContext: context, viewport }).promise;
           const image = await new Promise<Blob>((resolve, reject) => canvas.toBlob(blob => blob ? resolve(blob) : reject(new Error("A PDF page could not be converted.")), imageType, isJpeg ? quality / 100 : undefined));
           canvas.width = 1; canvas.height = 1;
-          zip.file(`${fileStem(files[0].name)}-page-${index}.${ext}`, image);
+          zip.file(`pixpromax-${fileStem(files[0].name)}-page-${index}.${ext}`, image);
         }
-        setResult(await zip.generateAsync({ type: "blob" })); setFilename(`${fileStem(files[0].name)}-${ext}.zip`);
+        setResult(await zip.generateAsync({ type: "blob" })); setFilename(`pixpromax-${fileStem(files[0].name)}-${ext}.zip`);
       }
     } catch (reason) { setError(reason instanceof Error ? reason.message : "The PDF could not be processed."); }
     finally { setBusy(false); }

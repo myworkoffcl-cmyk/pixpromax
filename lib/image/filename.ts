@@ -7,5 +7,5 @@ export function baseFilename(filename: string): string {
 }
 
 export function outputFilename(filename: string, suffix: string, mime: ImageMime): string {
-  return `${baseFilename(filename)}-${suffix}.${extensionForMime(mime)}`;
+  return `pixpromax-${baseFilename(filename)}-${suffix}.${extensionForMime(mime)}`;
 }

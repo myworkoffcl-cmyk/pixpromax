@@ -9,6 +9,7 @@ import {
   SlidersHorizontal,
   RefreshCw,
   Upload,
+  Link as LinkIcon,
 } from "lucide-react";
 import Link from "@/components/site-link";
 import { useTranslation } from "@/lib/use-translation";
@@ -73,14 +74,20 @@ export function WorkspaceEntry() {
           <p className="workspace-entry-sub">
             {t("workspace.description", "Compress, resize, edit and convert in a single pass — no repeated uploads.")}
           </p>
-          <button
-            className="workspace-entry-upload"
-            onClick={() => inputRef.current?.click()}
-            type="button"
-          >
-            <Upload aria-hidden="true" />
-            {t("workspace.upload", "Upload an image")}
-          </button>
+          <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
+            <button
+              className="workspace-entry-upload"
+              onClick={() => inputRef.current?.click()}
+              type="button"
+            >
+              <Upload aria-hidden="true" />
+              {t("workspace.upload", "Upload an image")}
+            </button>
+            <Link href="/workspace" className="workspace-entry-upload" style={{ textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "8px" }}>
+              <LinkIcon aria-hidden="true" size={24} />
+              {t("workspace.addFromUrl", "Add from URL")}
+            </Link>
+          </div>
           <input
             ref={inputRef}
             type="file"
