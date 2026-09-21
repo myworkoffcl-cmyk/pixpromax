@@ -919,9 +919,10 @@ input[type="range"] { accent-color: var(--brand); width: 100%; }
 
 /* Output info columns are clickable to toggle preview mode */
 .ws-output-info { pointer-events: auto; }
+.ws-output-col { text-shadow: 0 0 3px rgba(255, 255, 255, 0.7), 0 0 6px rgba(0, 0, 0, 0.5); }
 .ws-output-info > .ws-output-col[role="button"] { cursor: pointer; transition: opacity .15s; pointer-events: auto; }
 .ws-output-info > .ws-output-col[role="button"]:hover { opacity: 0.8; }
-.ws-output-label--active { color: var(--brand); font-weight: 700; }
+.ws-output-label--active { color: var(--brand); font-weight: 700; text-shadow: 0 0 3px rgba(255, 255, 255, 0.7), 0 0 6px rgba(0, 0, 0, 0.5); }
 
 /* Crop overlay - ensure it can capture pointer events */
 .ws-preview-frame > div[style*="position: absolute"][style*="inset: 0"] { pointer-events: auto; z-index: 10; }
