@@ -320,7 +320,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .workspace-page { display: flex; flex-direction: column; width: 100%; }
 
 .tool-workspace-wrapper { display: flex; flex-direction: column; gap: 8px; padding-block: 0; max-width: 1200px; margin-inline: auto; width: 100%; padding-inline: 20px; }
-.dropzone { min-height: 220px; padding: 16px; display: grid; place-items: center; position: relative; border: 1.5px dashed color-mix(in srgb, var(--brand), var(--line) 62%); border-radius: 20px; background: linear-gradient(135deg, var(--surface), color-mix(in srgb, var(--surface-soft), transparent 30%)); box-shadow: 0 15px 45px color-mix(in srgb, var(--ink), transparent 94%); transition: border-color .2s, background .2s, transform .2s; }
+.dropzone { height: 280px; padding: 16px; display: grid; place-items: center; position: relative; border: 1.5px dashed color-mix(in srgb, var(--brand), var(--line) 62%); border-radius: 20px; background: linear-gradient(135deg, var(--surface), color-mix(in srgb, var(--surface-soft), transparent 30%)); box-shadow: 0 15px 45px color-mix(in srgb, var(--ink), transparent 94%); transition: border-color .2s, background .2s, transform .2s; }
 .dropzone.is-dragging { border-color: var(--brand); background: color-mix(in srgb, var(--brand), var(--surface) 96%); transform: scale(1.01); }
 .tool-workspace-wrapper > .dropzone { max-width: 550px; margin-inline: auto; }
 .dropzone input { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
