@@ -101,6 +101,8 @@ export function UploadDropzone({ multiple = false, onFiles, error, compact = fal
                 border: "1px solid var(--line)",
                 borderRadius: "4px",
                 fontSize: "13px",
+                color: "var(--ink)",
+                backgroundColor: "white",
               }}
             />
             <button

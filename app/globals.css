@@ -324,6 +324,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .dropzone.is-dragging { border-color: var(--brand); background: color-mix(in srgb, var(--brand), var(--surface) 96%); transform: scale(1.01); }
 .tool-workspace-wrapper > .dropzone { max-width: 550px; margin-inline: auto; }
 .dropzone input { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+.dropzone input[type="text"] { position: static; width: auto; height: auto; opacity: 1; pointer-events: auto; }
 .dropzone-button { width: 100%; min-height: 184px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 7px; border: 0; color: var(--ink); background: transparent; cursor: pointer; }
 .dropzone-button strong { font: 680 22px var(--font-display), sans-serif; letter-spacing: -.035em; }
 .dropzone-button > span:not(.upload-orbit) { color: var(--muted); }
