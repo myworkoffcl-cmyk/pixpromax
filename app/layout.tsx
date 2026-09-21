@@ -21,9 +21,9 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
   icons: {
     icon: [
-      { url: "/icon.png", type: "image/png" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
     ],
-    apple: "/icon.png",
+    apple: "/favicon.svg",
   },
   openGraph: { type: "website", url: "/", siteName: SITE_NAME, title: `Free Online Image Tools | ${SITE_NAME}`, description: SITE_DESCRIPTION, images: [{ url: "/og.png", width: 1731, height: 909, alt: "PixProMax — Images in. Better images out." }] },
   twitter: { card: "summary_large_image", title: `Free Online Image Tools | ${SITE_NAME}`, description: SITE_DESCRIPTION, images: ["/og.png"] },

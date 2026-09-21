@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <defs>
+    <style>
+      @media (prefers-color-scheme: dark) {
+        .bg { fill: #252540; }
+        .icon { stroke: #ddf190; }
+      }
+      @media (prefers-color-scheme: light) {
+        .bg { fill: #f7f8ff; }
+        .icon { stroke: #6440e8; }
+      }
+    </style>
+  </defs>
+  <!-- Background -->
+  <rect class="bg" width="256" height="256" rx="64"/>
+  <!-- Icon -->
+  <svg class="icon" x="32" y="32" width="192" height="192" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M3 7V5a2 2 0 0 1 2-2h2"/>
+    <path d="M17 3h2a2 2 0 0 1 2 2v2"/>
+    <path d="M21 17v2a2 2 0 0 1-2 2h-2"/>
+    <path d="M7 21H5a2 2 0 0 1-2-2v-2"/>
+    <path d="M7 12h10"/>
+  </svg>
+</svg>
